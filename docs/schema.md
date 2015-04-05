@@ -27,12 +27,12 @@ mission_id  | integer   | not null, foreign key (references missions)
 user_id     | integer   | not null, foreign key (references users)
 
 ## comments
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-commentable_id | integer   | not null, foreign key (references commentables.id)
-commentable_id | string    | not null, foreign key (references commentables Class)
-user_id        | integer   | not null, foreign key (references users)
+column name      | data type | details
+-----------------|-----------|-----------------------
+id               | integer   | not null, primary key
+commentable_id   | integer   | not null, foreign key (references commentables.id)
+commentable_type | string    | not null, foreign key (references commentables Class)
+user_id          | integer   | not null, foreign key (references users)
 
 ## users
 column name     | data type | details
