@@ -5,7 +5,7 @@
 [heroku]: #
 
 ## Minimum Viable Product
-nebulr is a clone of airbnb built on Rails and Backbone. Users can:
+nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
