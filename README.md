@@ -102,3 +102,4 @@ missions, and a few comments, follows, and enlistments for each user/mission.
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
 [phase-six]: ./docs/phases/phase6.md
+[phase-seven]: ./docs/phases/phase7.md
