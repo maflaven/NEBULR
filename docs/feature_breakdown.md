@@ -5,8 +5,8 @@
 | controllers        | Api::Users                  | Api::Missions                        |
 | views              | show, index                 | show, index                          |
 | models/collections | User                        | Mission, Missions                    |
-| views              | form, show, navbar logout   | form, show, index, index item        |
-| templates          | form, show, navbar logout   | form, show, index, index item        |
+| views              | form, show, navbar          | form, show, index, index item        |
+| templates          | form, show, navbar          | form, show, index, index item, edit |
 | 3rd party          | serializeJSON, omniauth?    | serializeJSON                        |
 
 ## feature breakdown
