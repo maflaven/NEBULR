@@ -13,6 +13,6 @@ Phase 6: Updating Mission Search by Filtering
 ### Collections
 
 ### Views
-update search/show
+* update search/show
 
 ## Gems/Libraries
