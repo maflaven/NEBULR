@@ -4,7 +4,7 @@
 ![new-session]
 
 ## Search Show
-![search-view]
+![search-show]
 
 ## Mission Show
 ![mission-show]
