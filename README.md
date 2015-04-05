@@ -94,6 +94,7 @@ missions, and a few comments, follows, and enlistments for each user/mission.
 - [ ] View a feed of mission updates in "followed missions"
 - [ ] Google Map centered and zoomed-in on mission location (mission/show)
 - [ ] Pagination/infinite scroll
+- [ ] OmniAuth
 - [ ] Multiple sessions/session management
 - [ ] User avatars
 - [ ] Comments with markdown
