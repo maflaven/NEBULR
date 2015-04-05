@@ -88,6 +88,8 @@ in a coherent, unobtrusive design. I will also scour the internet for freely usa
 images to attach to seed missions. I will need to create a ~five seed users, twenty
 missions, and a few comments, follows, and enlistments for each user/mission.
 
+[Details][phase-seven]
+
 ### Bonus Features
 - [ ] View a feed of mission updates in "followed missions"
 - [ ] Google Map centered and zoomed-in on mission location (mission/show)
