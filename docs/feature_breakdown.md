@@ -5,17 +5,28 @@
 | controllers        | Api::Users                  | Api::Missions                        |
 | views              | show, index                 | show, index                          |
 | models/collections | User                        | Mission, Missions                    |
-| views              | create, login, show, update | new, show, update, index, index item |
-| templates          | create, login, show, update | new, show, update, index, index item |
+| views              | form, show, navbar logout   | form, show, index, index item        |
+| templates          | form, show, navbar logout   | form, show, index, index item        |
 | 3rd party          | serializeJSON, omniauth?    | serializeJSON                        |
 
 ## feature breakdown
-|                    | comments                             | search by map | search by filter |
-|--------------------|--------------------------------------|---------------|------------------|
-| models             | Comment                              |               |                  |
-| controllers        | Api::Comments                        |               |                  |
-| views              | show, index                          |               |                  |
-| models/collections | Comment, Comments                    |               |                  |
-| views              | new, show, update, index, index item | show          | show             |
-| templates          | new, show, update, index, index item | show          | show             |
-| 3rd party          | serializeJSON                        | Google Maps   |                  |
+|                    | comments                             | search by map                | search by filter |
+|--------------------|--------------------------------------|------------------------------|------------------|
+| models             | Comment                              |                              |                  |
+| controllers        | Api::Comments                        |                              |                  |
+| views              | show, index                          |                              |                  |
+| models/collections | Comment, Comments                    |                              |                  |
+| views              | form, index, index item              | show, mapSearch, mapItem     | form             |
+| templates          | form, index, index item              | show, mapSearch, mapItem     | form             |
+| 3rd party          | serializeJSON                        | Google Maps                  |                  |
+
+## feature breakdown
+|                    | navbar                               |
+|--------------------|--------------------------------------|
+| models             |                                      |
+| controllers        |                                      |
+| views              |                                      |
+| models/collections |                                      |
+| views              | navbar                               |
+| templates          | navbar                               |
+| 3rd party          |                                      |
