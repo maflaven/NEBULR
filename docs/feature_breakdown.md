@@ -8,8 +8,7 @@
 | views              | form, show, navbar          | form, show, index, index item        |
 | templates          | form, show, navbar          | form, show, index, index item, edit |
 | 3rd party          | serializeJSON, omniauth?    | serializeJSON                        |
-
-## feature breakdown
+##
 |                    | comments                             | search by map                | search by filter |
 |--------------------|--------------------------------------|------------------------------|------------------|
 | models             | Comment                              |                              |                  |
@@ -19,8 +18,7 @@
 | views              | form, index, index item              | show, mapSearch, mapItem     | form             |
 | templates          | form, index, index item              | show, mapSearch, mapItem     | form             |
 | 3rd party          | serializeJSON                        | Google Maps                  |                  |
-
-## feature breakdown
+##
 |                    | navbar                               |
 |--------------------|--------------------------------------|
 | models             |                                      |
