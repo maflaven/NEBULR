@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: #
+[heroku]: https://tranquil-atoll-9838.herokuapp.com/
 
 ## Minimum Viable Product
 nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
