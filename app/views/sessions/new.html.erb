@@ -1,8 +1,17 @@
-<h1 class="log-header">Sign In</h1>
+<h1 class="log-header">Log In</h1>
 
 <form action="/session" method="post" class="log-form">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input name="user[username]" type="text" placeholder="username" class="form-control"><br>
   <input name="user[password]" type="password" placeholder="password" class="form-control"><br>
-  <input type="submit" value="Submit" class="btn btn-primary"><br>
+  <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+<br>
+
+<form action="/session" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input name="user[username]" type="hidden" value="jlpicard">
+  <input name="user[password]" type="hidden" value="password">
+  <input type="submit" value="Guest Login" class="guest-login btn btn-primary center-block"><br>
 </form>
