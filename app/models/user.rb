@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
-  def self.find_by_credentials(user_params)
-    user = User.find_by_username(user_params[:username])
-    user.try(:is_password?, user_params[:password]) ? user : nil
+  def self.find_by_credentials(username, password)
+    user = User.find_by_username(username)
+    user.try(:is_password?, password) ? user : nil
   end
 
   def password=(password)
@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
   protected
 
   def ensure_session_token
-    self.session_toekn ||= SecureRandom.urlsafe_base64
+    self.session_token ||= SecureRandom.urlsafe_base64
   end
 end
