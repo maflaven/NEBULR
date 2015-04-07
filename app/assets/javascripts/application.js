@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require bootstrap-sprockets
 //= require backbone
 //= require nebulr
 //= require_tree ../templates

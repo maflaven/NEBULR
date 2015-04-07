@@ -7,7 +7,3 @@ window.Nebulr = {
     alert('Hello from Backbone!');
   }
 };
-
-$(document).ready(function(){
-  Nebulr.initialize();
-});

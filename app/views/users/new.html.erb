@@ -1,12 +1,8 @@
-<h1>Sign Up</h1>
+<h1 class="log-header">Sign Up</h1>
 
-<form action="/users" method="post">
+<form action="/users" method="post" class="log-form">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label>Email<br>
-    <input name="user[username]" type="text"><br>
-  </label><br>
-  <label>Password<br>
-    <input name="user[password]" type="password"><br>
-  </label><br>
+  <input name="user[username]" type="text" placeholder="username" class="form-control"><br>
+  <input name="user[password]" type="password" placeholder="password" class="form-control"><br>
   <input type="submit" value="Submit" class="btn btn-primary"><br>
 </form>
