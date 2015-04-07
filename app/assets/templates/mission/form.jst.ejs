@@ -1,0 +1,10 @@
+<input type="text" name="title" placeholder="title" value="<%= mission.escape('title') %>" required><br>
+<textarea name="description" placeholder="description" required><%= mission.escape('description') %></textarea><br>
+<label>Reward: </label>
+<input type="number" name="compensation" value="<%= mission.escape('title') %>"
+       min="0"><br>
+<input type="text" name="latitude" placeholder="latitude" value="<%= mission.escape('latitude') %>" required>
+<input type="text" name="longitude" placeholder="longitude" value="<%= mission.escape('longitude') %>" required><br>
+<input type="text" name="user_limit" placeholder="enlist limit" value="<%= mission.escape('user_limit') %>"><br>
+<% var buttonText; mission.isNew() ? buttonText = "Create" : buttonText = "Submit" %>
+<input type="submit" value="<%= buttonText %>" class="submit-mission-form btn btn-default">

@@ -1,6 +1,11 @@
 class Api::MissionsController < ApplicationController
   before_action :require_signed_in!
 
+  def index
+    @missions = Mission.all
+    render json: @missions
+  end
+
   def create
     @mission = current_user.missions.create(mission_params)
 
@@ -40,6 +45,8 @@ class Api::MissionsController < ApplicationController
   end
 
   def show
+    @mission = Mission.find(params[:id])
+    render :show
   end
 
   private
@@ -47,7 +54,7 @@ class Api::MissionsController < ApplicationController
   def mission_params
     params.require(:mission).permit(
       :title, :description,
-      :compensation, :latutide,
+      :compensation, :latitude,
       :longitude, :user_limit
     )
   end
