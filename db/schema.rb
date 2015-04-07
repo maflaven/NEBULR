@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407173002) do
+ActiveRecord::Schema.define(version: 20150407204929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "missions", force: :cascade do |t|
+    t.integer  "leader_id",    null: false
+    t.string   "title",        null: false
+    t.text     "description",  null: false
+    t.decimal  "compensation"
+    t.decimal  "latitude",     null: false
+    t.decimal  "longitude",    null: false
+    t.integer  "user_limit"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "missions", ["latitude"], name: "index_missions_on_latitude", using: :btree
+  add_index "missions", ["leader_id"], name: "index_missions_on_leader_id", using: :btree
+  add_index "missions", ["longitude"], name: "index_missions_on_longitude", using: :btree
+  add_index "missions", ["title"], name: "index_missions_on_title", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

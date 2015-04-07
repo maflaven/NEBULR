@@ -7,8 +7,7 @@
 | leader_id           | integer   | not null, foreign key (references users) |
 | title               | string    | not null                                 |
 | description         | text      | not null                                 |
-| compensation        | string    |                                          |
-| compensation_amount | decimal   |                                          |
+| compensation        | decimal   |                                          |
 | latitude            | decimal   | not null                                 |
 | longitude           | decimal   | not null                                 |
 | user_limit          | integer   |                                          |
