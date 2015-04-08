@@ -9,8 +9,8 @@ nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create session (log in)
+- [x] Create accounts
+- [x] Create session (log in)
 - [ ] Create missions, and make them enlistable
 - [ ] View missions, users
 - [ ] Follow missions

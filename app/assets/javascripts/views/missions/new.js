@@ -1,6 +1,7 @@
 Nebulr.Views.MissionForm = Backbone.View.extend({
   template: JST['mission/form'],
   tagName: 'form',
+  className: 'mission-form center-block',
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
