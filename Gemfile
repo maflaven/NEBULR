@@ -13,6 +13,7 @@ gem 'sass-rails'
 gem 'pg'
 gem 'uglifier'
 gem 'newrelic_rpm'
+gem 'filepicker-rails'
 
 group :doc do
   gem 'sdoc', require: false
