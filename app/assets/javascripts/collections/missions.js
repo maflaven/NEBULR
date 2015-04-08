@@ -11,5 +11,4 @@ Nebulr.Collections.Missions = Backbone.Collection.extend({
 
     return mission;
   }
-
 });

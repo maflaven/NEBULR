@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407233600) do
+ActiveRecord::Schema.define(version: 20150408170314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "enlists", force: :cascade do |t|
+    t.integer  "mission_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "enlists", ["mission_id", "user_id"], name: "index_enlists_on_mission_id_and_user_id", unique: true, using: :btree
+  add_index "enlists", ["mission_id"], name: "index_enlists_on_mission_id", using: :btree
+  add_index "enlists", ["user_id"], name: "index_enlists_on_user_id", using: :btree
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "mission_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "follows", ["mission_id", "user_id"], name: "index_follows_on_mission_id_and_user_id", unique: true, using: :btree
+  add_index "follows", ["mission_id"], name: "index_follows_on_mission_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "missions", force: :cascade do |t|
     t.integer  "leader_id",    null: false

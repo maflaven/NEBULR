@@ -2,12 +2,14 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.missions = new Nebulr.Collections.Missions();
+    this.users = new Nebulr.Collections.Users();
   },
 
   routes: {
     '': 'missionIndex',
     'missions/new': 'missionNew',
-    'missions/:id': 'missionShow'
+    'missions/:id': 'missionShow',
+    'users/:id': 'userShow'
   },
 
   missionNew: function () {
@@ -25,6 +27,18 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   missionIndex: function () {
     this.missions.fetch();
     var view = new Nebulr.Views.MissionIndex({ collection: this.missions });
+    this._swapView(view);
+  },
+
+  userIndex: function () {
+    this.users.fetch();
+    var view = new Nebulr.Views.UserIndex({ collection: this.users });
+    this._swapView(view);
+  },
+
+  userShow: function (id) {
+    var model = this.users.getOrFetch(id);
+    var view = new Nebulr.Views.UserShow({ model: model });
     this._swapView(view);
   },
 

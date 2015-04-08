@@ -1,2 +1,15 @@
-<%= mission.id %><br>
-<%= mission.escape('title') %><br>
+<div class="mission-show">
+  <%= mission.id %><br>
+  <%= mission.escape('title') %><br>
+  <div class="mission-leader"></div><br>
+  <%= mission.escape('description') %><br>
+  <%= mission.get('latitude') %><br>
+  <%= mission.get('longitude') %><br>
+  <%= mission.get('compensation') %><br>
+  <div class="enlisted-users-index">
+    <h4>Enlisted</h4>
+  </div>
+  <div class="following-users-index">
+    <h4>Following</h4>
+  </div>
+<div>

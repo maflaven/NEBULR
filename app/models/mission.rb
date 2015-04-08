@@ -15,7 +15,12 @@
 #
 
 class Mission < ActiveRecord::Base
-  validates :leader_id, :title, :description, :latitude, :longitude, presence: true
+  validates :leader_id, :title, :description, :latitude, :longitude,
+            presence: true
 
   belongs_to :leader, class_name: :User
+  has_many :enlists, class_name: 'Enlist'
+  has_many :enlisted_users, through: :enlists, source: :user
+  has_many :follows, class_name: 'Follow'
+  has_many :following_users, through: :follows, source: :user
 end
