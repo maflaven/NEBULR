@@ -5,6 +5,11 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
   },
 
+  events: {
+    'click #enlist': 'enlist',
+    'click #follow': 'follow'
+  },
+
   render: function () {
     this.$el.html(this.template({ mission: this.model }));
 
@@ -27,5 +32,13 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.addSubview('.following-users-index', followingUsersIndexView);
 
     return this;
+  },
+
+  enlist: function () {
+    
+  },
+
+  follow: function () {
+
   }
 });

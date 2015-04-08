@@ -7,7 +7,7 @@ class Api::MissionsController < ApplicationController
   end
 
   def create
-    @mission = current_user.missions.create(mission_params)
+    @mission = current_user.missions.new(mission_params)
 
     if @mission.save
       render json: @mission

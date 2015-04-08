@@ -30,12 +30,6 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  userIndex: function () {
-    this.users.fetch();
-    var view = new Nebulr.Views.UserIndex({ collection: this.users });
-    this._swapView(view);
-  },
-
   userShow: function (id) {
     var model = this.users.getOrFetch(id);
     var view = new Nebulr.Views.UserShow({ model: model });
