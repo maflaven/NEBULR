@@ -23,6 +23,11 @@ class Api::FollowsController < ApplicationController
     end
   end
 
+  def show
+    @follow = Follow.find(params[:id])
+    render json: @follow
+  end
+
   private
 
   def follow_params

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new]
   resources :users, only: [:index, :show, :edit, :destroy],
             defaults: { format: :json }
-
   resource :session
 
   namespace :api, defaults: { format: :json } do
     resources :missions, except: [:new, :edit]
+    resources :enlists, only: [:create, :destroy, :show]
+    resources :follows, only: [:create, :destroy, :show]
   end
 end

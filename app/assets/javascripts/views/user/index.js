@@ -2,6 +2,10 @@ Nebulr.Views.UserIndex = Backbone.View.extend({
   template: JST['user/index'],
   className: 'user-index',
 
+  initialize: function () {
+    this.listenTo(this.collection, "add remove change sync", this.render);
+  },
+
   render: function () {
     this.$el.html(this.template());
 

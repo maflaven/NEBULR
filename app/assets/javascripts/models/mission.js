@@ -22,6 +22,20 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     return this._followingUsers;
   },
 
+  enlists: function () {
+    if (!this._enlists) {
+      this._enlists = new Nebulr.Collections.Enlists();
+    }
+    return this._enlists;
+  },
+
+  follows: function () {
+    if (!this._follows) {
+      this._follows = new Nebulr.Collections.Follows();
+    }
+    return this._follows;
+  },
+
   parse: function (response) {
     if (response.leader_id) {
       this.leader().set("id", response.leader_id);
@@ -34,6 +48,14 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     if (response.following_users) {
       this.followingUsers().set(response.following_users);
       delete response.following_users;
+    }
+    if (response.enlists) {
+      this.enlists().set(response.enlists);
+      delete response.enlists;
+    }
+    if (response.follows) {
+      this.follows().set(response.follows);
+      delete response.follows;
     }
 
     return response;

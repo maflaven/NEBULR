@@ -3,8 +3,11 @@ window.Nebulr = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    new Nebulr.Routers.Router({ $rootEl: $('#main') });
+  initialize: function(options) {
+    new Nebulr.Routers.Router({
+      $rootEl: $('#main'),
+      currentUserId: options.currentUserId
+    });
     Backbone.history.start();
   }
 };

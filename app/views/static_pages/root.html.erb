@@ -1,4 +1,8 @@
 <div class="backdrop">
   <div id="main"></div>
 </div>
-<script>$(Nebulr.initialize);</script>
+<script>
+  $(function () {
+    Nebulr.initialize({ currentUserId: <%= current_user.id %> })
+  });
+</script>

@@ -1,4 +1,8 @@
 <div class="mission-show">
+  <div class="follow-enlist">
+    <input type="button" id="enlist-btn" class="btn btn-primary" value="<%= enlistBtnValue %>">
+    <input type="button" id="follow-btn" class="btn btn-default" value="<%= followBtnValue %>">
+  </div>
   <%= mission.id %><br>
   <%= mission.escape('title') %><br>
   <div class="mission-leader"></div><br>
@@ -7,9 +11,9 @@
   <%= mission.get('longitude') %><br>
   <%= mission.get('compensation') %><br>
   <div class="enlisted-users-index">
-    <h4>Enlisted</h4>
+    <h4>ENLISTED</h4>
   </div>
   <div class="following-users-index">
-    <h4>Following</h4>
+    <h4>FOLLOWING</h4>
   </div>
 <div>

@@ -1,6 +1,6 @@
 class Api::EnlistsController < ApplicationController
   def create
-    @enlist = current_user.follows.new(enlist_params)
+    @enlist = current_user.enlists.new(enlist_params)
 
     if @enlist.save
       render json: @enlist
@@ -21,6 +21,11 @@ class Api::EnlistsController < ApplicationController
     else
       render json: @enlist.error.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @enlist = Enlist.find(params[:id])
+    render json: @enlist
   end
 
   private
