@@ -46,7 +46,8 @@ file upload so that users can add images to missions. I'll also create a user sh
 view where users can see their followed and enlisted missions, as well as those
 on other users' show pages. I'll need to override the parse method for User and
 Mission in order to correctly associate Missions with their leader, and associate
-Users with their followed and enlisted Missions.
+Users with their followed and enlisted Missions. To make Missions enlistable and
+followable, I'll create a join table for each, and make the appropriate associations. 
 
 [Details][phase-two]
 
