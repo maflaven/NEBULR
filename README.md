@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: https://tranquil-atoll-9838.herokuapp.com/
+[heroku]: http://www.nebulr.space
 
 ## Minimum Viable Product
 nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
@@ -47,7 +47,7 @@ view where users can see their followed and enlisted missions, as well as those
 on other users' show pages. I'll need to override the parse method for User and
 Mission in order to correctly associate Missions with their leader, and associate
 Users with their followed and enlisted Missions. To make Missions enlistable and
-followable, I'll create a join table for each, and make the appropriate associations. 
+followable, I'll create a join table for each, and make the appropriate associations.
 
 [Details][phase-two]
 
