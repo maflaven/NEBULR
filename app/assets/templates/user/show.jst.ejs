@@ -1,3 +1,13 @@
 <div>
-  <a href="#/users/<%= user.id %>"><%= user.escape('username') %></a>
+  <% if (isCurrentUser) { %>
+    <h4>GREETINGS, <%= user.escape('username') %></h4>
+  <% } else { %>
+    <h4><%= user.escape('username') %></h4>
+  <% } %>
+  <div class="enlisted-missions-index">
+    <h5>ENLISTED MISSIONS</h5>
+  </div>
+  <div class="followed-missions-index">
+    <h5>FOLLOWED MISSIONS</h5>
+  </div>
 </div>

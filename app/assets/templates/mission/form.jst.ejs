@@ -1,12 +1,12 @@
-<input type="text" name="title" placeholder="title" id="title" value="<%= mission.escape('title') %>" required><br>
-<textarea name="description" placeholder="description" id="description" required><%= mission.escape('description') %></textarea><br>
-<label>Reward: </label>
+<input type="text" name="title" placeholder="TITLE" id="title" value="<%= mission.escape('title') %>" required><br>
+<textarea name="description" placeholder="DESCRIPTION" id="description" required><%= mission.escape('description') %></textarea><br>
+<label>REWARD: </label>
 <input type="number" name="compensation" id="compensation" value="<%= mission.escape('title') %>"
        min="0"><br>
-<input type="text" name="latitude" placeholder="latitude" id="latitude" value="<%= mission.escape('latitude') %>" required>
-<input type="text" name="longitude" placeholder="longitude" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
-<label>Date: </label>
+<input type="text" name="latitude" placeholder="LATITUDE" id="latitude" value="<%= mission.escape('latitude') %>" required>
+<input type="text" name="longitude" placeholder="LONGITUDE" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
+<label>DATE: </label>
 <input type="date" name="date" id="date" value="<%= mission.get('date') %>" required><br>
-<input type="text" name="user_limit" placeholder="enlist limit" id="user_limit" value="<%= mission.escape('user_limit') %>"><br>
-<% var buttonText; mission.isNew() ? buttonText = "Create" : buttonText = "Submit" %>
+<input type="text" name="user_limit" placeholder="ENLISTMENT LIMIT" id="user_limit" value="<%= mission.escape('user_limit') %>"><br>
+<% var buttonText; mission.isNew() ? buttonText = "CREATE" : buttonText = "SUBMIT" %>
 <input type="submit" value="<%= buttonText %>" class="submit-mission-form btn btn-default">

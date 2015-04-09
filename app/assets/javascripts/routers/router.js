@@ -3,6 +3,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.currentUserId = options.currentUserId;
     this.missions = new Nebulr.Collections.Missions();
+    this.users = new Nebulr.Collections.Users();
   },
 
   routes: {
@@ -38,7 +39,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
 
   userShow: function (id) {
     var model = this.users.getOrFetch(id);
-    var view = new Nebulr.Views.UsersShow({
+    var view = new Nebulr.Views.UserShow({
       model: model,
       currentUserId: this.currentUserId
     });
