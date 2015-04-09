@@ -25,6 +25,13 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       followBtnValue: this._followButtonValue()
     }));
 
+    if (this.model.images().length > 0) {
+      var imageCarousel = JST['mission/carousel']({
+        images: this.model.images()
+      });
+      this.$el.prepend(imageCarousel);
+    }
+
     var leader = this.model.leader();
     var leaderItemView = new Nebulr.Views.UserIndexItem({
       model: leader
