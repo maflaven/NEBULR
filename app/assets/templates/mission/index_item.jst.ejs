@@ -1,3 +1,8 @@
-<div>
-  <a href="#missions/<%= mission.id %>"><%= mission.escape('title') %></a>
+<div class="mission-index-item thumbnail">
+  <a href="#missions/<%= mission.id %>">
+    <img src="<%= thumbnail %>" alt="<%= mission.escape('title') %>">
+  </a>
+  <div class="caption">
+    <h5><%= mission.escape('title') %></h5>
+  </div>
 </div>
