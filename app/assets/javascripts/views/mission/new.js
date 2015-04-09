@@ -3,7 +3,8 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   tagName: 'form',
   className: 'mission-form center-block',
 
-  initialize: function () {
+  initialize: function (options) {
+    this.currentUserId = options.currentUserId;
     this.listenTo(this.model, "sync", this.render);
   },
 
@@ -19,11 +20,9 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   submitForm: function (event) {
     event.preventDefault();
     var attrs = this.$el.serializeJSON();
-    attrs.latitude = parseFloat(attrs.latitude);
-    attrs.longitude = parseFloat(attrs.longitude);
 
     this.model.save(attrs, {
-      success: function () {
+      success: function (response) {
         Backbone.history.navigate('missions/' + this.model.id, { trigger: true });
       }.bind(this),
 
@@ -41,6 +40,5 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     var errorId = error.split(' ')[0].toLowerCase();
     var $field = this.$("#" + errorId);
     $field.addClass('ui-state-highlight');
-
   }
 });

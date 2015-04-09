@@ -10,6 +10,8 @@ class Api::MissionsController < ApplicationController
     @mission = current_user.missions.new(mission_params)
 
     if @mission.save
+      current_user.enlists.create(mission_id: @mission.id)
+      current_user.follows.create(mission_id: @mission.id)
       render json: @mission
     else
       render json: @mission.errors.full_messages, status: :unprocessable_entity
@@ -55,7 +57,8 @@ class Api::MissionsController < ApplicationController
     params.require(:mission).permit(
       :title, :description,
       :compensation, :latitude,
-      :longitude, :user_limit
+      :longitude, :user_limit,
+      :date
     )
   end
 

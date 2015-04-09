@@ -1,7 +1,11 @@
 <div class="mission-show">
-  <div class="follow-enlist">
-    <input type="button" id="enlist-btn" class="btn btn-primary" value="<%= enlistBtnValue %>">
-    <input type="button" id="follow-btn" class="btn btn-default" value="<%= followBtnValue %>">
+  <div class="follow-enlist-cancel">
+    <% if (isLeader) { %>
+      <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL MISSION">
+    <% } else { %>
+      <input type="button" id="enlist-btn" class="btn btn-primary" value="<%= enlistBtnValue %>">
+      <input type="button" id="follow-btn" class="btn btn-default" value="<%= followBtnValue %>">
+    <% } %>
   </div>
   <%= mission.id %><br>
   <%= mission.escape('title') %><br>

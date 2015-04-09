@@ -5,6 +5,8 @@
        min="0"><br>
 <input type="text" name="latitude" placeholder="latitude" id="latitude" value="<%= mission.escape('latitude') %>" required>
 <input type="text" name="longitude" placeholder="longitude" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
+<label>Date: </label>
+<input type="date" name="date" id="date" value="<%= mission.get('date') %>" required><br>
 <input type="text" name="user_limit" placeholder="enlist limit" id="user_limit" value="<%= mission.escape('user_limit') %>"><br>
 <% var buttonText; mission.isNew() ? buttonText = "Create" : buttonText = "Submit" %>
 <input type="submit" value="<%= buttonText %>" class="submit-mission-form btn btn-default">

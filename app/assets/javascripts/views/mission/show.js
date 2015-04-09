@@ -8,12 +8,19 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
 
   events: {
     'click #enlist-btn': 'enlist',
-    'click #follow-btn': 'follow'
+    'click #follow-btn': 'follow',
+    'click #cancel-btn': 'destroy'
   },
 
   render: function () {
+    var isLeader = false;
+    if (this.currentUserId == this.model.leader().id) {
+      isLeader = true;
+    }
+
     this.$el.html(this.template({
       mission: this.model,
+      isLeader: isLeader,
       enlistBtnValue: this._enlistButtonValue(),
       followBtnValue: this._followButtonValue()
     }));
@@ -147,5 +154,10 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     }
 
     return (this.follow.isNew()) ? "FOLLOW" : "UNFOLLOW";
+  },
+
+  destroy: function () {
+    this.model.destroy();
+    Backbone.history.navigate('', { trigger: true });
   }
 });

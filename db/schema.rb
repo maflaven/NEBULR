@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408170314) do
+ActiveRecord::Schema.define(version: 20150408232247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20150408170314) do
     t.integer  "compensation"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "date",         null: false
   end
 
+  add_index "missions", ["date"], name: "index_missions_on_date", using: :btree
   add_index "missions", ["latitude"], name: "index_missions_on_latitude", using: :btree
   add_index "missions", ["leader_id"], name: "index_missions_on_leader_id", using: :btree
   add_index "missions", ["longitude"], name: "index_missions_on_longitude", using: :btree

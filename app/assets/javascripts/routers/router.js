@@ -14,7 +14,10 @@ Nebulr.Routers.Router = Backbone.Router.extend({
 
   missionNew: function () {
     var model = new Nebulr.Models.Mission();
-    var view = new Nebulr.Views.MissionForm({ model: model });
+    var view = new Nebulr.Views.MissionForm({
+      model: model,
+      currentUserId: this.currentUserId
+    });
     this._swapView(view);
   },
 
