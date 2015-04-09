@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :missions, except: [:new, :edit]
     resources :enlists, only: [:create, :destroy, :show]
     resources :follows, only: [:create, :destroy, :show]
+    resources :images, only: [:create, :destroy, :show]
   end
 end

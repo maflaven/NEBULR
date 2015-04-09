@@ -58,7 +58,7 @@ class Api::MissionsController < ApplicationController
       :title, :description,
       :compensation, :latitude,
       :longitude, :user_limit,
-      :date, :filepicker_url
+      :date
     )
   end
 

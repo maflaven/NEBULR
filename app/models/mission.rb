@@ -2,18 +2,17 @@
 #
 # Table name: missions
 #
-#  id             :integer          not null, primary key
-#  leader_id      :integer          not null
-#  title          :string           not null
-#  description    :text             not null
-#  user_limit     :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  compensation   :integer
-#  latitude       :float
-#  longitude      :float
-#  date           :string           not null
-#  filepicker_url :string
+#  id           :integer          not null, primary key
+#  leader_id    :integer          not null
+#  title        :string           not null
+#  description  :text             not null
+#  user_limit   :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  compensation :integer
+#  latitude     :float
+#  longitude    :float
+#  date         :string           not null
 #
 
 class Mission < ActiveRecord::Base
@@ -25,4 +24,5 @@ class Mission < ActiveRecord::Base
   has_many :enlisted_users, through: :enlists, source: :user
   has_many :follows, class_name: 'Follow'
   has_many :following_users, through: :follows, source: :user
+  has_many :images
 end

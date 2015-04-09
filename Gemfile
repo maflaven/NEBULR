@@ -14,6 +14,7 @@ gem 'pg'
 gem 'uglifier'
 gem 'newrelic_rpm'
 gem 'filepicker-rails'
+gem 'figaro'
 
 group :doc do
   gem 'sdoc', require: false

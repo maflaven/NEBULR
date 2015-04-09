@@ -8,5 +8,6 @@
 <label>DATE: </label>
 <input type="date" name="date" id="date" value="<%= mission.get('date') %>" required><br>
 <input type="text" name="user_limit" placeholder="ENLISTMENT LIMIT" id="user_limit" value="<%= mission.escape('user_limit') %>"><br>
+<input type="button" name="filepicker_url" id="filepicker" class="btn btn-info" value="IMAGES"><br>
 <% var buttonText; mission.isNew() ? buttonText = "CREATE" : buttonText = "SUBMIT" %>
-<input type="submit" value="<%= buttonText %>" class="submit-mission-form btn btn-default">
+<input type="submit" value="<%= buttonText %>" class="submit-mission-form btn btn-lg">
