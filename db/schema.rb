@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408232247) do
+ActiveRecord::Schema.define(version: 20150409165428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,16 +39,17 @@ ActiveRecord::Schema.define(version: 20150408232247) do
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "missions", force: :cascade do |t|
-    t.integer  "leader_id",    null: false
-    t.string   "title",        null: false
-    t.text     "description",  null: false
+    t.integer  "leader_id",      null: false
+    t.string   "title",          null: false
+    t.text     "description",    null: false
     t.integer  "user_limit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "compensation"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "date",         null: false
+    t.string   "date",           null: false
+    t.string   "filepicker_url"
   end
 
   add_index "missions", ["date"], name: "index_missions_on_date", using: :btree
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150408232247) do
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "filepicker_url"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

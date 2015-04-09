@@ -9,7 +9,7 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
 
   render: function () {
     var isCurrentUser = false;
-    if (this.currentUserId = this.model.id) {
+    if (this.currentUserId == this.model.id) {
       isCurrentUser = true;
     }
 
