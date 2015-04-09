@@ -1,3 +1,8 @@
-<div>
-  <a href="#/users/<%= user.id %>"><%= user.escape('username') %></a>
+<div class="user-index-item thumbnail">
+  <a href="#/users/<%= user.id %>">
+    <img src="<%= thumbnail %>" alt="<%= user.escape('username') %>">
+  </a>
+  <div class="caption">
+    <h5><%= user.escape('username') %></h5>
+  </div>
 </div>

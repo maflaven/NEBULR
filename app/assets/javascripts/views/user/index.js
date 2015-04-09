@@ -10,8 +10,16 @@ Nebulr.Views.UserIndex = Backbone.View.extend({
     this.$el.html(this.template());
 
     this.collection.each( function (user) {
+      var thumbnail = "/assets/q.jpg";
+      if (user.get('filepicker_url')) {
+        thumbnail = user.get('filepicker_url');
+      }
+
       var $li = $("<li class='user-index-item'>");
-      $li.html(JST['user/index_item']({ user: user }));
+      $li.html(JST['user/index_item']({
+        user: user,
+        thumbnail: thumbnail
+      }));
       this.$('ul').append($li);
     }.bind(this));
 

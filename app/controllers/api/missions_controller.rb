@@ -3,7 +3,7 @@ class Api::MissionsController < ApplicationController
 
   def index
     @missions = Mission.all
-    render json: @missions
+    render :index
   end
 
   def create

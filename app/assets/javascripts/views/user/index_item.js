@@ -7,7 +7,15 @@ Nebulr.Views.UserIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({ user: this.model }));
+    var thumbnail = "/assets/q.jpg";
+    if (this.model.get('filepicker_url')) {
+      thumbnail = this.model.get('filepicker_url');
+    }
+
+    this.$el.html(this.template({
+      user: this.model,
+      thumbnail: thumbnail
+    }));
     return this;
   }
 });

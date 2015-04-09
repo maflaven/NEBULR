@@ -2,9 +2,9 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#mission-carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#mission-carousel" data-slide-to="1"></li>
-    <li data-target="#mission-carousel" data-slide-to="2"></li>
-    <li data-target="#mission-carousel" data-slide-to="3"></li>
+    <% images.slice(1).forEach( function (image, index) { %>
+      <li data-target="#mission-carousel" data-slide-to="<%= index + 1 %>"></li>
+    <% }) %>
   </ol>
 
   <!-- Wrapper for slides -->
