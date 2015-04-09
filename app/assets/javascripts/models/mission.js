@@ -36,6 +36,13 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     return this._follows;
   },
 
+  images: function () {
+    if (!this._images) {
+      this._images = new Nebulr.Collections.Images();
+    }
+    return this._images;
+  },
+
   parse: function (response) {
     if (response.leader_id) {
       this.leader().set("id", response.leader_id);
@@ -56,6 +63,10 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     if (response.follows) {
       this.follows().set(response.follows);
       delete response.follows;
+    }
+    if (response.images) {
+      this.images().set(response.images);
+      delete response.images;
     }
 
     return response;

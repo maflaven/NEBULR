@@ -20,10 +20,10 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
-  has_many :missions, foreign_key: :leader_id
-  has_many :enlists, class_name: 'Enlist'
+  has_many :missions, foreign_key: :leader_id, dependent: :destroy
+  has_many :enlists, class_name: 'Enlist', dependent: :destroy
   has_many :enlisted_missions, through: :enlists, source: :mission
-  has_many :follows, class_name: 'Follow'
+  has_many :follows, class_name: 'Follow', dependent: :destroy
   has_many :followed_missions, through: :follows, source: :mission
 
   def self.find_by_credentials(username, password)

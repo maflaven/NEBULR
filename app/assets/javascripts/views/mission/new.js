@@ -6,9 +6,11 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
     this.listenTo(this.model, "sync", this.render);
+    this.images = new Nebulr.Collections.Images();
   },
 
   events: {
+    'click #filepicker': 'uploadPics',
     'click .submit-mission-form': 'submitForm'
   },
 
@@ -20,11 +22,15 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   submitForm: function (event) {
     event.preventDefault();
     var attrs = this.$el.serializeJSON();
+    var that = this;
 
     this.model.save(attrs, {
       success: function (response) {
-        Backbone.history.navigate('missions/' + this.model.id, { trigger: true });
-      }.bind(this),
+        Backbone.history.navigate('missions/' + that.model.id, { trigger: true });
+        that.images.each( function (image) {
+          image.save({ mission_id: that.model.id });
+        });
+      },
 
       error: function (model, response, options) {
         var errors = response.responseJSON;
@@ -33,6 +39,18 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
           // this.$el.prepend('<p>' + error + '<p>');
         }.bind(this));
       }.bind(this)
+    });
+  },
+
+  uploadPics: function () {
+    var that = this;
+    filepicker.pickMultiple({maxFiles: 3, maxSize: 3*1024*1024}, function(blobs) {
+      blobs.forEach( function (blob) {
+        var newImage = new Nebulr.Models.Image({
+          filepicker_url: blob.url
+        });
+        that.images.add(newImage);
+      });
     });
   },
 

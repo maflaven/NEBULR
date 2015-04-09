@@ -20,9 +20,9 @@ class Mission < ActiveRecord::Base
             :date, presence: true
 
   belongs_to :leader, class_name: :User
-  has_many :enlists, class_name: 'Enlist'
+  has_many :enlists, class_name: 'Enlist', dependent: :destroy
   has_many :enlisted_users, through: :enlists, source: :user
-  has_many :follows, class_name: 'Follow'
+  has_many :follows, class_name: 'Follow', dependent: :destroy
   has_many :following_users, through: :follows, source: :user
-  has_many :images
+  has_many :images, dependent: :destroy
 end
