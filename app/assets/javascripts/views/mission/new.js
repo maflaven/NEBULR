@@ -44,13 +44,15 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
   uploadPics: function () {
     var that = this;
-    filepicker.pickMultiple({maxFiles: 3, maxSize: 3*1024*1024}, function(blobs) {
+    filepicker.pickMultiple({maxFiles: 3, maxSize: 3*1024*1024}, function (blobs) {
       blobs.forEach( function (blob) {
         var newImage = new Nebulr.Models.Image({
           filepicker_url: blob.url
         });
         that.images.add(newImage);
       });
+      var imageIndexView = new Nebulr.Views.ImageIndex({ collection: that.images });
+      $('#main').append(imageIndexView.render().$el);
     });
   },
 

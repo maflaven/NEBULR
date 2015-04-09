@@ -1,20 +1,20 @@
-# Phase 5:
+# Phase 5: Editing Missions
 
 ## Rails
 ### Models
 
 ### Controllers
-* Api::MissionsController (search)
 
 ### Views
 
 ## Backbone
 ### Models
 
+
 ### Collections
 
+
 ### Views
-* search/show (composite, contains SearchMap, SearchForm, MissionIndex (composite))
+* mission/edit
 
 ## Gems/Libraries
-* Google Maps

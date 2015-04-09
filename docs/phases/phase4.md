@@ -1,20 +1,27 @@
-# Phase 4: Editing Missions
+# Phase 4: Creating, Viewing, & Deleting Comments for Missions & Users
 
 ## Rails
 ### Models
+* Comment
 
 ### Controllers
+* Api::Comments (create, destroy)
 
 ### Views
+* comment/index.json.jbuilder
 
 ## Backbone
 ### Models
-
+* Comment
 
 ### Collections
-
+* Comments
 
 ### Views
-* mission/edit
+* comment/form
+* comment/index
+* comment/index_item
+* update user/show
+* update mission/show
 
 ## Gems/Libraries

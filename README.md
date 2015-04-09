@@ -12,7 +12,7 @@ nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 - [x] Create accounts
 - [x] Create session (log in)
 - [x] Create missions, and make them enlistable
-- [ ] View missions, users
+- [x] View missions, users
 - [x] Follow missions
 - [ ] Create comments
 - [ ] View comments for missions and users
@@ -51,30 +51,31 @@ followable, I'll create a join table for each, and make the appropriate associat
 
 [Details][phase-two]
 
-### Phase 3: Creating, Viewing, & Deleting Comments for Missions & Users (~1 day)
+### Phase 3: Searching Missions via Map (~2 day)
+I will need to add search for the Mission controller. On the Backbone side,
+there will be a SearchShow composite view containing a SearchMap view (using the
+Google Maps API), a SearchForm view that filters out missions by date and compensation,
+and a MissionsIndex composite view of the search results.
+
+[Details][phase-three]
+
+### Phase 4: Creating, Viewing, & Deleting Comments for Missions & Users (~1 day)
 I will add indexes and and form creation for comments at the bottom of each
 Mission and User Show view. This requires a commentable model in the rails
 backend. Showing comments will require filtering by User or Mission. Users will
 have the ability to delete any comments from their UserShow's as well as any Missions
 they lead. They will only be able to delete their own comments from any other page.
 
-[Details][phase-three]
+[Details][phase-four]
 
-### Phase 4: Editing Missions (~0.5 days)
+### Phase 5: Editing Missions (~0.5 days)
 I will add the ability to edit missions by changing each field in the mission
 show page to an editable field by the click of an 'edit mission' button. Every
 element of the mission form view will be reused, and another field to remove
 enlisted users will be added.
 
-[Details][phase-four]
-
-### Phase 5: Searching Missions via Map (~2 day)
-I will need to add search for the Mission controller. On the Backbone side,
-there will be a SearchShow composite view containing a SearchMap view (using the
-Google Maps API), a SearchForm view that filters out missions by date and compensation,
-and a MissionsIndex composite view of the search results.
-
 [Details][phase-five]
+
 
 ### Phase 6: Updating Mission Search by Filtering (~0.5 days)
 I will implement updateable search results via the filters view and via
@@ -92,7 +93,7 @@ missions, and a few comments, follows, and enlistments for each user/mission.
 [Details][phase-seven]
 
 ### Bonus Features
-- [ ] User avatars
+- [x] User avatars
 - [ ] View a feed of mission updates in "followed missions"
 - [ ] Google Map centered and zoomed-in on mission location (mission/show)
 - [ ] Pagination/infinite scroll

@@ -1,27 +1,20 @@
-# Phase 3: Creating, Viewing, & Deleting Comments for Missions & Users
+# Phase 3:
 
 ## Rails
 ### Models
-* Comment
 
 ### Controllers
-* Api::Comments (create, destroy)
+* Api::MissionsController (search)
 
 ### Views
-* comment/index.json.jbuilder
 
 ## Backbone
 ### Models
-* Comment
 
 ### Collections
-* Comments
 
 ### Views
-* comment/form
-* comment/index
-* comment/index_item
-* update user/show
-* update mission/show
+* search/show (composite, contains SearchMap, SearchForm, MissionIndex (composite))
 
 ## Gems/Libraries
+* Google Maps
