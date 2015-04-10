@@ -10,36 +10,40 @@ Nebulr.Views.MissionSearchShow = Backbone.CompositeView.extend({
 
     this.missionIndex = new Nebulr.Views.MissionIndex({
       collection: this.collection,
-      itemSize: 4
+      itemSize: 6
+    });
+
+    this.searchFilterView = new Nebulr.Views.SearchFilter({
+      collection: this.collection
     });
   },
 
   events: {
-    'click a.remove-listing': 'destroyListing',
-    'click a.listing-name': 'panToListing',
-    'mouseenter a.listing-name': 'startBounce',
-    'mouseleave a.listing-name': 'stopBounce'
+    // 'click a.remove-listing': 'destroyListing',
+    'click li.mission-index-li > div': 'panToListing',
+    'mouseenter li.mission-index-li > div': 'startBounce',
+    'mouseleave li.mission-index-li > div': 'stopBounce'
   },
 
   // Event handlers
   startBounce: function (event) {
-    var missionId = $(event.currentTarget).data('mission-id');
+    var missionId = $(event.currentTarget.parentElement).data('mission-id');
     this.mapView.startBounce(missionId);
   },
 
   stopBounce: function (event) {
-    var missionId = $(event.currentTarget).data('mission-id');
+    var missionId = $(event.currentTarget.parentElement).data('mission-id');
     this.mapView.stopBounce(missionId);
   },
 
   destroyListing: function (event) {
-    var missionId = $(event.currentTarget).data('mission-id');
+    var missionId = $(event.currentTarget.parentElement).data('mission-id');
     var listing = this.collection.get(missionId);
     listing.destroy();
   },
 
   panToListing: function (event) {
-    var missionId = $(event.currentTarget).data('mission-id');
+    var missionId = $(event.currentTarget.parentElement).data('mission-id');
     var marker = this.mapView._markers[missionId];
     this.mapView._map.panTo(marker.getPosition());
   },

@@ -51,7 +51,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionSearch: function () {
-    this.missions.fetch();
+    // this.missions.fetch();
     var view = new Nebulr.Views.MissionSearchShow({
       collection: this.missions
     });

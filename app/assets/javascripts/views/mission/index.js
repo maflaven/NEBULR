@@ -15,8 +15,9 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
         thumbnail = mission.images().first().get('filepicker_url');
       }
 
-      var $li = $("<li class='mission-index-item'>");
+      var $li = $("<li class='mission-index-li'>");
       $li.addClass('col-md-' + this.itemSize);
+      $li.data('mission-id', mission.id);
       $li.html(JST['mission/index_item']({
         mission: mission,
         thumbnail: thumbnail

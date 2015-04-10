@@ -3,9 +3,9 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     id: "map-canvas"
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this._markers = {};
-
+    this.otherFilterData = options.otherFilterData;
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },
@@ -29,12 +29,12 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   // Event handlers
   addMarker: function (mission) {
-    if (this._markers[mission.id]) { return };
+    if (this._markers[mission.id]) { return; }
     var view = this;
 
     var latLng = new google.maps.LatLng(
       mission.get('latitude'),
-      mission.get('longitutde')
+      mission.get('longitude')
     );
 
     var marker = new google.maps.Marker({
@@ -52,7 +52,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   // createListing: function (event) {
   //   var latitude = event.latLng.latitude();
-  //   var longitutde = event.latLng.longitutde();
+  //   var longitutde = event.latLng.longitude();
   //   var mission = new Nebulr.Models.Mission({
   //     latitude: latitude,
   //     longitutde: longitutde
@@ -65,6 +65,10 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
   //   });
   // },
 
+  updateOtherFilterData: function () {
+
+  },
+
   search: function () {
     // This method will re-fetch the map's collection, using the
     // map's current bounds as constraints on latitude/longitude.
@@ -74,12 +78,12 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     var sw = mapBounds.getSouthWest();
 
     var filterData = {
-      lat: [sw.lat(), ne.lat()],
-      lng: [sw.lng(), ne.lng()]
+      min_lat: sw.lat(), max_lat: ne.lat(),
+      min_lng: sw.lng(), max_lng: ne.lng()
     };
 
     this.collection.fetch({
-      data: { filter_data: filterData }
+      data: { search: $.extend(filterData, this.otherFilterData) }
     });
   },
 
