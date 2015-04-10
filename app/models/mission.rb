@@ -25,4 +25,10 @@ class Mission < ActiveRecord::Base
   has_many :follows, class_name: 'Follow', dependent: :destroy
   has_many :following_users, through: :follows, source: :user
   has_many :images, dependent: :destroy
+
+  def self.filter_by(data_type, min, max, missions_set=false)
+    missions_set ||= Mission.all
+
+    missions_set.where(data_type => min..max)
+  end
 end

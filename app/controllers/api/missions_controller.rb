@@ -3,6 +3,18 @@ class Api::MissionsController < ApplicationController
 
   def index
     @missions = Mission.all
+
+    if params[:search]
+      @missions = Mission.filter_by(
+        :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions)
+      @missions = Mission.filter_by(
+        :longitude, params[:search][:min_long], params[:search][:max_long], @missions)
+      @missions = Mission.filter_by(
+        :date, params[:search][:min_date], params[:search][:max_date], @missions)
+      @missions = Mission.filter_by(
+        :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions)
+    end
+
     render :index
   end
 
