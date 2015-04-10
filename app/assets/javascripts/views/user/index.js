@@ -1,6 +1,6 @@
 Nebulr.Views.UserIndex = Backbone.View.extend({
   template: JST['user/index'],
-  className: 'user-index',
+  className: 'user-index row',
 
   initialize: function () {
     this.listenTo(this.collection, "add remove change sync", this.render);
@@ -15,7 +15,7 @@ Nebulr.Views.UserIndex = Backbone.View.extend({
         thumbnail = user.get('filepicker_url');
       }
 
-      var $li = $("<li class='user-index-item'>");
+      var $li = $("<li class='user-index-item col-md-2'>");
       $li.html(JST['user/index_item']({
         user: user,
         thumbnail: thumbnail

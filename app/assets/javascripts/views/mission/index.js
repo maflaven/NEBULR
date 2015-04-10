@@ -1,9 +1,10 @@
 Nebulr.Views.MissionIndex = Backbone.View.extend({
   template: JST['mission/index'],
-  className: 'mission-index',
+  className: 'mission-index row',
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.collection, "sync remove", this.render);
+    this.itemSize = options.itemSize;
   },
 
   render: function () {
@@ -15,6 +16,7 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
       }
 
       var $li = $("<li class='mission-index-item'>");
+      $li.addClass('col-md-' + this.itemSize);
       $li.html(JST['mission/index_item']({
         mission: mission,
         thumbnail: thumbnail

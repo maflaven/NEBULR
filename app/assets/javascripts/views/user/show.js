@@ -20,13 +20,15 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
 
     var enlistedMissions = this.model.enlistedMissions();
     var enlistedMissionsIndexView = new Nebulr.Views.MissionIndex({
-      collection: enlistedMissions
+      collection: enlistedMissions,
+      itemSize: 2
     });
     this.addSubview('.enlisted-missions-index', enlistedMissionsIndexView);
 
     var followedMissions = this.model.followedMissions();
     var followedMissionsIndexView = new Nebulr.Views.MissionIndex({
-      collection: followedMissions
+      collection: followedMissions,
+      itemSize: 2
     });
     this.addSubview('.followed-missions-index', followedMissionsIndexView);
 

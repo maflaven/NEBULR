@@ -20,7 +20,7 @@
     <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
         <li><a href="#users/<%= current_user.id %>"><%= current_user.username %></a></li>
-        <li><%= button_to "LOGOUT", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
+        <li><%= button_to "LOGOUT", session_url, method: :delete, class: "btn btn-danger navbar-btn" %></li>
       <% else %>
         <li><%= link_to "LOGIN", new_session_url %></li>
         <li><%= link_to "SIGNUP", new_user_url %></li>

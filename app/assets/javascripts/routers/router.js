@@ -33,7 +33,10 @@ Nebulr.Routers.Router = Backbone.Router.extend({
 
   missionIndex: function () {
     this.missions.fetch();
-    var view = new Nebulr.Views.MissionIndex({ collection: this.missions });
+    var view = new Nebulr.Views.MissionIndex({
+      collection: this.missions,
+      itemSize: 4
+    });
     this._swapView(view);
   },
 

@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.clearfix:after {
+  clear: both;
+  content: '';
+  display: block;
+  visibility: hidden;
+}
+
 .log-header {
   margin: 100px 0 10px 0;
   text-align: center;
@@ -33,4 +40,32 @@ form.log-form {
 
 #mission-carousel {
   width: 50%;
+}
+
+.mission-form {
+  width: 20%;
+}
+
+#main {
+  margin: 30px 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li.mission-index-item {
+
+}
+
+.row {
+  width: 100%;
+}
+
+.mission-leader {
+  width: 15%;
+}
+
+.user-avatar {
+  
 }

@@ -1,6 +1,5 @@
 Nebulr.Views.MissionForm = Backbone.View.extend({
   template: JST['mission/form'],
-  tagName: 'form',
   className: 'mission-form center-block',
 
   initialize: function (options) {
@@ -21,7 +20,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
   submitForm: function (event) {
     event.preventDefault();
-    var attrs = this.$el.serializeJSON();
+    var attrs = this.$('form').serializeJSON();
     var that = this;
 
     this.model.save(attrs, {
@@ -52,7 +51,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
         that.images.add(newImage);
       });
       var imageIndexView = new Nebulr.Views.ImageIndex({ collection: that.images });
-      $('#main').append(imageIndexView.render().$el);
+      that.$el.append(imageIndexView.render().$el);
     });
   },
 
