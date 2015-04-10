@@ -9,6 +9,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'missionIndex',
     'missions/new': 'missionNew',
+    'missions/search': 'missionSearch',
     'missions/:id': 'missionShow',
     'users/:id': 'userShow'
   },
@@ -49,9 +50,18 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  missionSearch: function () {
+    this.missions.fetch();
+    var view = new Nebulr.Views.MissionSearchShow({
+      collection: this.missions
+    });
+    this._swapView(view);
+  },
+
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
+    view.render();
   }
 });

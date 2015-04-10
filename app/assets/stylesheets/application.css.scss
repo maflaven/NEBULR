@@ -34,8 +34,16 @@ form.log-form {
   width: 13%;
 }
 
-.backdrop {
-  margin: 50px 0 0 0;
+.backdrop, #main, html, #map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: calc(100% - 50px);
+  padding: 0;
+  margin-top: 50px
 }
 
 #mission-carousel {
@@ -46,20 +54,16 @@ form.log-form {
   width: 20%;
 }
 
-#main {
-  margin: 30px 30px;
-}
-
 ul {
   list-style-type: none;
-}
-
-li.mission-index-item {
-
+  padding: 0;
+  margin: 0;
 }
 
 .row {
   width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .mission-leader {
@@ -67,5 +71,47 @@ li.mission-index-item {
 }
 
 .user-avatar {
-  
+
+}
+
+.map {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar {
+  padding: 0;
+  height: 100%;
+}
+
+.sidebar .mission-index {
+  border-top: thin solid black;
+  border-bottom: thin solid black;
+  list-style-type: none;
+  overflow-y: scroll;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.remove-listing {
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+}
+
+// .links-panel {
+//   background-color: white;
+//   border: thin solid black;
+//   border-radius: 4px;
+//   bottom: 15px;
+//   left: 15px;
+//   padding: 15px;
+//   position: fixed;
+// }
+
+.full-size {
+  height: 100%;
+  margin: 0;
 }

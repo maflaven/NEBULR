@@ -8,11 +8,11 @@ class Api::MissionsController < ApplicationController
       @missions = Mission.filter_by(
         :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions)
       @missions = Mission.filter_by(
-        :longitude, params[:search][:min_long], params[:search][:max_long], @missions)
+        :longitude, params[:search][:min_lng], params[:search][:max_lng], @missions)
       @missions = Mission.filter_by(
         :date, params[:search][:min_date], params[:search][:max_date], @missions)
       @missions = Mission.filter_by(
-        :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions)
+        :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions)
     end
 
     render :index
