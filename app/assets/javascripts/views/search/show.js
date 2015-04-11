@@ -1,11 +1,13 @@
-Nebulr.Views.MissionSearchShow = Backbone.CompositeView.extend({
+Nebulr.Views.MissionSearchShow = Backbone.View.extend({
   template: JST['search/show'],
 
   className: 'full-size row',
 
   initialize: function () {
+    this.filterData = {};
     this.mapView = new Nebulr.Views.EventMapShow({
-      collection: this.collection
+      collection: this.collection,
+      filterData: this.filterData
     });
 
     this.missionIndex = new Nebulr.Views.MissionIndex({
@@ -13,8 +15,9 @@ Nebulr.Views.MissionSearchShow = Backbone.CompositeView.extend({
       itemSize: 6
     });
 
-    this.searchFilterView = new Nebulr.Views.SearchFilter({
-      collection: this.collection
+    this.filterView = new Nebulr.Views.SearchFilter({
+      collection: this.collection,
+      filterData: this.filterData
     });
   },
 
@@ -52,7 +55,8 @@ Nebulr.Views.MissionSearchShow = Backbone.CompositeView.extend({
     // Because we render the `mapView` here, we MUST NOT re-render this view.
     var content = this.template();
     this.$el.html(content);
-    this.$('.sidebar').html(this.missionIndex.render().$el);
+    this.$('.sidebar').append(this.missionIndex.render().$el);
+    this.$('.filter').html(this.filterView.render().$el);
     this.$('.map').html(this.mapView.$el);
     this.mapView.render();
     return this;
@@ -62,5 +66,6 @@ Nebulr.Views.MissionSearchShow = Backbone.CompositeView.extend({
     Backbone.View.prototype.remove.call(this);
     this.mapView.remove();
     this.missionIndex.remove();
+    this.filterView.remove();
   }
 });

@@ -5,7 +5,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   initialize: function (options) {
     this._markers = {};
-    this.otherFilterData = options.otherFilterData;
+    this.filterData = options.filterData;
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },
@@ -50,40 +50,18 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     this._markers[mission.id] = marker;
   },
 
-  // createListing: function (event) {
-  //   var latitude = event.latLng.latitude();
-  //   var longitutde = event.latLng.longitude();
-  //   var mission = new Nebulr.Models.Mission({
-  //     latitude: latitude,
-  //     longitutde: longitutde
-  //   });
-  //
-  //   mission.save({}, {
-  //     success: function () {
-  //       this.collection.add(mission);
-  //     }.bind(this)
-  //   });
-  // },
-
-  updateOtherFilterData: function () {
-
-  },
-
   search: function () {
-    // This method will re-fetch the map's collection, using the
-    // map's current bounds as constraints on latitude/longitude.
-
     var mapBounds = this._map.getBounds();
     var ne = mapBounds.getNorthEast();
     var sw = mapBounds.getSouthWest();
 
-    var filterData = {
+    this.filterData = $.extend(this.filterData, {
       min_lat: sw.lat(), max_lat: ne.lat(),
       min_lng: sw.lng(), max_lng: ne.lng()
-    };
+    });
 
     this.collection.fetch({
-      data: { search: $.extend(filterData, this.otherFilterData) }
+      data: { search: this.filterData }
     });
   },
 

@@ -12,13 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+//= require jquery-ui
 //= require jquery.serializejson
 //= require underscore
 //= require bootstrap-sprockets
 //= require backbone
 //= require composite_view
-//= require bootstrap-slider
 //= require nebulr
 //= require_tree ../templates
 //= require_tree ./models
