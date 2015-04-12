@@ -14,10 +14,10 @@ nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 - [x] Create missions, and make them enlistable
 - [x] View missions, users
 - [x] Follow missions
+- [x] Search for missions by map
+- [x] Search for missions by date, compensation
 - [ ] Create comments
 - [ ] View comments for missions and users
-- [ ] Search for missions by map
-- [ ] Search for missions by date, compensation
 
 ## Design Docs
 * [View Wireframes][views]
@@ -56,6 +56,9 @@ I will need to add search for the Mission controller. On the Backbone side,
 there will be a SearchShow composite view containing a SearchMap view (using the
 Google Maps API), a SearchForm view that filters out missions by date and compensation,
 and a MissionsIndex composite view of the search results.
+I will implement updateable search results via the filters view and via
+reorienting the SearchMap view. SearchShow will have to combine the filter form
+data with the extent of the map to constrain the results appropriately.
 
 [Details][phase-three]
 
@@ -76,21 +79,13 @@ enlisted users will be added.
 
 [Details][phase-five]
 
-
-### Phase 6: Updating Mission Search by Filtering (~0.5 days)
-I will implement updateable search results via the filters view and via
-reorienting the SearchMap view. SearchShow will have to combine the filter form
-data with the extent of the map to constrain the results appropriately.
-
-[Details][phase-six]
-
-### Phase 7: Basic CSS, Imagery, Seed Data (~1.5-2 days)
+### Phase 6: Basic CSS, Imagery, Seed Data (~1.5-2 days)
 I will use bootstrap.css and potentially a bootstrap theme to dress everything
 in a coherent, unobtrusive design. I will also scour the internet for freely usable
 images to attach to seed missions. I will need to create a ~five seed users, twenty
 missions, and a few comments, follows, and enlistments for each user/mission.
 
-[Details][phase-seven]
+[Details][phase-six]
 
 ### Bonus Features
 - [x] User avatars
@@ -107,4 +102,3 @@ missions, and a few comments, follows, and enlistments for each user/mission.
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
 [phase-six]: ./docs/phases/phase6.md
-[phase-seven]: ./docs/phases/phase7.md

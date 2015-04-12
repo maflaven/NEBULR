@@ -1,4 +1,4 @@
-Phase 6: Updating Mission Search by Filtering
+Phase 6: Basic CSS, Imagery, Seed Data
 
 ## Rails
 ### Models
@@ -13,6 +13,5 @@ Phase 6: Updating Mission Search by Filtering
 ### Collections
 
 ### Views
-* update search/show
 
 ## Gems/Libraries

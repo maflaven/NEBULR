@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   has_many :enlisted_missions, through: :enlists, source: :mission
   has_many :follows, class_name: 'Follow', dependent: :destroy
   has_many :followed_missions, through: :follows, source: :mission
+  has_many :user_comments, foreign_key: :user_id, class_name: 'Comment'
+  has_many :comments, as: :commentable
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

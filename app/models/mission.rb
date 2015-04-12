@@ -25,6 +25,7 @@ class Mission < ActiveRecord::Base
   has_many :follows, class_name: 'Follow', dependent: :destroy
   has_many :following_users, through: :follows, source: :user
   has_many :images, dependent: :destroy
+  has_many :comments, as: :commentable
 
   def self.filter_by(data_type, min, max, missions_set=false)
     missions_set ||= Mission.all
