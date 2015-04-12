@@ -20,6 +20,9 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
   submitForm: function (event) {
     event.preventDefault();
+    var button = $(event.currentTarget);
+    button.prop('disabled', true);
+
     var attrs = this.$('form').serializeJSON();
     var that = this;
 
@@ -29,15 +32,17 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
         that.images.each( function (image) {
           image.save({ mission_id: that.model.id });
         });
+        button.prop('disabled', false);
       },
 
       error: function (model, response, options) {
         var errors = response.responseJSON;
         errors.forEach( function (error) {
-          this._processError(error);
+          that._processError(error);
           // this.$el.prepend('<p>' + error + '<p>');
-        }.bind(this));
-      }.bind(this)
+        });
+        button.prop('disabled', true);
+      }
     });
   },
 
