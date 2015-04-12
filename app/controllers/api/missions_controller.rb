@@ -38,6 +38,7 @@ class Api::MissionsController < ApplicationController
 
     unless is_leader?(@mission)
       render text: "You are not this mission's leader.", status: 403
+      return
     end
 
     if @mission.update(mission_params)
@@ -52,6 +53,7 @@ class Api::MissionsController < ApplicationController
 
     unless is_leader?(@mission)
       render text: "You are not this mission's leader.", status: 403
+      return
     end
 
     if @mission.try(:destroy)

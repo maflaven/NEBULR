@@ -43,6 +43,13 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     return this._images;
   },
 
+  comments: function () {
+    if (!this._comments) {
+      this._comments = new Nebulr.Collections.Comments();
+    }
+    return this._comments;
+  },
+
   parse: function (response) {
     if (response.leader_id) {
       this.leader().set("id", response.leader_id);
@@ -67,6 +74,10 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     if (response.images) {
       this.images().set(response.images);
       delete response.images;
+    }
+    if (response.comments) {
+      this.comments().set(response.comments);
+      delete response.comments;
     }
 
     return response;

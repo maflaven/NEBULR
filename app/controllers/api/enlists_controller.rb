@@ -14,6 +14,7 @@ class Api::EnlistsController < ApplicationController
 
     unless @enlist.user_id == current_user.id
       render text: "Access forbidden", status: 403
+      return
     end
 
     if @enlist.try(:destroy)

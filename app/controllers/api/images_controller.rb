@@ -4,6 +4,7 @@ class Api::ImagesController < ApplicationController
 
     unless is_leader?(@image.mission_id)
       render text: "You are not this mission's leader.", status: 403
+      return
     end
 
     if @image.save
@@ -18,6 +19,7 @@ class Api::ImagesController < ApplicationController
 
     unless is_leader?(@image.mission_id)
       render text: "You are not this mission's leader.", status: 403
+      return
     end
 
     if @image.try(:destroy)
