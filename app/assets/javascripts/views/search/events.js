@@ -5,6 +5,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   initialize: function (options) {
     this._markers = {};
+    this._infoWindows = {};
     this.filterData = options.filterData;
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
@@ -40,7 +41,8 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     var marker = new google.maps.Marker({
       position: latLng,
       map: this._map,
-      title: mission.get('title')
+      title: mission.get('title'),
+      animation: google.maps.Animation.DROP
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
@@ -75,10 +77,16 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     // This event will be triggered when a marker is clicked. Right now it simply
     // opens an info window with the title of the marker. However, you could get
     // fancier if you wanted (maybe use a template for the content of the window?)
+    var infoWindow;
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: marker.title
-    });
+    if (!this._infoWindows[marker.title]) {
+      infoWindow = new google.maps.InfoWindow({
+        content: marker.title
+      });
+      this._infoWindows[marker.title] = infoWindow;
+    } else {
+      infoWindow = this._infoWindows[marker.title];
+    }
 
     infoWindow.open(this._map, marker);
   },
