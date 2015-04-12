@@ -41,7 +41,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
           that._processError(error);
           // this.$el.prepend('<p>' + error + '<p>');
         });
-        button.prop('disabled', true);
+        button.prop('disabled', false);
       }
     });
   },
