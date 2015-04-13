@@ -16,8 +16,8 @@ nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 - [x] Follow missions
 - [x] Search for missions by map
 - [x] Search for missions by date, compensation
-- [ ] Create comments
-- [ ] View comments for missions and users
+- [x] Create comments
+- [x] View comments for missions and users
 
 ## Design Docs
 * [View Wireframes][views]

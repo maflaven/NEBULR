@@ -12,7 +12,7 @@ class Api::MissionsController < ApplicationController
         :longitude, params[:search][:min_lng], params[:search][:max_lng], @missions)
 
       params[:search][:min_date] && @missions = Mission.filter_by(
-        :date, params[:search][:min_date], params[:search][:max_date], @missions)
+        :start_date, params[:search][:min_date], params[:search][:max_date], @missions)
 
       params[:search][:min_cmp] && @missions = Mission.filter_by(
         :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions)
@@ -75,7 +75,7 @@ class Api::MissionsController < ApplicationController
       :title, :description,
       :compensation, :latitude,
       :longitude, :user_limit,
-      :date
+      :start_date, :end_date
     )
   end
 

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :followed_missions, through: :follows, source: :mission
   has_many :user_comments, foreign_key: :user_id, class_name: 'Comment'
   has_many :comments, as: :commentable
+  has_many :ratings
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

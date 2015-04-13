@@ -6,8 +6,10 @@
          min="0"><br>
   <input type="text" name="latitude" class="form-control" placeholder="LATITUDE" id="latitude" value="<%= mission.escape('latitude') %>" required>
   <input type="text" name="longitude" class="form-control" placeholder="LONGITUDE" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
-  <label>DATE: </label>
-  <input type="date" name="date" class="form-control" id="date" value="<%= mission.get('date') %>" required><br>
+  <label>START: </label>
+  <input type="date" name="start_date" class="form-control" id="start_date" value="<%= mission.get('start_date') %>" required>
+  <label>END: </label>
+  <input type="date" name="end_date" class="form-control" id="end_date" value="<%= mission.get('end_date') %>" required><br>
   <input type="text" name="user_limit" class="form-control" placeholder="ENLISTMENT LIMIT" id="user_limit" value="<%= mission.escape('user_limit') %>"><br>
   <input type="button" id="filepicker" class="form-control btn btn-info" value="IMAGES"><br><br>
   <% var buttonText; mission.isNew() ? buttonText = "CREATE" : buttonText = "SUBMIT" %>

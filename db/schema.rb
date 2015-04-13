@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412230803) do
+ActiveRecord::Schema.define(version: 20150413204845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,23 +60,36 @@ ActiveRecord::Schema.define(version: 20150412230803) do
   add_index "images", ["mission_id"], name: "index_images_on_mission_id", using: :btree
 
   create_table "missions", force: :cascade do |t|
-    t.integer  "leader_id",    null: false
-    t.string   "title",        null: false
-    t.text     "description",  null: false
+    t.integer  "leader_id",                    null: false
+    t.string   "title",                        null: false
+    t.text     "description",                  null: false
     t.integer  "user_limit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "compensation"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "date",         null: false
+    t.boolean  "completed",    default: false
+    t.string   "start_date",                   null: false
+    t.string   "end_date",                     null: false
   end
 
-  add_index "missions", ["date"], name: "index_missions_on_date", using: :btree
   add_index "missions", ["latitude"], name: "index_missions_on_latitude", using: :btree
   add_index "missions", ["leader_id"], name: "index_missions_on_leader_id", using: :btree
   add_index "missions", ["longitude"], name: "index_missions_on_longitude", using: :btree
   add_index "missions", ["title"], name: "index_missions_on_title", unique: true, using: :btree
+
+  create_table "ratings", force: :cascade do |t|
+    t.string   "mission_id", null: false
+    t.string   "user_id",    null: false
+    t.float    "rating",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ratings", ["mission_id", "user_id"], name: "index_ratings_on_mission_id_and_user_id", unique: true, using: :btree
+  add_index "ratings", ["mission_id"], name: "index_ratings_on_mission_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

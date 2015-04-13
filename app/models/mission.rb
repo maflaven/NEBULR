@@ -12,12 +12,14 @@
 #  compensation :integer
 #  latitude     :float
 #  longitude    :float
-#  date         :string           not null
+#  completed    :boolean          default(FALSE)
+#  start_date   :string           not null
+#  end_date     :string           not null
 #
 
 class Mission < ActiveRecord::Base
   validates :leader_id, :title, :description, :latitude, :longitude,
-            :date, presence: true
+            :start_date, :end_date, presence: true
 
   belongs_to :leader, class_name: :User
   has_many :enlists, class_name: 'Enlist', dependent: :destroy
@@ -26,6 +28,7 @@ class Mission < ActiveRecord::Base
   has_many :following_users, through: :follows, source: :user
   has_many :images, dependent: :destroy
   has_many :comments, as: :commentable
+  has_many :ratings
 
   def self.filter_by(data_type, min, max, missions_set=false)
     missions_set ||= Mission.all

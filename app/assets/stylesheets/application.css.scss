@@ -70,10 +70,6 @@ ul {
   width: 15%;
 }
 
-.user-avatar {
-
-}
-
 .map {
   height: 100%;
   padding: 0;
@@ -136,4 +132,8 @@ ul {
 
 .comment-index-item:hover .delete-comment {
   visibility: visible;
+}
+
+.caption {
+  list-style-type: none;
 }
