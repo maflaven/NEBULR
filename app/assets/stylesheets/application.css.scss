@@ -125,3 +125,15 @@ ul {
 #compensation-slider .slider {
   width: 100%;
 }
+
+.comment-index-item > .user-index-item {
+  width: 85px;
+}
+
+.delete-comment {
+  visibility: hidden;
+}
+
+.comment-index-item:hover .delete-comment {
+  visibility: visible;
+}

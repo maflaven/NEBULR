@@ -1,6 +1,6 @@
 Nebulr.Views.CommentNew = Backbone.View.extend({
   template: JST['comment/form'],
-  tagName: 'li',
+  tagName: 'div',
   className: 'comment-new-form',
 
   initialize: function (options) {

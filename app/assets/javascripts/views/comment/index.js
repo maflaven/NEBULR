@@ -1,6 +1,5 @@
 Nebulr.Views.CommentIndex = Backbone.View.extend({
   template: JST['comment/index'],
-  tagName: 'ul',
 
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
