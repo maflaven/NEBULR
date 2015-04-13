@@ -7,5 +7,7 @@
   });
 </script>
 <script>
-  filepicker.setKey("<%= ENV['FILEPICKER_API_KEY'] %>");
+  <% if !Rails.env.production? %>
+    filepicker.setKey("<%= ENV['FILEPICKER_API_KEY'] %>");
+  <% end %>
 </script>
