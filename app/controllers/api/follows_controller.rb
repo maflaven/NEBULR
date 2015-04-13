@@ -2,6 +2,11 @@ class Api::FollowsController < ApplicationController
   def create
     @follow = current_user.follows.new(follow_params)
 
+    unless @follow.user_id == current_user.id
+      render text: "Access forbidden", status: 403
+      return
+    end
+
     if @follow.save
       render json: @follow
     else

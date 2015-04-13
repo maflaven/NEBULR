@@ -2,6 +2,15 @@ class Api::EnlistsController < ApplicationController
   def create
     @enlist = current_user.enlists.new(enlist_params)
 
+    if Mission.find(@enlist.mission_id).completed
+      render text: "Can't enlist in a completed mission.", status: 403
+    end
+
+    unless @enlist.user_id == current_user.id
+      render text: "Access forbidden", status: 403
+      return
+    end
+
     if @enlist.save
       render json: @enlist
     else
@@ -15,6 +24,10 @@ class Api::EnlistsController < ApplicationController
     unless @enlist.user_id == current_user.id
       render text: "Access forbidden", status: 403
       return
+    end
+
+    if Mission.find(@enlist.mission_id).completed
+      render text: "Can't de-enlist in a completed mission.", status: 403
     end
 
     if @enlist.try(:destroy)

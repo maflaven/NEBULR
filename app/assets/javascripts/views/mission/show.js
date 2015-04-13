@@ -9,7 +9,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   events: {
     'click #enlist-btn': 'enlist',
     'click #follow-btn': 'follow',
-    'click #cancel-btn': 'destroy'
+    'click #cancel-btn': 'destroy',
+    'click #complete-btn': 'complete'
   },
 
   render: function () {
@@ -21,6 +22,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.$el.html(this.template({
       mission: this.model,
       isLeader: isLeader,
+      isComplete: this.model.get('completed'),
       enlistBtnValue: this._enlistButtonValue(),
       followBtnValue: this._followButtonValue()
     }));
@@ -32,6 +34,16 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       this.$el.prepend(imageCarousel);
     }
 
+    var that = this;
+    if (this.model.get('completed') &&
+        this.model.enlistedUsers().pluck('id').indexOf(this.currentUser.id) != -1) {
+      this.$("#rateYo").rateYo({
+        ratedFill: "#E74C3C",
+        fullStar: true,
+        onSet: that.setRating
+      });
+    }
+
     var leaderItemView = new Nebulr.Views.UserIndexItem({
       model: this.model.leader()
     });
@@ -41,11 +53,6 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       collection: this.model.enlistedUsers()
     });
     this.addSubview('.enlisted-users-index', enlistedUsersIndexView);
-
-    var followingUsersIndexView = new Nebulr.Views.UserIndex({
-      collection: this.model.followingUsers()
-    });
-    this.addSubview('.following-users-index', followingUsersIndexView);
 
     var commentNewModel = new Nebulr.Models.Comment();
     var commentNewView = new Nebulr.Views.CommentNew({
@@ -176,8 +183,23 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     return (this.follow.isNew()) ? "FOLLOW" : "UNFOLLOW";
   },
 
-  destroy: function () {
+  destroy: function (event) {
+    $(event.currentTarget).prop('disabled', true);
     this.model.destroy();
     Backbone.history.navigate('', { trigger: true });
+  },
+
+  complete: function (event) {
+    $(event.currentTarget).prop('disabled', true);
+    this.model.set({ completed: true });
+    this.model.save({}, {
+      success: function () {
+        this.render();
+      }.bind(this)
+    });
+  },
+
+  setRating: function (rating) {
+    console.log(rating);
   }
 });

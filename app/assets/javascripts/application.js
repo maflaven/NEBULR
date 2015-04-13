@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.serializejson
+//= require jquery.rateyo
 //= require underscore
 //= require bootstrap-sprockets
 //= require backbone

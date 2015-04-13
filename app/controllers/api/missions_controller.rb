@@ -56,6 +56,10 @@ class Api::MissionsController < ApplicationController
       return
     end
 
+    if @mission.completed
+      render text: "Cannot destroy a completed mission.", status: 403
+    end
+
     if @mission.try(:destroy)
       render json: @mission
     else
@@ -75,7 +79,7 @@ class Api::MissionsController < ApplicationController
       :title, :description,
       :compensation, :latitude,
       :longitude, :user_limit,
-      :start_date, :end_date
+      :start_date, :end_date, :completed
     )
   end
 
