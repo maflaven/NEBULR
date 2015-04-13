@@ -5,7 +5,8 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
 
   initialize: function (options) {
     this.missionId = options.missionId;
-    this.currentUser = options.currentUser
+    this.userId = options.userId;
+    this.currentUser = options.currentUser;
   },
 
   events: {
@@ -31,7 +32,7 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
       });
     } else {
       data = $.extend(data, {
-        commentable_id: this.UserId,
+        commentable_id: this.userId,
         commentable_type: 'User',
         user: this.currentUser
       });

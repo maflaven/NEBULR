@@ -3,13 +3,13 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
   className: 'user-show',
 
   initialize: function (options) {
-    this.currentUserId = options.currentUserId;
+    this.currentUser = options.currentUser;
     this.listenTo(this.model, "sync", this.render);
   },
 
   render: function () {
     var isCurrentUser = false;
-    if (this.currentUserId == this.model.id) {
+    if (this.currentUser.id == this.model.id) {
       isCurrentUser = true;
     }
 
@@ -31,6 +31,22 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
       itemSize: 2
     });
     this.addSubview('.followed-missions-index', followedMissionsIndexView);
+
+    var commentNewModel = new Nebulr.Models.Comment();
+    var commentNewView = new Nebulr.Views.CommentNew({
+      userId: this.model.id,
+      collection: this.model.comments(),
+      model: commentNewModel,
+      currentUser: this.currentUser
+    });
+    this.addSubview('.comments-index', commentNewView);
+
+    var commentsIndexView = new Nebulr.Views.CommentIndex({
+      collection: this.model.comments(),
+      currentUserId: this.currentUser.id,
+      userId: this.model.id
+    });
+    this.addSubview('.comments-index', commentsIndexView);
 
     return this;
   }

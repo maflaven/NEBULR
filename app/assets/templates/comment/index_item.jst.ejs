@@ -1,5 +1,4 @@
-<strong><%= comment.user().escape('username') %>:</strong><br>
 <%= comment.escape('body') %>
-<% if (currentUserId == leaderId || currentUserId == comment.user().id) { %>
+<% if (currentUserId == pageOwnerId || currentUserId == comment.user().id) { %>
   <input type="button" value="DELETE" class="delete-comment btn btn-xs">
 <% } %>

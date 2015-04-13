@@ -47,7 +47,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     var model = this.users.getOrFetch(id);
     var view = new Nebulr.Views.UserShow({
       model: model,
-      currentUserId: this.currentUser.id
+      currentUser: this.currentUser
     });
     this._swapView(view);
   },

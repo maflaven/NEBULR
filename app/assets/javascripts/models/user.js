@@ -32,7 +32,7 @@ Nebulr.Models.User = Backbone.Model.extend({
       delete response.followed_missions;
     }
     if (response.comments) {
-      this.comments().set(response.comments);
+      this.comments().set(response.comments, { parse: true });
       delete response.comments;
     }
 
