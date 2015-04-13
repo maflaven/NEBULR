@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :enlists, only: [:create, :destroy, :show]
     resources :follows, only: [:create, :destroy, :show]
     resources :images, only: [:create, :destroy, :show]
+    resources :comments, only: [:create, :destroy, :show]
   end
 end

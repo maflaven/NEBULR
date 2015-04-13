@@ -3,7 +3,7 @@ class Api::CommentsController < ApplicationController
     @comment = current_user.user_comments.new(comment_params)
 
     if @comment.save
-      render json: @comment
+      render :show
     else
       render json: @comment.errors.full_messages, status: :unprocessable_entity
     end
@@ -12,7 +12,7 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
 
-    unless is_commenter?(@comment)
+    unless may_delete?(@comment)
       render text: "You are not this comment's owner.", status: 403
       return
     end
@@ -24,13 +24,20 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    render :show
+  end
+
   private
 
   def comment_params
     params.require(:comment).permit(:commentable_id, :commentable_type, :body)
   end
 
-  def is_commenter?(comment)
-    comment.user_id == current_user.id
+  def may_delete?(comment)
+    comment.user_id == current_user.id ||
+      Mission.find(comment.commentable_id).leader_id == current_user.id ||
+      User.find(comment.commentable_id).id == current_user.id
   end
 end

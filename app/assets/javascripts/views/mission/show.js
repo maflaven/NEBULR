@@ -2,7 +2,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   template: JST['mission/show'],
 
   initialize: function (options) {
-    this.currentUserId = options.currentUserId;
+    this.currentUser = options.currentUser;
     this.listenTo(this.model, "sync", this.render);
   },
 
@@ -14,7 +14,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
 
   render: function () {
     var isLeader = false;
-    if (this.currentUserId == this.model.leader().id) {
+    if (this.currentUser.id == this.model.leader().id) {
       isLeader = true;
     }
 
@@ -32,23 +32,36 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       this.$el.prepend(imageCarousel);
     }
 
-    var leader = this.model.leader();
     var leaderItemView = new Nebulr.Views.UserIndexItem({
-      model: leader
+      model: this.model.leader()
     });
     this.addSubview('.mission-leader', leaderItemView);
 
-    var enlistedUsers = this.model.enlistedUsers();
     var enlistedUsersIndexView = new Nebulr.Views.UserIndex({
-      collection: enlistedUsers
+      collection: this.model.enlistedUsers()
     });
     this.addSubview('.enlisted-users-index', enlistedUsersIndexView);
 
-    var followingUsers = this.model.followingUsers();
     var followingUsersIndexView = new Nebulr.Views.UserIndex({
-      collection: followingUsers
+      collection: this.model.followingUsers()
     });
     this.addSubview('.following-users-index', followingUsersIndexView);
+
+    var commentNewModel = new Nebulr.Models.Comment();
+    var commentNewView = new Nebulr.Views.CommentNew({
+      missionId: this.model.id,
+      collection: this.model.comments(),
+      model: commentNewModel,
+      currentUser: this.currentUser
+    });
+    this.addSubview('.comments-index', commentNewView);
+
+    var commentsIndexView = new Nebulr.Views.CommentIndex({
+      collection: this.model.comments(),
+      currentUserId: this.currentUser.id,
+      leaderId: this.model.leader().id
+    });
+    this.addSubview('.comments-index', commentsIndexView);
 
     return this;
   },
@@ -61,7 +74,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     if (that.enlist.isNew()) {
       that.enlist.save({}, {
         success: function () {
-          var userModel = new Nebulr.Models.User({ id: that.currentUserId });
+          var userModel = new Nebulr.Models.User({ id: that.currentUser.id });
           userModel.fetch().then( function () {
             that.model.enlistedUsers().add(userModel);
           });
@@ -74,14 +87,14 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       that.enlist.destroy({
         success: function () {
           var userModel = that.model.enlistedUsers().findWhere({
-            id: that.currentUserId
+            id: that.currentUser.id
           });
           that.model.enlistedUsers().remove(userModel);
 
           that._toggleButtonValue($btn);
           $btn.prop("disabled", false);
           that.enlist = new Nebulr.Models.Enlist({
-            user_id: that.currentUserId,
+            user_id: that.currentUser.id,
             mission_id: that.model.id
           });
         }
@@ -97,7 +110,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     if (that.follow.isNew()) {
       that.follow.save({}, {
         success: function () {
-          var userModel = new Nebulr.Models.User({ id: that.currentUserId });
+          var userModel = new Nebulr.Models.User({ id: that.currentUser.id });
           userModel.fetch().then( function () {
             that.model.followingUsers().add(userModel);
           });
@@ -110,14 +123,14 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       that.follow.destroy({
         success: function () {
           var userModel = that.model.followingUsers().findWhere({
-            id: that.currentUserId
+            id: that.currentUser.id
           });
 
           that.model.followingUsers().remove(userModel);
           that._toggleButtonValue($btn);
           $btn.prop("disabled", false);
           that.follow = new Nebulr.Models.Follow({
-            user_id: that.currentUserId,
+            user_id: that.currentUser.id,
             mission_id: that.model.id
           });
         }.bind(that)
@@ -135,12 +148,12 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
 
   _enlistButtonValue: function () {
     this.enlist = this.model.enlists().findWhere({
-      user_id: this.currentUserId
+      user_id: this.currentUser.id
     });
 
     if (!this.enlist) {
       this.enlist = new Nebulr.Models.Enlist({
-        user_id: this.currentUserId,
+        user_id: this.currentUser.id,
         mission_id: this.model.id
       });
     }
@@ -150,12 +163,12 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
 
   _followButtonValue: function () {
     this.follow = this.model.follows().findWhere({
-      user_id: this.currentUserId
+      user_id: this.currentUser.id
     });
 
     if (!this.follow) {
       this.follow = new Nebulr.Models.Follow({
-        user_id: this.currentUserId,
+        user_id: this.currentUser.id,
         mission_id: this.model.id
       });
     }

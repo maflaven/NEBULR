@@ -52,7 +52,7 @@ Nebulr.Models.Mission = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.leader_id) {
-      this.leader().set("id", response.leader_id);
+      this.leader().set('id', response.leader_id);
       delete response.leader_id;
     }
     if (response.enlisted_users) {
@@ -76,7 +76,7 @@ Nebulr.Models.Mission = Backbone.Model.extend({
       delete response.images;
     }
     if (response.comments) {
-      this.comments().set(response.comments);
+      this.comments().set(response.comments, { parse: true });
       delete response.comments;
     }
 
