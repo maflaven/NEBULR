@@ -10,7 +10,7 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template());
     this.collection.each( function (mission) {
-      var thumbnail = "/assets/default.jpg";
+      var thumbnail = "https://www.filepicker.io/api/file/UuGSt7rqR4aVqjX5K54S";
       if (mission.images().length > 0) {
         thumbnail = mission.images().first().get('filepicker_url');
       }
