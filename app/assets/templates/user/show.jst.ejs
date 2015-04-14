@@ -3,19 +3,19 @@
     <img class="media-object img-rounded" src="<%= user.get('filepicker_url') %>">
   </div>
   <div class="media-body">
-    <% if (isCurrentUser) { %>
+    <% if (isSameUser) { %>
       <h4>GREETINGS, <%= user.escape('username') %></h4>
     <% } else { %>
       <h4 class="media-heading"><%= user.escape('username') %></h4>
     <% } %>
   </div>
 </div>
+<h5>ENLISTED MISSIONS</h5>
 <div class="enlisted-missions-index">
-  <h5>ENLISTED MISSIONS</h5>
 </div>
+<h5>FOLLOWED MISSIONS</h5>
 <div class="followed-missions-index">
-  <h5>FOLLOWED MISSIONS</h5>
 </div>
+<h5>COMMENTS</h5>
 <div class="comments-index">
-  <h5>COMMENTS</h5>
 </div>

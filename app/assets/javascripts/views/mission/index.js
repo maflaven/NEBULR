@@ -3,7 +3,7 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
   className: 'mission-index row',
 
   initialize: function (options) {
-    this.listenTo(this.collection, "sync remove", this.render);
+    this.listenTo(this.collection, "sync add remove", this.render);
     this.itemSize = options.itemSize;
   },
 

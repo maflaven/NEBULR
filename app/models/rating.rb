@@ -5,9 +5,9 @@
 #  id         :integer          not null, primary key
 #  mission_id :string           not null
 #  user_id    :string           not null
-#  rating     :float            not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  value      :float            not null
 #
 
 class Rating < ActiveRecord::Base

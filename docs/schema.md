@@ -11,6 +11,8 @@
 | latitude            | decimal   | not null                                 |
 | longitude           | decimal   | not null                                 |
 | user_limit          | integer   |                                          |
+| start_date          | string    | not null                                 |
+| end_date            | string    | not null                                 |
 
 ## follows
 column name | data type | details
@@ -42,3 +44,11 @@ id              | integer   | not null, primary key
 username        | string    | not null, unique
 password_digest | string    | not null
 session_token   | string    | not null, unique
+
+## ratings
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+mission_id      | string    | not null, unique
+user_id         | integer   | not null
+value           | float     | not null

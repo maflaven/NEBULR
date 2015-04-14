@@ -1,15 +1,19 @@
 <div class="mission-show">
+  <div class="mission-carousel"></div>
   <div class="mission-options">
     <% if (isLeader && !isComplete) { %>
       <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL MISSION">
       <input type="button" id="complete-btn" class="btn btn-danger" value="COMPLETE MISSION">
     <% } else if (isComplete) { %>
       <h4><strong>MISSION COMPLETE</strong></h4>
-      <div id="rateYo"></div>
+      <div class="rating-new"></div>
     <% } else { %>
-      <input type="button" id="enlist-btn" class="btn btn-primary" value="<%= enlistBtnValue %>">
-      <input type="button" id="follow-btn" class="btn btn-default" value="<%= followBtnValue %>">
+      <div class="btn-enlist"></div>
+      <div class="btn-follow"></div>
     <% } %>
+    <br>
+    <label>AVERAGE RATING:</label>
+    <div class="rating-avg"></div>
   </div>
   <%= mission.id %><br>
   <%= mission.escape('title') %><br>
@@ -20,10 +24,10 @@
   <%= mission.get('latitude') %><br>
   <%= mission.get('longitude') %><br>
   <%= mission.get('compensation') %><br>
+  <h5>ENLISTED</h5>
   <div class="enlisted-users-index">
-    <h5>ENLISTED</h5>
   </div>
+  <h5>COMMENTS</h5>
   <div class="comments-index">
-    <h5>COMMENTS</h5>
   </div>
 <div>

@@ -1,17 +1,28 @@
 class Api::RatingsController < ApplicationController
   def create
-    @rating = current_user.ratings.new(enlist_params)
+    @rating = current_user.ratings.new(rating_params)
+    @mission = Mission.find(@rating.mission_id)
 
-    unless Mission.find(@rating.mission_id).completed
+    unless @mission.completed && @mission.enlisted_users.include?(current_user)
       render text: "Can't rate an incomplete mission.", status: 403
     end
+
+    if @rating.save
+      render json: @rating
+    else
+      render json: @rating.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @rating = Rating.find(params[:id])
 
     unless @rating.user_id == current_user.id
       render text: "Access forbidden", status: 403
       return
     end
 
-    if @rating.save
+    if @rating.update
       render json: @rating
     else
       render json: @rating.errors.full_messages, status: :unprocessable_entity
@@ -41,6 +52,6 @@ class Api::RatingsController < ApplicationController
   private
 
   def rating_params
-    params.require(:rating).permit(:mission_id, :user_id, :rating)
+    params.require(:rating).permit(:mission_id, :value)
   end
 end
