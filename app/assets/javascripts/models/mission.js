@@ -58,8 +58,8 @@ Nebulr.Models.Mission = Backbone.Model.extend({
   },
 
   parse: function (response) {
-    if (response.leader_id) {
-      this.leader().set('id', response.leader_id);
+    if (response.leader) {
+      this.leader().set(response.leader);
       delete response.leader_id;
     }
     if (response.enlisted_users) {

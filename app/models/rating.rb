@@ -11,7 +11,7 @@
 #
 
 class Rating < ActiveRecord::Base
-  validates :mission_id, :user_id, :rating, presence: true
+  validates :mission_id, :user_id, :value, presence: true
   validates :mission_id, uniqueness: { scope: :user_id,
                                        message: "can only rate once" }
 

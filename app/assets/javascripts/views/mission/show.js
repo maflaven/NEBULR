@@ -28,7 +28,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.addSubview('.rating-avg', this.avgRatingView);
 
     this.newRatingView = new Nebulr.Views.RatingNew({
-      model: this.model
+      model: this.model,
+      currentUser: this.currentUser
     });
     this.addSubview('.rating-new', this.newRatingView);
 

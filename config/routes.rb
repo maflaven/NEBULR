@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy, :show]
     resources :images, only: [:create, :destroy, :show]
     resources :comments, only: [:create, :destroy, :show]
-    resources :ratings, only: [:create, :destroy, :show]
+    resources :ratings, only: [:create, :destroy, :update, :show]
   end
 end

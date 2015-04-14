@@ -17,12 +17,12 @@ class Api::RatingsController < ApplicationController
   def update
     @rating = Rating.find(params[:id])
 
-    unless @rating.user_id == current_user.id
-      render text: "Access forbidden", status: 403
-      return
-    end
+    # unless @rating.user_id == current_user.id
+    #   render text: "Access forbidden", status: 403
+    #   return
+    # end
 
-    if @rating.update
+    if @rating.update(rating_params)
       render json: @rating
     else
       render json: @rating.errors.full_messages, status: :unprocessable_entity
@@ -32,10 +32,10 @@ class Api::RatingsController < ApplicationController
   def destroy
     @rating = Rating.find(params[:id])
 
-    unless @rating.user_id == current_user.id
-      render text: "Access forbidden", status: 403
-      return
-    end
+    # unless @rating.user_id == current_user.id
+    #   render text: "Access forbidden", status: 403
+    #   return
+    # end
 
     if @rating.try(:destroy)
       render json: @rating

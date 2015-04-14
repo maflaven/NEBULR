@@ -3,9 +3,10 @@ Nebulr.Views.RatingAverage = Backbone.View.extend({
     this.calcAvg();
     this.$el.rateYo({
       ratedFill: "#E74C3C",
-      readOnly: true
+      readOnly: true,
+      fullStar: true
     });
-    this.listenTo(this.model, "sync change:ratings_count", this.render);
+    this.listenTo(this.model, "sync change:ratings_total", this.render);
   },
 
   render: function () {
