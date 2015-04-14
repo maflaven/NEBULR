@@ -65,15 +65,23 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-
     this.$el.html(this.template({
       mission: this.model,
       isLeader: this.model.get('is_leader'),
       isComplete: this.model.get('completed'),
+      isFull: this.isFull()
     }));
 
     this.attachSubviews();
     return this;
+  },
+
+  isFull: function () {
+    if (this.model.enlistedUsers().length) {
+      return this.model.enlistedUsers().length == this.model.get('user_limit');
+    } else {
+      return true;
+    }
   },
 
   destroy: function (event) {

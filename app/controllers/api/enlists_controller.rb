@@ -1,9 +1,14 @@
 class Api::EnlistsController < ApplicationController
   def create
     @enlist = current_user.enlists.new(enlist_params)
+    @mission = Mission.find(@enlist.mission_id)
 
-    if Mission.find(@enlist.mission_id).completed
+    if @mission.completed
       render text: "Can't enlist in a completed mission.", status: 403
+    end
+
+    if @mission.enlisted_users.count == @mission.user_limit
+      render text: "Can't enlist in a full mission.", status: 403
     end
 
     unless @enlist.user_id == current_user.id
