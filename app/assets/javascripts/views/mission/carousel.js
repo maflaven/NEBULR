@@ -1,7 +1,7 @@
 Nebulr.Views.MissionCarousel = Backbone.View.extend({
   template: JST['mission/carousel'],
   initialize: function (options) {
-    this.listenTo(this.collection, "add", this.render);
+    this.listenTo(this.collection, "add sync", this.render);
   },
 
   render: function () {

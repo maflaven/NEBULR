@@ -27,6 +27,8 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
       mission: this.model
     }));
     this.renderForm();
+    this.$('.image-index').html(this.missionImagesView.$el);
+    this.missionImagesView.render();
 
     this.$('.map').html(this.missionLocationView.$el);
     this.missionLocationView.render();
@@ -34,6 +36,10 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   },
 
   renderForm: function () {
+    var attrs = this.$('form').serializeJSON();
+    delete attrs.latitude; delete attrs.longitude;
+    this.model.set(attrs);
+
     this.$('.form').html(JST['mission/form']({
       mission: this.model
     }));
