@@ -1,6 +1,5 @@
 Nebulr.Views.ImageIndex = Backbone.View.extend({
   template: JST['image/index'],
-  className: 'image-index',
 
   render: function () {
     this.$el.html(this.template());
