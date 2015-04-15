@@ -12,11 +12,16 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({
+      spotsLeft: this.spotsLeft(),
       enlistBtnValue: this._enlistButtonValue()
     }));
 
     return this;
   },
+
+  // renderSpotsLeft: function () {
+  //   this.$('h4')
+  // },
 
   enlistUser: function (event) {
     $btn = $(event.currentTarget);
@@ -31,9 +36,11 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
             that.model.enlistedUsers().add(userModel);
             that.model.set({ 'is_enlisted': true });
           });
+          that.model.enlistedUsers().add(userModel);
+          that.model.enlists().add(that.enlist);
 
           that._toggleButtonValue($btn);
-          $btn.prop("disabled", false);
+          that.render();
         }
       });
     } else {
@@ -46,11 +53,11 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
           that.model.set({ 'is_enlisted': false });
 
           that._toggleButtonValue($btn);
-          $btn.prop("disabled", false);
           that.enlist = new Nebulr.Models.Enlist({
             user_id: that.currentUser.id,
             mission_id: that.model.id
           });
+          that.render();
         }
       });
     }
@@ -77,5 +84,15 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
     }
 
     return (this.enlist.isNew()) ? "ENLIST" : "UNENLIST";
+  },
+
+  spotsLeft: function () {
+    if (this.model.enlistedUsers().length) {
+      return this.model.get('user_limit') - this.model.enlistedUsers().length;
+    } else if (this.model.get('user_limit')) {
+      return this.model.get('user_limit');
+    } else {
+      return "&#8734;";
+    }
   }
 });

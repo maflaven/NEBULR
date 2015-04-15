@@ -1,5 +1,6 @@
 Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   template: JST['mission/show'],
+  className: 'mission-show',
 
   initialize: function (options) {
     this.currentUser = options.currentUser;
@@ -57,6 +58,11 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       leaderId: this.model.leader().id
     });
     this.addSubview('.comments-index', this.commentsIndexView);
+
+    this.missionMapView = new Nebulr.Views.MissionMapShow({
+      model: this.model
+    });
+    this.mapRendered = false;
   },
 
   events: {
@@ -67,20 +73,27 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({
       mission: this.model,
-      isLeader: this.model.get('is_leader'),
-      isComplete: this.model.get('completed'),
-      isFull: this.isFull()
+      spotsLeft: this.spotsLeft()
     }));
 
+    if (this.model.get('latitude')) {
+      this.renderMap();
+    }
     this.attachSubviews();
     return this;
   },
 
-  isFull: function () {
+  renderMap: function () {
+    if (!this.mapRendered) {
+      this.mapRendered = true;
+      this.$('.mission-location').html(this.missionMapView.$el);
+      this.missionMapView.render();
+    }
+  },
+
+  spotsLeft: function () {
     if (this.model.enlistedUsers().length) {
-      return this.model.enlistedUsers().length == this.model.get('user_limit');
-    } else {
-      return true;
+      return this.model.get('user_limit') - this.model.enlistedUsers().length;
     }
   },
 
