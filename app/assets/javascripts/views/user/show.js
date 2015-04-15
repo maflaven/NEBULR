@@ -29,7 +29,7 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
     this.commentsIndexView = new Nebulr.Views.CommentIndex({
       collection: this.model.comments(),
       currentUserId: this.currentUser.id,
-      userId: this.model.id
+      user: this.model
     });
     this.addSubview('.comments-index', this.commentsIndexView);
   },

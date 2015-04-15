@@ -55,7 +55,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.commentsIndexView = new Nebulr.Views.CommentIndex({
       collection: this.model.comments(),
       currentUserId: this.currentUser.id,
-      leaderId: this.model.leader().id
+      mission: this.model
     });
     this.addSubview('.comments-index', this.commentsIndexView);
 

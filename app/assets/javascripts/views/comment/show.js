@@ -5,10 +5,10 @@ Nebulr.Views.CommentShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
-    this.leaderId = options.leaderId;
-    this.userId = options.userId;
-    this.setAttributes();
-    this.listenTo(this.model, "sync", this.render);
+    this.mission = options.mission;
+    this.user = options.user;
+    this.mission && this.listenTo(this.mission, "sync", this.render);
+    this.user && this.listenTo(this.user, "sync", this.render);
   },
 
   events: {
@@ -16,6 +16,8 @@ Nebulr.Views.CommentShow = Backbone.View.extend({
   },
 
   render: function () {
+    this.setAttributes();
+
     this.$el.html(this.template({
       currentUserId: this.currentUserId,
       pageOwnerId: this.pageOwnerId,
@@ -28,7 +30,11 @@ Nebulr.Views.CommentShow = Backbone.View.extend({
   },
 
   setAttributes: function () {
-    this.pageOwnerId = (this.leaderId ? this.leaderId: this.userId);
+    if (this.mission) {
+      this.pageOwnerId = this.mission.leader().id;
+    } else if (this.user) {
+      this.pageOwnerId = this.user.id;
+    }
     this.commenter = this.model.user();
     this.thumbnail = "https://www.filepicker.io/api/file/PNXcJrvgR82BzwR5rfeO";
     if (this.commenter.get('filepicker_url')) {

@@ -7,17 +7,50 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     this._markers = {};
     this._infoWindows = {};
     this.filterData = options.filterData;
-    this.listenTo(this.collection, 'add', this.addMarker);
-    this.listenTo(this.collection, 'remove', this.removeMarker);
+    this.listenTo(this.collection, "add", this.addMarker);
+    this.listenTo(this.collection, "remove", this.removeMarker);
   },
 
   render: function () {
-    var mapOptions = {
-      center: { lat: 37.7833, lng: -122.4167},
-      zoom: 12
+    // var mapOptions = {
+    //   center: { lat: 37.7833, lng: -122.4167},
+    //   zoom: 12,
+    //   mapTypeId: google.maps.MapTypeId.SATELLITE
+    // };
+    var that = this;
+    var moonTypeOptions = {
+      getTileUrl: function(coord, zoom) {
+          var normalizedCoord = that.getNormalizedCoord(coord, zoom);
+          if (!normalizedCoord) {
+            return null;
+          }
+          var bound = Math.pow(2, zoom);
+          return "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/clem_bw" +
+              "/" + zoom + "/" + normalizedCoord.x + "/" +
+              (bound - normalizedCoord.y - 1) + ".jpg";
+      },
+      tileSize: new google.maps.Size(256, 256),
+      maxZoom: 9,
+      minZoom: 0,
+      radius: 1738000,
+      name: "Moon"
     };
 
+    var mapOptions = {
+      center: { lat: 37.7833, lng: -122.4167},
+      zoom: 1,
+      streetViewControl: false,
+      mapTypeControlOptions: {
+        mapTypeIds: ["moon"]
+      }
+    };
+
+    var moonMapType = new google.maps.ImageMapType(moonTypeOptions);
     this._map = new google.maps.Map(this.el, mapOptions);
+    this._map.mapTypes.set('moon', moonMapType);
+    this._map.setMapTypeId('moon');
+
+    // this._map = new google.maps.Map(this.el, mapOptions);
 
     this.collection.each(this.addMarker.bind(this));
     this.attachMapListeners();
@@ -25,7 +58,32 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   attachMapListeners: function () {
     google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
-    // google.maps.event.addListener(this._map, 'click', this.createListing.bind(this));
+  },
+
+  // Normalizes the coords that tiles repeat across the x axis (horizontally)
+  // like the standard Google map tiles.
+  getNormalizedCoord: function (coord, zoom) {
+    var y = coord.y;
+    var x = coord.x;
+
+    // tile range in one direction range is dependent on zoom level
+    // 0 = 1 tile, 1 = 2 tiles, 2 = 4 tiles, 3 = 8 tiles, etc
+    var tileRange = 1 << zoom;
+
+    // don't repeat across y-axis (vertically)
+    if (y < 0 || y >= tileRange) {
+      return null;
+    }
+
+    // repeat across x-axis
+    if (x < 0 || x >= tileRange) {
+      x = (x % tileRange + tileRange) % tileRange;
+    }
+
+    return {
+      x: x,
+      y: y
+    };
   },
 
   // Event handlers

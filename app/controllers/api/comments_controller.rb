@@ -36,8 +36,12 @@ class Api::CommentsController < ApplicationController
   end
 
   def may_delete?(comment)
-    comment.user_id == current_user.id ||
-      Mission.find(comment.commentable_id).leader_id == current_user.id ||
-      User.find(comment.commentable_id).id == current_user.id
+    if comment.user_id == current_user.id
+      return true
+    elsif comment.commentable_type == 'Mission'
+      return Mission.find(comment.commentable_id).leader_id == current_user.id
+    else
+      return User.find(comment.commentable_id).id == current_user.id
+    end
   end
 end

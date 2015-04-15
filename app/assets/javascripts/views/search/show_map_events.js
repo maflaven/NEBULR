@@ -32,7 +32,7 @@ Nebulr.Views.EventMapMissionShow = Backbone.View.extend({
 
     var locationString = (mission.get('latitude').toString()) + ', ' +
      (mission.get('longitude').toString());
-  
+
     var marker = new google.maps.Marker({
       position: latLng,
       map: this._map,
