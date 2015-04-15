@@ -63,11 +63,21 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.mapRendered = false;
+
+    this.modalCancellationView = new Nebulr.Views.ModalCancellation({
+      model: this.model
+    });
+    this.addSubview('#modal-cancellation', this.modalCancellationView);
+
+    this.modalCompletionView = new Nebulr.Views.ModalCompletion({
+      model: this.model
+    });
+    this.addSubview('#modal-completion', this.modalCompletionView);
   },
 
   events: {
-    'click #cancel-btn': 'destroy',
-    'click #complete-btn': 'complete'
+    'click #cancel-btn': 'destroyModal',
+    'click #complete-btn': 'completeModal'
   },
 
   render: function () {
@@ -97,19 +107,11 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     }
   },
 
-  destroy: function (event) {
-    $(event.currentTarget).prop('disabled', true);
-    this.model.destroy();
-    Backbone.history.navigate('', { trigger: true });
+  destroyModal: function () {
+    this.modalCancellationView.$el.addClass('is-active');
   },
 
-  complete: function (event) {
-    $(event.currentTarget).prop('disabled', true);
-    this.model.set({ completed: true });
-    this.model.save({}, {
-      success: function () {
-        this.render();
-      }.bind(this)
-    });
+  completeModal: function () {
+    this.modalCompletionView.$el.addClass('is-active');
   }
 });

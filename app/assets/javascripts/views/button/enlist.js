@@ -1,13 +1,19 @@
-Nebulr.Views.ButtonEnlist = Backbone.View.extend({
+Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
   template: JST['button/enlist'],
 
   initialize: function (options) {
     this.currentUser = options.currentUser;
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "change:triggerEnlist", this.enlistUser)
+
+    this.modalEnlistmentView = new Nebulr.Views.ModalEnlistment({
+      model: this.model
+    });
+    this.addSubview('#modal-enlistment', this.modalEnlistmentView);
   },
 
   events: {
-    'click #enlist-btn': 'enlistUser'
+    'click #enlist-btn': 'enlistModal'
   },
 
   render: function () {
@@ -16,12 +22,21 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
       enlistBtnValue: this._enlistButtonValue()
     }));
 
+    this.attachSubviews();
     return this;
   },
 
-  enlistUser: function (event) {
-    $btn = $(event.currentTarget);
-    $btn.prop("disabled", true);
+  enlistModal: function () {
+    if (this.enlist.isNew()) {
+      this.modalEnlistmentView.$el.addClass('is-active');
+    } else {
+      this.enlistUser();
+    }
+  },
+
+  enlistUser: function () {
+    var $btn = this.$('#enlist-btn');
+    $btn.prop('disabled', true);
     var that = this;
 
     if (that.enlist.isNew()) {
@@ -34,7 +49,6 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
           });
           that.model.enlistedUsers().add(userModel);
           that.model.enlists().add(that.enlist);
-
           that._toggleButtonValue($btn);
           that.render();
         }
