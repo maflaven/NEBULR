@@ -19,10 +19,6 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
     return this;
   },
 
-  // renderSpotsLeft: function () {
-  //   this.$('h4')
-  // },
-
   enlistUser: function (event) {
     $btn = $(event.currentTarget);
     $btn.prop("disabled", true);
@@ -87,7 +83,9 @@ Nebulr.Views.ButtonEnlist = Backbone.View.extend({
   },
 
   spotsLeft: function () {
-    if (this.model.enlistedUsers().length) {
+    if (this.model.get('user_limit') == 0) {
+      return "&#8734;";
+    } else if (this.model.enlistedUsers().length) {
       return this.model.get('user_limit') - this.model.enlistedUsers().length;
     } else if (this.model.get('user_limit')) {
       return this.model.get('user_limit');

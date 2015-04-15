@@ -35,4 +35,18 @@ class Mission < ActiveRecord::Base
 
     missions_set.where(data_type => min..max)
   end
+
+  def self.filter_by_avg_rating(min_rating, max_rating, missions_set=false)
+    missions_set ||= Mission.all
+
+    missions_set.select do |mission|
+      mission.avg_rating >= min_rating.to_f &&
+        mission.avg_rating <= max_rating.to_f
+    end
+  end
+
+  def avg_rating
+    return 0 if ratings.count == 0
+    ratings.pluck(:value).inject(:+) / ratings.count
+  end
 end

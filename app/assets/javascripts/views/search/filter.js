@@ -14,11 +14,18 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template());
-    var $sliderDiv = this.$('#compensation-slider');
+    this.attachCompensationSlider();
+    this.attachRatingSlider();
+
+    return this;
+  },
+
+  attachCompensationSlider: function () {
+    var $cmpSliderDiv = this.$('#compensation-slider');
     this.min_cmp = 0;
     this.max_cmp = 1000000;
 
-    $sliderDiv.slider({
+    $cmpSliderDiv.slider({
       animate: "fast",
       min: 0,
       max: 1000000,
@@ -29,16 +36,40 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
       slide: this.recordCompensation.bind(this)
     });
 
-    this.$("#range").val("$" + $sliderDiv.slider("values", 0) +
-      " - $" + $sliderDiv.slider("values", 1));
+    this.$("#cmp-range").val("$" + $cmpSliderDiv.slider("values", 0) +
+      " - $" + $cmpSliderDiv.slider("values", 1));
+  },
 
-    return this;
+  attachRatingSlider: function () {
+    var $ratingSliderDiv = this.$('#rating-slider');
+    this.min_rating = 0;
+    this.max_rating = 5;
+
+    $ratingSliderDiv.slider({
+      animate: "fast",
+      min: 0,
+      max: 5,
+      orientation: "horizontal",
+      range: true,
+      step: 0.5,
+      values: [this.min_rating, this.max_rating],
+      slide: this.recordRating.bind(this)
+    });
+
+    this.$("#rating-range").val($ratingSliderDiv.slider("values", 0) +
+      " - " + $ratingSliderDiv.slider("values", 1));
   },
 
   recordCompensation: function (event, ui) {
-    $("#range").val("$" + ui.values[0] + " - $" + ui.values[1]);
+    $("#cmp-range").val("$" + ui.values[0] + " - $" + ui.values[1]);
     this.min_cmp = ui.values[0];
     this.max_cmp = ui.values[1];
+  },
+
+  recordRating: function (event, ui) {
+    $("#rating-range").val(ui.values[0] + " - " + ui.values[1]);
+    this.min_rating = ui.values[0];
+    this.max_rating = ui.values[1];
   },
 
   generateFilterData: function (event) {
@@ -48,7 +79,12 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
     var dates = this.$el.serializeJSON();
 
     var filterData = $.extend(
-      dates, {'min_cmp': this.min_cmp, 'max_cmp': this.max_cmp}
+      dates, {
+              'min_cmp': this.min_cmp,
+              'max_cmp': this.max_cmp,
+              'min_rating': this.min_rating,
+              'max_rating': this.max_rating
+             }
     );
     this.filterData = $.extend(this.filterData, filterData);
     this.updateMissionIndex();

@@ -16,6 +16,9 @@ class Api::MissionsController < ApplicationController
 
       params[:search][:min_cmp] && @missions = Mission.filter_by(
         :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions)
+
+      params[:search][:min_rating] && @missions = Mission.filter_by_avg_rating(
+        params[:search][:min_rating], params[:search][:max_rating], @missions)
     end
 
     render :index
