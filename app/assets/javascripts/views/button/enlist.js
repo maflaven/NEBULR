@@ -97,7 +97,7 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
   },
 
   spotsLeft: function () {
-    if (this.model.get('user_limit') == 0) {
+    if (!this.model.get('user_limit')) {
       return "&#8734;";
     } else if (this.model.enlistedUsers().length) {
       return this.model.get('user_limit') - this.model.enlistedUsers().length;
