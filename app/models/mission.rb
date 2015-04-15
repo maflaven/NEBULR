@@ -45,6 +45,12 @@ class Mission < ActiveRecord::Base
     end
   end
 
+  def self.filter_by_title_fragment(fragment, missions_set=false)
+    missions_set ||= Mission.all
+
+    missions_set.where("title LIKE ?", "%" + fragment + "%")
+  end
+
   def avg_rating
     return 0 if ratings.count == 0
     ratings.pluck(:value).inject(:+) / ratings.count

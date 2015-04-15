@@ -6,19 +6,23 @@ class Api::MissionsController < ApplicationController
 
     if params[:search]
       params[:search][:min_lat] && @missions = Mission.filter_by(
-        :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions)
-
+        :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions
+      )
       params[:search][:min_lng] && @missions = Mission.filter_by(
-        :longitude, params[:search][:min_lng], params[:search][:max_lng], @missions)
-
+        :longitude, params[:search][:min_lng], params[:search][:max_lng], @missions
+      )
       params[:search][:min_date] && @missions = Mission.filter_by(
-        :start_date, params[:search][:min_date], params[:search][:max_date], @missions)
-
+        :start_date, params[:search][:min_date], params[:search][:max_date], @missions
+      )
       params[:search][:min_cmp] && @missions = Mission.filter_by(
-        :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions)
-
+        :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions
+      )
       params[:search][:min_rating] && @missions = Mission.filter_by_avg_rating(
-        params[:search][:min_rating], params[:search][:max_rating], @missions)
+        params[:search][:min_rating], params[:search][:max_rating], @missions
+      )
+      params[:search][:title] && @missions = Mission.filter_by_title_fragment(
+        params[:search][:title], @missions
+      )
     end
 
     render :index
