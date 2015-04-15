@@ -1,46 +1,38 @@
-Nebulr.Views.CommentIndex = Backbone.View.extend({
+Nebulr.Views.CommentIndex = Backbone.CompositeView.extend({
   template: JST['comment/index'],
 
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
     this.leaderId = options.leaderId;
     this.userId = options.userId;
-    this.listenTo(this.collection, "add remove", this.render);
-  },
-
-  events: {
-    'click .delete-comment': 'delete'
+    this.listenTo(this.collection, "add", this.addCommentView);
+    this.collection.each(this.addCommentView.bind(this));
+    this.listenTo(this.collection, "remove", this.removeCommentView);
   },
 
   render: function () {
     this.$el.html(this.template());
-
-    var pageOwnerId = (this.leaderId ? this.leaderId : this.userId);
-
-    var that = this;
-    this.collection.each( function (comment) {
-      var commentIndexItem = JST['comment/index_item']({
-        currentUserId: that.currentUserId,
-        pageOwnerId: pageOwnerId,
-        comment: comment
-      });
-      var $li = $('<li class="comment-index-item">').html(commentIndexItem);
-      $li.data('id', comment.id);
-
-      var commenter = comment.user();
-      var thumbnail = "/assets/q.jpg";
-      if (commenter.get('filepicker_url')) {
-        thumbnail = commenter.get('filepicker_url');
-      }
-      $li.prepend(JST['user/index_item']({
-        user: commenter,
-        thumbnail: thumbnail
-      }));
-
-      that.$el.append($li);
-    });
-
+    this.attachSubviews();
     return this;
+  },
+
+  addCommentView: function (comment) {
+    var subview = new Nebulr.Views.CommentShow({
+      currentUserId: this.currentUserId,
+      leaderId: this.leaderId,
+      userId: this.userId,
+      model: comment
+    });
+    this.addSubview('ul', subview);
+  },
+
+  removeCommentView: function (comment) {
+    var selector = 'ul';
+    _(this.subviews(selector)).each(function (subview) {
+      if(subview.model == comment) {
+        this.removeSubview(selector, subview);
+      }
+    }.bind(this));
   },
 
   delete: function (event) {
