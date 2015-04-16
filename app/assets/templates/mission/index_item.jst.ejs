@@ -8,10 +8,20 @@
 
   </div>
 
-  <div class="text">
+  <div class="compensation">
+    <p>
+      $<%= mission.escape('compensation') %>
+    </p>
+  </div>
 
-    <p><%= mission.escape('title') %></p>
+  <div class="leader-avatar">
+    <img class="img-circle" src="<%= mission.leader().get('filepicker_url') %>"/>
+  </div>
 
+  <div class="title">
+    <p>
+      <%= mission.escape('title') %>
+    </p>
   </div>
 
 </div>
