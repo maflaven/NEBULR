@@ -35,20 +35,29 @@ form.log-form {
   width: 13%;
 }
 
-.backdrop, #main, html, #map-canvas, .mission-new {
+.backdrop,
+#main,
+html,
+#map-canvas,
+.mission-new,
+.full-size,
+.mission-stats-pics {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.mission-location {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }
 
 body {
   height: calc(100% - 50px);
   padding: 0;
   margin-top: 50px
-}
-
-#mission-carousel {
-  width: 40%;
 }
 
 ul {
@@ -63,10 +72,6 @@ ul {
   margin: 0;
 }
 
-.mission-leader {
-  width: 15%;
-}
-
 .map {
   height: 100%;
   padding: 0;
@@ -78,12 +83,18 @@ ul {
   height: 100%;
 }
 
-.sidebar .mission-index {
+.mission-stats-pics-loc {
+  position: relative;
+}
+
+.mission-index {
   list-style-type: none;
   overflow-y: scroll;
-  height: 100%;
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: 32%;
+  bottom: 0;
 }
 
 .remove-listing {

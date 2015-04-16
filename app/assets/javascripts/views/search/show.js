@@ -55,8 +55,8 @@ Nebulr.Views.MissionSearchShow = Backbone.View.extend({
     // Because we render the `mapView` here, we MUST NOT re-render this view.
     var content = this.template();
     this.$el.html(content);
-    this.$('.sidebar').append(this.missionIndex.render().$el);
     this.$('.filter').html(this.filterView.render().$el);
+    this.$('.filtered-mission-index').html(this.missionIndex.render().$el);
     this.$('.map').html(this.mapView.$el);
     this.mapView.render();
     return this;

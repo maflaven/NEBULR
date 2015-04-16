@@ -1,35 +1,54 @@
-<div class="mission-carousel"></div>
-<div class="mission-options">
-  <% if (this.model.get('is_leader') && !this.model.get('completed')) { %>
-    <div id="modal-cancellation"></div>
-    <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL MISSION">
-    <div id="modal-completion"></div>
-    <input type="button" id="complete-btn" class="btn btn-danger" value="COMPLETE MISSION">
-  <% } else if (this.model.get('completed')) { %>
-    <h4><strong>MISSION COMPLETE</strong></h4>
-    <label>YOUR RATING:</label>
-    <div class="rating-new"></div>
-  <% } else if (spotsLeft === 0) { %>
-    <div class="btn-follow"></div>
-  <% } else { %>
-    <div class="btn-enlist"></div>
-    <div class="btn-follow"></div>
-  <% } %>
-  <br>
-  <label>AVERAGE RATING:</label>
-  <div class="rating-avg"></div>
+<div class="row mission-stats-pics-loc">
+
+  <div class="mission-options-stats col-xs-2">
+    <% if (this.model.get('is_leader') && !this.model.get('completed')) { %>
+      <div id="modal-cancellation"></div>
+      <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL MISSION">
+      <div id="modal-completion"></div>
+      <input type="button" id="complete-btn" class="btn btn-danger" value="COMPLETE MISSION">
+    <% } else if (this.model.get('completed')) { %>
+      <h4><strong>MISSION COMPLETE</strong></h4>
+      <label>YOUR RATING:</label>
+      <div class="rating-new"></div>
+    <% } else if (spotsLeft === 0) { %>
+      <div class="btn-follow"></div>
+    <% } else { %>
+      <div class="btn-enlist"></div>
+      <div class="btn-follow"></div>
+    <% } %>
+    <div class="mission-stats">
+      <%= mission.escape('title') %><br>
+      <div class="mission-leader"></div><br>
+      <%= mission.escape('start_date') %><br>
+      <%= mission.escape('end_date') %><br>
+      <%= mission.get('compensation') %><br>
+    </div>
+    <label>AVERAGE RATING:</label>
+    <div class="rating-avg"></div>
+  </div>
+
+  <div class="mission-carousel col-xs-6"></div>
+
+  <div class="mission-location col-xs-4"></div>
+
 </div>
-<%= mission.id %><br>
-<%= mission.escape('title') %><br>
-<div class="mission-leader"></div><br>
-<%= mission.escape('start_date') %><br>
-<%= mission.escape('end_date') %><br>
-<%= mission.escape('description') %><br>
-<div class="mission-location"></div>
-<%= mission.get('compensation') %><br>
-<h5>ENLISTED</h5>
-<div class="enlisted-users-index">
+
+<div class="row mission-desc-users">
+
+  <div class="mission-description col-xs-offset-2 col-xs-6">
+    <p><%= mission.escape('description') %></p>
+  </div>
+
+  <div class="enlisted-users col-xs-4">
+    <h5>ENLISTED</h5>
+    <div class="enlisted-users-index"></div>
+  </div>
+
 </div>
-<h5>COMMENTS</h5>
-<div class="comments-index">
+
+<div class="row comments">
+
+  <h5>COMMENTS</h5>
+  <div class="comments-index col-xs-offset-2 col-xs-8"></div>
+
 </div>
