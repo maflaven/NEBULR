@@ -1,7 +1,5 @@
 Nebulr.Views.EventMapMissionShow = Backbone.View.extend({
-  attributes: {
-    id: "map-canvas"
-  },
+  className: 'full-size',
 
   initialize: function (options) {
     this._markers = {};
@@ -23,6 +21,8 @@ Nebulr.Views.EventMapMissionShow = Backbone.View.extend({
     this._map = new google.maps.Map(this.el, mapOptions);
 
     this.addMarker(this.model);
+
+    return this;
   },
 
   // Event handlers

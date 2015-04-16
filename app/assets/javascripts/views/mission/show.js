@@ -59,8 +59,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.comments-index', this.commentsIndexView);
 
-    this.missionMapView = new Nebulr.Views.MissionMapShow({
-      model: this.model
+    this.missionMapView = new Nebulr.Views.EventMapMissionShow({
+      model: this.model,
     });
     this.mapRendered = false;
 
@@ -86,17 +86,19 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       spotsLeft: this.spotsLeft()
     }));
 
+    this.attachSubviews();
+
     if (this.model.get('latitude')) {
       this.renderMap();
     }
-    this.attachSubviews();
+
     return this;
   },
 
   renderMap: function () {
+    this.$('.mission-location').html(this.missionMapView.$el);
     if (!this.mapRendered) {
       this.mapRendered = true;
-      this.$('.mission-location').html(this.missionMapView.$el);
       this.missionMapView.render();
     }
   },
