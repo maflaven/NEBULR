@@ -6,6 +6,10 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
   initialize: function (options) {
     this.filterData = options.filterData;
     this.collection = options.collection;
+
+    if (this.filterData.planet) {
+      this.updateMissionIndex();
+    }
   },
 
   events: {
@@ -13,7 +17,9 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({
+      data: this.filterData
+    }));
     this.attachCompensationSlider();
     this.attachRatingSlider();
 

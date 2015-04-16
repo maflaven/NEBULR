@@ -3,8 +3,8 @@ Nebulr.Views.MissionSearchShow = Backbone.View.extend({
 
   className: 'full-size row',
 
-  initialize: function () {
-    this.filterData = {};
+  initialize: function (options) {
+    this.filterData = options.filterData;
     this.mapView = new Nebulr.Views.EventMapShow({
       collection: this.collection,
       filterData: this.filterData

@@ -5,14 +5,23 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     this.currentUser.fetch();
     this.missions = new Nebulr.Collections.Missions();
     this.users = new Nebulr.Collections.Users();
+    this.filterData = {};
   },
 
   routes: {
-    '': 'missionIndexSearch',
+    '': 'searchLanding',
+    'missions/': 'missionIndexSearch',
     'missions/new': 'missionNew',
     'missions/search': 'missionSearch',
     'missions/:id': 'missionShow',
     'users/:id': 'userShow'
+  },
+
+  searchLanding: function () {
+    var view = new Nebulr.Views.SearchLanding({
+      filterData: this.filterData
+    });
+    this._swapView(view);
   },
 
   missionNew: function () {
@@ -30,15 +39,6 @@ Nebulr.Routers.Router = Backbone.Router.extend({
       model: model,
       currentUserId: this.currentUser.id,
       currentUser: this.currentUser
-    });
-    this._swapView(view);
-  },
-
-  missionIndex: function () {
-    this.missions.fetch();
-    var view = new Nebulr.Views.MissionIndex({
-      collection: this.missions,
-      itemSize: 4
     });
     this._swapView(view);
   },
@@ -61,9 +61,9 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionSearch: function () {
-    // this.missions.fetch();
     var view = new Nebulr.Views.MissionSearchShow({
-      collection: this.missions
+      collection: this.missions,
+      filterData: this.filterData
     });
     this._swapView(view);
   },
