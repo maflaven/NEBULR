@@ -1,7 +1,26 @@
-<input type="date" name="min_date" id="min-date" value=<%= data.min_date %>>
-<input type="date" name="max_date" id="max-date" value=<%= data.max_date %>><br>
-<label>COMPENSATION:</label><input type="text" id="cmp-range" readonly>
-<div class="center-block" id="compensation-slider"></div><br>
-<label>AVERAGE RATING:</label><input type="text" id="rating-range" readonly>
-<div class="center-block" id="rating-slider"></div><br>
-<input type="submit" id="filter-submit" class="btn btn-info" value="SEARCH">
+<div class="row">
+
+  <label class="col-xs-2">START</label>
+  <input type="date" name="min_date" id="min-date" value="<%= data.min_date %>" class="input col-xs-3">
+  <label class="col-xs-2 col-xs-offset-1">END</label>
+  <input type="date" name="max_date" id="max-date" value="<%= data.max_date %>" class="input col-xs-3">
+
+</div>
+<br>
+<div class="row">
+
+  <label class="col-xs-3">COMPENSATION</label>
+  <input class="col-xs-3 input" type="text" id="cmp-range" readonly>
+  <div class="col-xs-4 col-xs-offset-1" id="compensation-slider"></div><br>
+
+</div>
+<br>
+<div class="row">
+
+  <label class="col-xs-3">AVG RATING</label>
+  <input class="col-xs-3 input" type="text" id="rating-range" readonly>
+  <div class="col-xs-4 col-xs-offset-1" id="rating-slider"></div><br>
+
+</div>
+<br>
+<input type="submit" id="filter-submit" class="btn btn-info center-block" value="SEARCH">

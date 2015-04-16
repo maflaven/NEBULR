@@ -1,6 +1,6 @@
 Nebulr.Views.MissionIndex = Backbone.View.extend({
   template: JST['mission/index'],
-  className: 'mission-index row',
+  className: 'mission-index',
 
   initialize: function (options) {
     this.listenTo(this.collection, "sync add remove", this.render);

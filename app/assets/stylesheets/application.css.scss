@@ -87,14 +87,45 @@ ul {
   position: relative;
 }
 
+#filter-submit {
+  width: 500px;
+}
+
 .mission-index {
   list-style-type: none;
   overflow-y: scroll;
-  margin: 0;
+  margin: 0 10px;
   padding: 0;
+}
+
+.mission-title-search-input {
+  width: 200px;
+}
+
+.mission-index-search, .mission-index {
+  height: 100%;
+}
+
+.mission-index-search .mission-index-li {
+  height: 400px;
+  margin: 20px 0;
+}
+
+.mission-index-item, .mission-index-item .image, .mission-index-item .image * {
+  height: 100%;
+  max-width: 100%;
+}
+
+.filtered-mission-index > .mission-index {
   position: absolute;
-  top: 32%;
+  top: 200px;
   bottom: 0;
+  height: calc(100% - 200px);
+}
+
+.filtered-mission-index .mission-index-li {
+  height: 300px;
+  margin: 15px 0;
 }
 
 .remove-listing {
@@ -112,8 +143,8 @@ ul {
   margin: 10px 10px;
 }
 
-#compensation-slider, #rating-slider {
-  width: 60%;
+.input {
+  padding: 0;
 }
 
 .comment-index-item > .user-index-item {

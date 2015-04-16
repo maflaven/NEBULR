@@ -29,15 +29,15 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
   attachCompensationSlider: function () {
     var $cmpSliderDiv = this.$('#compensation-slider');
     this.min_cmp = 0;
-    this.max_cmp = 1000000;
+    this.max_cmp = 100000;
 
     $cmpSliderDiv.slider({
       animate: "fast",
       min: 0,
-      max: 1000000,
+      max: 100000,
       orientation: "horizontal",
       range: true,
-      step: 50000,
+      step: 1000,
       values: [this.min_cmp, this.max_cmp],
       slide: this.recordCompensation.bind(this)
     });

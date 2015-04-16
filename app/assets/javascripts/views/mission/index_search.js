@@ -1,5 +1,6 @@
 Nebulr.Views.MissionIndexSearch = Backbone.View.extend({
   template: JST['mission/index_search'],
+  className: 'mission-index-search',
 
   initialize: function (options) {
     this.collection = options.collection;
