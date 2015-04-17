@@ -1,5 +1,7 @@
 Nebulr.Views.MissionCarousel = Backbone.View.extend({
   template: JST['mission/carousel'],
+  className: 'mission-carousel',
+
   initialize: function (options) {
     this.listenTo(this.collection, "add sync", this.render);
   },
@@ -16,6 +18,7 @@ Nebulr.Views.MissionCarousel = Backbone.View.extend({
     }
 
     this.$el.html(this.template({ images: images }));
+
     return this;
   }
 });

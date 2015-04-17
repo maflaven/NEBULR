@@ -1,4 +1,4 @@
-Nebulr.Views.EventMapMissionShow = Backbone.View.extend({
+Nebulr.Views.MissionMapShow = Backbone.View.extend({
   className: 'full-size',
 
   initialize: function (options) {

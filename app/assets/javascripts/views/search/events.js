@@ -12,45 +12,45 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
   },
 
   render: function () {
-    // var mapOptions = {
-    //   center: { lat: 37.7833, lng: -122.4167},
-    //   zoom: 12,
-    //   mapTypeId: google.maps.MapTypeId.SATELLITE
-    // };
-    var that = this;
-    var moonTypeOptions = {
-      getTileUrl: function(coord, zoom) {
-          var normalizedCoord = that.getNormalizedCoord(coord, zoom);
-          if (!normalizedCoord) {
-            return null;
-          }
-          var bound = Math.pow(2, zoom);
-          return "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/clem_bw" +
-              "/" + zoom + "/" + normalizedCoord.x + "/" +
-              (bound - normalizedCoord.y - 1) + ".jpg";
-      },
-      tileSize: new google.maps.Size(256, 256),
-      maxZoom: 9,
-      minZoom: 0,
-      radius: 1738000,
-      name: "Moon"
+    var mapOptions = {
+      center: { lat: 37.7833, lng: -122.4167},
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.SATELLITE
     };
+    var that = this;
+    // var moonTypeOptions = {
+    //   getTileUrl: function(coord, zoom) {
+    //       var normalizedCoord = that.getNormalizedCoord(coord, zoom);
+    //       if (!normalizedCoord) {
+    //         return null;
+    //       }
+    //       var bound = Math.pow(2, zoom);
+    //       return "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/clem_bw" +
+    //           "/" + zoom + "/" + normalizedCoord.x + "/" +
+    //           (bound - normalizedCoord.y - 1) + ".jpg";
+    //   },
+    //   tileSize: new google.maps.Size(256, 256),
+    //   maxZoom: 9,
+    //   minZoom: 0,
+    //   radius: 1738000,
+    //   name: "Moon"
+    // };
 
     var mapOptions = {
       center: { lat: 37.7833, lng: -122.4167},
-      zoom: 1,
+      zoom: 7,
       streetViewControl: false,
       mapTypeControlOptions: {
         mapTypeIds: ["moon"]
       }
     };
 
-    var moonMapType = new google.maps.ImageMapType(moonTypeOptions);
-    this._map = new google.maps.Map(this.el, mapOptions);
-    this._map.mapTypes.set('moon', moonMapType);
-    this._map.setMapTypeId('moon');
-
+    // var moonMapType = new google.maps.ImageMapType(moonTypeOptions);
     // this._map = new google.maps.Map(this.el, mapOptions);
+    // this._map.mapTypes.set('moon', moonMapType);
+    // this._map.setMapTypeId('moon');
+
+    this._map = new google.maps.Map(this.el, mapOptions);
 
     this.collection.each(this.addMarker.bind(this));
     this.attachMapListeners();

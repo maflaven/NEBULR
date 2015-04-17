@@ -12,10 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= bootstrap
  *= require jquery-ui
  *= require jquery.rateyo
  */
-$font-family-base: 'Droid Sans Mono';
+// $font-family-base: 'Droid Sans Mono';
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -31,22 +32,14 @@ form.log-form {
   width: 13%;
 }
 
-.backdrop {
-  background-color: white;
-}
-
-.mission-show {
-  background-color: white;
-}
-
-// .navbar {
-//   background-color: rgb(60, 60, 60);
-//   border-color: rgb(60, 60, 60);
+// .backdrop {
+//   background-color: white;
 // }
 //
-// .navbar .dropdown, .navbar .dropdown > * {
-//   background-color: rgb(60, 60, 60);
+// .mission-show {
+//   background-color: white;
 // }
+
 
 .backdrop,
 #main,
@@ -58,6 +51,11 @@ html,
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+#main {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .mission-location {
@@ -247,15 +245,16 @@ ul {
 
 }
 
-// .mission-carousel {
-//   height: 100%
-// }
 
-// .carousel-inner * {
-//   position: relative;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
+.mission-images {
+  height: 100%;
+}
+
+.mission-img {
+  max-height: 500px;
+  width: 100%;
+}
+
 
 .comment-index-item:not(:last-child) {
   margin-bottom: 10px;

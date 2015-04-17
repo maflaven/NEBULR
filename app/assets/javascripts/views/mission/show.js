@@ -9,7 +9,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.imageCarouselView = new Nebulr.Views.MissionCarousel({
       collection: this.model.images()
     });
-    this.addSubview('.mission-carousel', this.imageCarouselView);
+    this.addSubview('.mission-images', this.imageCarouselView);
 
     this.enlistBtnView = new Nebulr.Views.ButtonEnlist({
       model: this.model,
@@ -59,7 +59,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.comments-index', this.commentsIndexView);
 
-    this.missionMapView = new Nebulr.Views.EventMapMissionShow({
+    this.missionMapView = new Nebulr.Views.MissionMapShow({
       model: this.model,
     });
     this.mapRendered = false;
