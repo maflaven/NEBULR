@@ -10,6 +10,7 @@ json.images @mission.images, :id, :mission_id, :filepicker_url
 json.comments @mission.comments do |comment|
   json.id comment.id
   json.body comment.body
+  json.created_at comment.created_at
   json.user comment.user, :id, :username, :filepicker_url
 end
 json.ratings @mission.ratings, :id, :value, :user_id

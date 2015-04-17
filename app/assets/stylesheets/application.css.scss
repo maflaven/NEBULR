@@ -15,6 +15,8 @@
  *= require jquery-ui
  *= require jquery.rateyo
  */
+$font-family-base: 'Droid Sans Mono';
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -28,6 +30,23 @@
 form.log-form {
   width: 13%;
 }
+
+.backdrop {
+  background-color: white;
+}
+
+.mission-show {
+  background-color: white;
+}
+
+// .navbar {
+//   background-color: rgb(60, 60, 60);
+//   border-color: rgb(60, 60, 60);
+// }
+//
+// .navbar .dropdown, .navbar .dropdown > * {
+//   background-color: rgb(60, 60, 60);
+// }
 
 .backdrop,
 #main,
@@ -78,7 +97,32 @@ ul {
 }
 
 .mission-stats-pics-loc {
+  padding: 20px;
   position: relative;
+}
+
+.enlisted-users {
+  height: 100%;
+}
+
+.user-index {
+  height: calc(100% - 36px);
+}
+
+.user-index ul {
+  height: 100%;
+}
+
+.mission-location {
+  padding: 20px;
+}
+
+.mission-desc-users {
+  padding: 20px;
+}
+
+.mission-show .comments {
+  padding: 20px;
 }
 
 #filter-submit {
@@ -129,6 +173,8 @@ ul {
   height: 500px;
 }
 
+
+
 .mission-index-item, .mission-index-item .image, .mission-index-item .image * {
   height: 95%;
   max-width: 100%;
@@ -164,6 +210,52 @@ ul {
   bottom: 18%;
   left: 75%;
 }
+
+.mission-index-item .compensation p {
+  color: white;
+}
+
+.mission-stats-pics-loc {
+  height: 500px;
+}
+
+.mission-desc-users {
+  height: 200px;
+}
+
+.user-index-item img {
+  height: 100px;
+  width: 100px;
+}
+
+.enlisted-users-index img {
+  height: 50px;
+  width: 50px;
+}
+
+.enlisted-users-index {
+  height: 100%;
+}
+
+.user-index ul {
+  list-style-type: none;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.user-index {
+
+}
+
+// .mission-carousel {
+//   height: 100%
+// }
+
+// .carousel-inner * {
+//   position: relative;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
 
 .comment-index-item:not(:last-child) {
   margin-bottom: 10px;
@@ -204,14 +296,6 @@ ul {
 
 .comment-index-item:hover .delete-comment {
   visibility: visible;
-}
-
-.caption {
-  list-style-type: none;
-}
-
-.images img{
-  width: 100%
 }
 
 // Modal
