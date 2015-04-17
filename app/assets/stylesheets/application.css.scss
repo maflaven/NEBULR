@@ -171,7 +171,21 @@ ul {
   height: 500px;
 }
 
+//Carousel
 
+.mission-carousel {
+  height: 100%;
+}
+
+#mission-carousel {
+  height: 100%;
+}
+
+.carousel-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .mission-index-item, .mission-index-item .image, .mission-index-item .image * {
   height: 95%;
@@ -184,9 +198,9 @@ ul {
 
 .filtered-mission-index > .mission-index {
   position: absolute;
-  top: 200px;
+  top: 220px;
   bottom: 0;
-  height: calc(100% - 200px);
+  height: calc(100% - 220px);
 }
 
 .filtered-mission-index .mission-index-li {
@@ -214,7 +228,7 @@ ul {
 }
 
 .mission-stats-pics-loc {
-  height: 500px;
+  height: 550px;
 }
 
 .mission-desc-users {
@@ -245,6 +259,10 @@ ul {
 
 }
 
+.delete-comment {
+  position: relative;
+  bottom: 5px;
+}
 
 .mission-images {
   height: 100%;
@@ -295,6 +313,10 @@ ul {
 
 .comment-index-item:hover .delete-comment {
   visibility: visible;
+}
+
+.comment-new-form {
+  margin-bottom: 20px;
 }
 
 // Modal

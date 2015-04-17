@@ -1,4 +1,6 @@
-<form>
-  <textarea name="body"><%= comment.escape('body') %></textarea>
-  <input type="button" class="create-comment btn btn-xs" value="INPUT">
-</form>
+<div class="comment-input input-group">
+  <input type="text" class="form-control" name="body" value="<%= comment.escape('body') %>">
+  <span class="input-group-btn">
+    <button class="create-comment-btn btn btn-default" type="button">INPUT</button>
+  </span>
+</div>

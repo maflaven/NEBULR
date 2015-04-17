@@ -10,7 +10,7 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
   },
 
   events: {
-    'click .create-comment': 'create'
+    'click .create-comment-btn': 'create'
   },
 
   render: function () {
@@ -22,8 +22,8 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
     event.preventDefault();
     var $button = $(event.currentTarget);
     $button.prop('disabled', true);
-
-    var data = $(event.currentTarget.parentElement).serializeJSON();
+    
+    var data = this.$('.comment-input > input').serializeJSON();
     if (this.missionId) {
       data = $.extend(data, {
         commentable_id: this.missionId,
