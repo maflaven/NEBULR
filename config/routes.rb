@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :images, only: [:create, :destroy, :show]
     resources :comments, only: [:create, :destroy, :show]
     resources :ratings, only: [:create, :destroy, :update, :show]
+    resources :updates, only: [:create, :destroy, :show]
   end
 end

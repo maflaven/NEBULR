@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: updates
+#
+#  id         :integer          not null, primary key
+#  mission_id :integer          not null
+#  text       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mission_id: 1
+  text: MyString
+
+two:
+  mission_id: 1
+  text: MyString

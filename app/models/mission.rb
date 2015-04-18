@@ -29,6 +29,7 @@ class Mission < ActiveRecord::Base
   has_many :images, dependent: :destroy
   has_many :comments, as: :commentable
   has_many :ratings
+  has_many :updates
 
   def self.filter_by(data_type, min, max, missions_set=false)
     missions_set ||= Mission.all
