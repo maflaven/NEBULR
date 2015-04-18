@@ -10,7 +10,7 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
   },
 
   events: {
-    'click .create-comment-btn': 'create'
+    'submit .comment-form': 'create'
   },
 
   render: function () {
@@ -20,10 +20,11 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
 
   create: function (event) {
     event.preventDefault();
-    var $button = $(event.currentTarget);
-    $button.prop('disabled', true);
-    
-    var data = this.$('.comment-input > input').serializeJSON();
+    var $form = $(event.currentTarget);
+    $btn = $form.find('.create-comment-btn');
+    $btn.prop('disabled', true);
+
+    var data = $form.serializeJSON();
     if (this.missionId) {
       data = $.extend(data, {
         commentable_id: this.missionId,
@@ -44,7 +45,10 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
         this.collection.add(this.model);
         this.model = new Nebulr.Models.Comment();
         this.render();
-      }.bind(this)
+      }.bind(this),
+      error: function () {
+        $btn.prop('disabled', false);
+      }
     });
   }
 });

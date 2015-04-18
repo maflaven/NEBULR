@@ -50,7 +50,7 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       model: new Nebulr.Models.Comment(),
       currentUser: this.currentUser
     });
-    this.addSubview('.comments-index', this.commentNewView);
+    this.addSubview('.comment-new', this.commentNewView);
 
     this.commentsIndexView = new Nebulr.Views.CommentIndex({
       collection: this.model.comments(),
@@ -73,6 +73,21 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview('#modal-completion', this.modalCompletionView);
+
+    this.updateNewView = new Nebulr.Views.UpdateNew({
+      mission: this.model,
+      currentUserId: this.currentUser.id,
+      collection: this.model.updates(),
+      model: new Nebulr.Models.Update()
+    });
+    this.addSubview('.update-new', this.updateNewView);
+
+    this.updatesView = new Nebulr.Views.UpdateIndex({
+      collection: this.model.updates(),
+      currentUserId: this.currentUser.id,
+      mission: this.model
+    });
+    this.addSubview('.updates-index', this.updatesView);
   },
 
   events: {

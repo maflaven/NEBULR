@@ -1,6 +1,8 @@
-<div class="comment-input input-group">
-  <input type="text" class="form-control" name="body" value="<%= comment.escape('body') %>">
-  <span class="input-group-btn">
-    <button class="create-comment-btn btn btn-default" type="button">INPUT</button>
-  </span>
-</div>
+<form class="comment-form">
+  <div class="comment-input input-group">
+    <input type="text" class="form-control" name="body" value="<%= comment.escape('body') %>">
+    <span class="input-group-btn">
+      <input class="create-comment-btn btn btn-default" type="submit" value="INPUT">
+    </span>
+  </div>
+</form>

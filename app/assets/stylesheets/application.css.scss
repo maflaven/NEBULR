@@ -273,7 +273,6 @@ ul {
   width: 100%;
 }
 
-
 .comment-index-item:not(:last-child) {
   margin-bottom: 10px;
   border-bottom: 1px solid white;
@@ -282,6 +281,28 @@ ul {
 .comment-index-item img {
   width: 50px;
   height: 50px;
+}
+
+.update-index-item:not(:last-child) {
+  margin-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.update-index-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.delete-update {
+  visibility: hidden;
+}
+
+.update-index-item:hover .delete-update {
+  visibility: visible;
+}
+
+.update-new-form {
+  margin-bottom: 20px
 }
 
 .remove-listing {

@@ -1,0 +1,20 @@
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="#missions/<%= mission.id %>">
+      <img class="media-object" src="<%= thumbnail %>" alt="<%= mission.escape('title') %>">
+    </a>
+  </div>
+  <div class="media-body">
+    <h6 class="media-heading"><%= mission.escape('title') %></h6>
+    <% if (update.escape('text').length > 30) { %>
+      <p><%= update.escape('text').slice(0, 29) %>...</p>
+    <% } else { %>
+      <p><%= update.escape('text') %></p>
+    <% } %>
+  </div>
+</div>
+<div>
+<% if (currentUserId == leaderId) { %>
+  <input type="button" value="DELETE" class="delete-update btn btn-xs btn-danger">
+<% } %>
+</div>

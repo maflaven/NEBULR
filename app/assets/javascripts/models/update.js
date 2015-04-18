@@ -1,5 +1,5 @@
 Nebulr.Models.Update = Backbone.Model.extend({
-  urlRoot: 'api/models',
+  urlRoot: 'api/updates',
 
   mission: function () {
     if (!this._mission) {
@@ -10,7 +10,7 @@ Nebulr.Models.Update = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.mission) {
-      this.mission().set({ id: response.mission }, { parse: true });
+      this.mission().set(response.mission, { parse: true });
       delete response.mission;
     }
 

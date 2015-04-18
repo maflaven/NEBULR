@@ -2,14 +2,14 @@ class Api::UpdatesController < ApplicationController
   def create
     @update = Update.new(update_params)
 
-    unless @update.mission_leader && is_mission_leader?(@update)
+    unless @update.mission_id && is_mission_leader?(@update)
       render text: "You are not this mission's leader.", status: 403
     end
 
     if @update.save
       render json: @update
     else
-      render json: @update.errors.full_messages
+      render json: @update.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -18,12 +18,13 @@ class Api::UpdatesController < ApplicationController
 
     unless is_mission_leader?(@update)
       render text: "You are not this mission's leader.", status: 403
+      return
     end
 
     if @update.try(:destroy)
       render json: @update
     else
-      render json: @update.errors.full_messages
+      render json: @update.errors.full_messages, status: :unprocessable_entity
     end
   end
 

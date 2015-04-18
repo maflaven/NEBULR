@@ -7,8 +7,6 @@ Nebulr.Views.CommentShow = Backbone.View.extend({
     this.currentUserId = options.currentUserId;
     this.mission = options.mission;
     this.user = options.user;
-    this.mission && this.listenTo(this.mission, "sync", this.render);
-    this.user && this.listenTo(this.user, "sync", this.render);
   },
 
   events: {

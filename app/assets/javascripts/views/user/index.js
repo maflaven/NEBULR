@@ -26,7 +26,7 @@ Nebulr.Views.UserIndex = Backbone.View.extend({
     var $users = $(
       '<p>ENLISTED: ' + this.collection.length + '</p>'
     );
-    this.$('h5').html($users);
+    this.$('h4').html($users);
 
     return this;
   }
