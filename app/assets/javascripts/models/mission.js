@@ -57,6 +57,13 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     return this._ratings;
   },
 
+  updates: function () {
+    if (!this._updates) {
+      this._updates = new Nebulr.Collections.Updates();
+    }
+    return this._updates;
+  },
+
   parse: function (response) {
     if (response.leader) {
       this.leader().set(response.leader);
@@ -89,6 +96,10 @@ Nebulr.Models.Mission = Backbone.Model.extend({
     if (response.ratings) {
       this.ratings().set(response.ratings);
       delete response.ratings;
+    }
+    if (response.updates) {
+      this.updates().set(response.updates);
+      delete response.updates;
     }
 
     return response;

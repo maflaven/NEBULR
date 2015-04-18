@@ -24,6 +24,9 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   def show
     @comment = Comment.find(params[:id])
     render :show

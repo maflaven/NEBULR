@@ -49,6 +49,16 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def feed
+    updates = []
+
+    followed_missions.each do |mission|
+      updates.concat(mission.updates)
+    end
+
+    updates
+  end
+
   protected
 
   def ensure_session_token
