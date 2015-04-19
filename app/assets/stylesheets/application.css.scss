@@ -127,37 +127,6 @@ ul {
   width: 500px;
 }
 
-.mission-index {
-  list-style-type: none;
-  overflow-y: scroll;
-  margin: 0 10px;
-  padding: 0;
-}
-
-.mission-index-item .compensation {
-  width: 100px;
-  background-color: black;
-  opacity: 0.8;
-  position: relative;
-  bottom: 20%;
-}
-
-.mission-index-item .compensation p {
-  margin: 0;
-  width: 100px;
-  text-align: center;
-}
-
-.mission-index-item .title {
-  position: relative;
-  bottom: 22%;
-  margin: 0 0 0 5%;
-}
-
-.mission-index-item .leader-avatar {
-  width: 0;
-  z-index: 2;
-}
 
 .mission-title-search-input {
   width: 200px;
@@ -187,13 +156,79 @@ ul {
   transform: translateY(-50%);
 }
 
-.mission-index-item, .mission-index-item .image, .mission-index-item .image * {
-  height: 95%;
-  max-width: 100%;
+.mission-index {
+  list-style-type: none;
+  overflow-y: scroll;
+  margin: 0 10px;
+  padding: 0;
+}
+
+.mission-index-item .compensation {
+  width: 100px;
+  background-color: black;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 30%;
+}
+
+.mission-index-item .compensation p {
+  margin: 0;
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+.mission-index-item .title {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+}
+
+.mission-index-item .leader-avatar {
+  z-index: 2;
+}
+.mission-index-item {
+  height: 100%;
+  background-color: #181818;
 }
 
 .mission-index-item .image {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
+.mission-index-item img {
+  height: auto;
+  max-width: 100%;
+}
+
+.mission-index-li {
+  margin: 15px 0;
+}
+
+.mission-index .leader-avatar img {
+  width: 80px;
+  height: 80px;
+}
+
+.mission-index .leader-avatar {
+  position: absolute;
+  bottom: 5%;
+  left: 75%;
+  width:  80px;
+  height: 80px;
+}
+
+.mission-index .title {
+  background-color: rgb(24, 24, 24);
+  opacity: 0.8;
+}
+
+.mission-index .title p {
+  font-size: 20px;
+  margin: 0 10px;
 }
 
 .filtered-mission-index > .mission-index {
@@ -208,7 +243,7 @@ ul {
 }
 
 .enlisted-missions-index .mission-index-li {
-  height: 200px;
+  height: 250px;
 }
 
 .enlisted-missions {
@@ -217,6 +252,15 @@ ul {
 
 .enlisted-missions-index {
   height: calc(100% - 80px);
+}
+
+.enlisted-missions .mission-index-item .image {
+  height: 100%;
+}
+
+.enlisted-missions .mission-index-item .image img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .data-missions-feed {
@@ -250,25 +294,7 @@ ul {
   width: 100%;
 }
 
-.mission-index-li {
-  margin: 15px 0;
-  // padding: 0 15px;
-}
 
-.mission-index .leader-avatar img {
-  width: 70px;
-  height: 70px;
-}
-
-.mission-index .leader-avatar {
-  position: relative;
-  bottom: 18%;
-  left: 75%;
-}
-
-.mission-index-item .compensation p {
-  color: white;
-}
 
 .mission-stats-pics-loc {
   height: 550px;

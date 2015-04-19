@@ -6,7 +6,7 @@ Nebulr.Views.MissionIndexSearch = Backbone.View.extend({
     this.collection = options.collection;
     this.missionIndexView = new Nebulr.Views.MissionIndex({
       collection: this.collection,
-      itemSize: 4
+      itemSize: 6
     });
     this.form = $('#mission-title-search');
     this.form.on('submit', this.searchMissions.bind(this));

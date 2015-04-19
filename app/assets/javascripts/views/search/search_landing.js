@@ -20,6 +20,10 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
     var data = this.$('.mission-search').serializeJSON();
     this.filterData = $.extend(this.filterData, data);
 
+    if (!this.filterData['min_date'] || !this.filterData['max_date']) {
+      delete this.filterData['min_date']; delete this.filterData['max_date'];
+    }
+
     Backbone.history.navigate('#/missions/search', { trigger: true });
   }
 });
