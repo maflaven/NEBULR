@@ -1,4 +1,6 @@
 class Api::EnlistsController < ApplicationController
+  before_action :require_signed_in!
+
   def create
     @enlist = current_user.enlists.new(enlist_params)
     @mission = Mission.find(@enlist.mission_id)

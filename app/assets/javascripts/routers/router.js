@@ -3,6 +3,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.currentUser = new Nebulr.Models.User({ id: options.currentUserId });
     this.currentUser.fetch();
+    this.currentUserView = new Nebulr.Views.UserNav({ model: this.currentUser });
     this.missions = new Nebulr.Collections.Missions();
     this.users = new Nebulr.Collections.Users();
     this.filterData = {};
@@ -18,6 +19,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   searchLanding: function () {
+    this.currentUserView.render();
+
     var view = new Nebulr.Views.SearchLanding({
       filterData: this.filterData
     });
@@ -25,6 +28,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionNew: function () {
+    this.currentUserView.render();
+
     var model = new Nebulr.Models.Mission();
     var view = new Nebulr.Views.MissionForm({
       model: model,
@@ -34,6 +39,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionShow: function (id) {
+    this.currentUserView.render();
+
     var model = this.missions.getOrFetch(id);
     var view = new Nebulr.Views.MissionShow({
       model: model,
@@ -44,6 +51,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionIndexSearch: function () {
+    this.currentUserView.render();
+
     this.missions.fetch();
     var view = new Nebulr.Views.MissionIndexSearch({
       collection: this.missions
@@ -52,6 +61,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
+    this.currentUserView.render();
+
     var model = this.users.getOrFetch(id);
     var view = new Nebulr.Views.UserShow({
       model: model,
@@ -61,6 +72,8 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionSearch: function () {
+    this.currentUserView.render();
+
     var view = new Nebulr.Views.MissionSearchShow({
       collection: this.missions,
       filterData: this.filterData

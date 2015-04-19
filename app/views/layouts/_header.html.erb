@@ -6,36 +6,24 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-left">
-      <% if signed_in? %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MISSION CONTROL <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#missions/">INDEX</a></li>
-            <li class="divider"></li>
-            <li><a href="#missions/search">SEARCH</a></li>
-            <li class="divider"></li>
-            <li><a href="#missions/new">CREATE</a></li>
-          </ul>
-        </li>
-        <form id="mission-title-search" class="navbar-form navbar-left" role="search"></form>
-      <% end %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MISSION CONTROL <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#missions/">INDEX</a></li>
+          <li class="divider"></li>
+          <li><a href="#missions/search">SEARCH</a></li>
+          <li class="divider"></li>
+          <li><a href="#missions/new">CREATE</a></li>
+        </ul>
+      </li>
+      <form id="mission-title-search" class="navbar-form navbar-left" role="search"></form>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <% if signed_in? %>
-        <li><a href="#users/<%= current_user.id %>"><%= current_user.username %></a></li>
-        <li><%= button_to "LOGOUT", session_url, method: :delete, class: "btn btn-danger navbar-btn" %></li>
-      <% else %>
-        <li><%= link_to "LOGIN", new_session_url %></li>
-        <li><%= link_to "SIGNUP", new_user_url %></li>
-      <% end %>
+    <ul class="user-nav nav navbar-nav navbar-right">
+      <li id="username"></li>
+      <li id="logout"></li>
+      <li id="login"></li>
+      <li id="signup"></li>
     </ul>
   </div>
 </div>
 </nav>
-
-<% if flash[:errors] %>
-<div class="alert alert-warning alert-dismissible" role="alert">
-   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-<%= flash[:errors].join("<br>").html_safe %>
-</div>
-<% end %>

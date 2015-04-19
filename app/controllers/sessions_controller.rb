@@ -1,25 +1,20 @@
 class SessionsController < ApplicationController
-  def new
-    render :new
-  end
-
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
     )
-    
+
     if @user
       sign_in!(@user)
-      redirect_to root_url
+      render json: @user.id
     else
-      flash.now[:errors] = ["Invalid email and/or password"]
-      render :new
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def destroy
     sign_out!
-    redirect_to new_session_url
+    render text: "Successfully logged out."
   end
 end

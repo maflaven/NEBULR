@@ -1,4 +1,6 @@
 class Api::UpdatesController < ApplicationController
+  before_action :require_signed_in!
+
   def create
     @update = Update.new(update_params)
 

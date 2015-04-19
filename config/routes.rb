@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root to: 'static_pages#root'
 
-  resources :users, only: [:new, :create]
-  resources :users, only: [:index, :show, :edit, :destroy],
+  resources :users, defaults: { format: :json }
+  resource :session, only: [:create, :destroy],
             defaults: { format: :json }
-  resource :session
 
   namespace :api, defaults: { format: :json } do
     resources :missions, except: [:new, :edit]

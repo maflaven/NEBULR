@@ -1,9 +1,13 @@
 <div class="backdrop clearfix" >
+  <div id="session-modals">
+    <div id="login"></div>
+    <div id="logout"></div>
+  </div>
   <div id="main" class="clearfix"></div>
 </div>
 <script>
   $(function () {
-    Nebulr.initialize({ currentUserId: <%= current_user.id %> });
+    Nebulr.initialize({ currentUserId: <%= current_user ? current_user.id : 'undefined' %> });
   });
 </script>
 <script>

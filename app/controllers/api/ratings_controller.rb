@@ -1,4 +1,6 @@
 class Api::RatingsController < ApplicationController
+  before_action :require_signed_in!
+
   def create
     @rating = current_user.ratings.new(rating_params)
     @mission = Mission.find(@rating.mission_id)

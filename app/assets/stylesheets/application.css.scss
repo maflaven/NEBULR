@@ -21,25 +21,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
-.log-header {
-  margin: 100px 0 10px 0;
-  text-align: center;
-  position: relative;
+#login button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-form.log-form {
-  width: 13%;
+#signup button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
-
-// .backdrop {
-//   background-color: white;
-// }
-//
-// .mission-show {
-//   background-color: white;
-// }
-
 
 .backdrop,
 #main,
@@ -431,6 +421,6 @@ ul {
   padding: 50px;
   margin-left: -250px;
   transform: translateY(-50%);
-  background: white;
+  background: rgb(28, 28, 28);
   border-radius: 5px;
 }

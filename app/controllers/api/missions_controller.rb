@@ -1,5 +1,5 @@
 class Api::MissionsController < ApplicationController
-  before_action :require_signed_in!
+  before_action :require_signed_in!, only: [:create, :update, :destroy]
 
   def index
     @missions = Mission.all
