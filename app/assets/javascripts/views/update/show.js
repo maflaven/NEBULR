@@ -29,7 +29,9 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
 
   setAttributes: function () {
     this.thumbnail = "https://www.filepicker.io/api/file/UuGSt7rqR4aVqjX5K54S";
-    if (this.mission.images().first().get('filepicker_url')) {
+    if (this.mission.get('images')) {
+      this.thumbnail = this.mission.get('images')[0].filepicker_url;
+    } else if (this.mission.images().first().get('filepicker_url')) {
       this.thumbnail = this.mission.images().first().get('filepicker_url');
     }
   },

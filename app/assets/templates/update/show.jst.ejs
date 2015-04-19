@@ -14,7 +14,7 @@
   </div>
 </div>
 <div>
-<% if (currentUserId == leaderId) { %>
+<% if (leaderId && currentUserId == leaderId) { %>
   <input type="button" value="DELETE" class="delete-update btn btn-xs btn-danger">
 <% } %>
 </div>

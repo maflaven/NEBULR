@@ -207,6 +207,49 @@ ul {
   height: 450px;
 }
 
+.enlisted-missions-index .mission-index-li {
+  height: 200px;
+}
+
+.enlisted-missions {
+  height: 100%;
+}
+
+.enlisted-missions-index {
+  height: calc(100% - 80px);
+}
+
+.data-missions-feed {
+  height: 800px;
+}
+
+.user-show .feed {
+  height: 100%;
+}
+
+.feed .updates-index {
+  height: calc(100% - 80px);
+}
+
+.feed .updates-index {
+  list-style-type: none;
+  overflow-y: scroll;
+  margin: 0 10px;
+  padding: 0;
+}
+
+.updates {
+  height: 100%;
+}
+
+.user-show .data {
+  height: 100%;
+}
+
+.user-avatar > img {
+  width: 100%;
+}
+
 .mission-index-li {
   margin: 15px 0;
   // padding: 0 15px;
@@ -322,10 +365,6 @@ ul {
 
 .input {
   padding: 0;
-}
-
-.comment-index-item > .user-index-item {
-  width: 85px;
 }
 
 .delete-comment {

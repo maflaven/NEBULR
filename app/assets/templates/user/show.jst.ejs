@@ -1,21 +1,39 @@
-<div class="media">
-  <div class="media-left user-avatar">
-    <img class="media-object img-rounded" src="<%= user.get('filepicker_url') %>">
-  </div>
-  <div class="media-body">
+<div class="data-missions-feed row">
+  <div class="data col-xs-3">
+
     <% if (isSameUser) { %>
-      <h4>GREETINGS, <%= user.escape('username') %></h4>
+      <h4>GREETINGS: <%= user.escape('username') %></h4>
     <% } else { %>
-      <h4 class="media-heading"><%= user.escape('username') %></h4>
+      <h4><%= user.escape('username') %></h4>
     <% } %>
+
+    <div class="user-avatar">
+      <img class="img-rounded" src="<%= user.get('filepicker_url') %>">
+    </div>
+
+  </div>
+
+  <div class="enlisted-missions col-xs-5">
+
+    <h4>ENLISTED MISSIONS</h4>
+    <div class="enlisted-missions-index"></div>
+
+  </div>
+
+  <div class="feed col-xs-4">
+
+    <h4>FEED</h4>
+    <div class="updates"></div>
+
   </div>
 </div>
-<h5>ENLISTED MISSIONS</h5>
-<div class="enlisted-missions-index">
-</div>
-<h5>FOLLOWED MISSIONS</h5>
-<div class="followed-missions-index">
-</div>
-<h5>COMMENTS</h5>
-<div class="comments-index">
+
+<div class="comments-comments-header row">
+  <div class="comments col-xs-6 col-xs-offset-3">
+
+    <h4>COMMENTS</h4>
+    <div class="comments-index">
+    </div>
+
+  </div>
 </div>
