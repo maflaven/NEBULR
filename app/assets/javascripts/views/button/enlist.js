@@ -27,7 +27,9 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
   },
 
   enlistModal: function () {
-    if (this.enlist.isNew()) {
+    if (!this.currentUser.id) {
+      $('#login #modal').addClass('is-active');
+    } else if (this.enlist.isNew()) {
       this.modalEnlistmentView.$el.addClass('is-active');
     } else {
       this.enlistUser();

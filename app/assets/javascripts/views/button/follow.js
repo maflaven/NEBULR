@@ -7,7 +7,7 @@ Nebulr.Views.ButtonFollow = Backbone.View.extend({
   },
 
   events: {
-    'click #follow-btn': 'followMission',
+    'click #follow-btn': 'followMissionTree',
   },
 
   render: function () {
@@ -16,6 +16,14 @@ Nebulr.Views.ButtonFollow = Backbone.View.extend({
     }));
 
     return this;
+  },
+
+  followMissionTree: function (event) {
+    if (!this.currentUser.id) {
+      $('#login #modal').addClass('is-active');
+    } else {
+      this.followMission(event);
+    }
   },
 
   followMission: function (event) {

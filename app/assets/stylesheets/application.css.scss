@@ -397,6 +397,10 @@ ul {
 
 // Modal
 
+.modal .center-block {
+  margin-bottom: 5px;
+}
+
 .modal {
   display: none;
 }
@@ -415,12 +419,11 @@ ul {
 .modal-content {
   position: absolute;
   z-index: 1000;
-  top: 50%;
+  top: 23%;
   left: 50%;
   width: 400px;
-  padding: 50px;
-  margin-left: -250px;
-  transform: translateY(-50%);
+  padding: 30px;
+  transform: translateX(-50%);
   background: rgb(28, 28, 28);
   border-radius: 5px;
 }

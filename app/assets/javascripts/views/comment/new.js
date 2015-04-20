@@ -14,7 +14,9 @@ Nebulr.Views.CommentNew = Backbone.View.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({ comment: this.model }));
+    if (this.currentUser.id) {
+      this.$el.html(this.template({ comment: this.model }));
+    }
     return this;
   },
 

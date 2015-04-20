@@ -16,7 +16,7 @@ Nebulr.Views.UpdateNew = Backbone.View.extend({
   render: function () {
     this.setAttributes();
 
-    if (this.currentUserId == this.leaderId) {
+    if (this.currentUserId && this.currentUserId == this.leaderId) {
       this.$el.html(this.template({ update: this.model }));
     }
     return this;

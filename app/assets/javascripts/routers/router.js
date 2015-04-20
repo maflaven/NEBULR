@@ -29,13 +29,17 @@ Nebulr.Routers.Router = Backbone.Router.extend({
 
   missionNew: function () {
     this.currentUserView.render();
-
-    var model = new Nebulr.Models.Mission();
-    var view = new Nebulr.Views.MissionForm({
-      model: model,
-      currentUserId: this.currentUser.id
-    });
-    this._swapView(view);
+    
+    if (!this.currentUser.id) {
+      $('#login #modal').addClass('is-active');
+    } else {
+      var model = new Nebulr.Models.Mission();
+      var view = new Nebulr.Views.MissionForm({
+        model: model,
+        currentUserId: this.currentUser.id
+      });
+      this._swapView(view);
+    }
   },
 
   missionShow: function (id) {
