@@ -16,6 +16,10 @@ gem 'newrelic_rpm'
 gem 'filepicker-rails'
 gem 'figaro'
 
+group :production do
+  gem 'unicorn'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end

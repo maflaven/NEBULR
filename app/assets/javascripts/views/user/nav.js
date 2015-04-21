@@ -65,7 +65,7 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
 
     if (this.navHistory[this.navHistory.length - 1] === "missions/new") {
       this.model.clear({ silent: true });
-      Backbone.history.history.back();
+      Backbone.history.navigate('#', { trigger: true });
     } else {
       this.model.clear();
     }
