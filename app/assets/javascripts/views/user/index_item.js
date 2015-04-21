@@ -1,7 +1,9 @@
 Nebulr.Views.UserIndexItem = Backbone.View.extend({
   template: JST['user/index_item'],
 
-  initialize: function () {
+  initialize: function (options) {
+    this.mission = options.mission;
+    this.listenTo(this.mission, "sync", this.render);
     this.listenTo(this.model, "sync add", this.render);
     this.model.fetch();
   },

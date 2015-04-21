@@ -35,7 +35,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.addSubview('.rating-new', this.newRatingView);
 
     this.leaderItemView = new Nebulr.Views.UserIndexItem({
-      model: this.model.leader()
+      model: this.model.leader(),
+      mission: this.model
     });
     this.addSubview('.mission-leader', this.leaderItemView);
 
@@ -125,10 +126,14 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   },
 
   destroyModal: function () {
-    this.modalCancellationView.$el.addClass('is-active');
+    $('.modal-content').css({ backgroundColor: "#222222" });
+    $('.backdrop > .modal-screen').fadeIn("fast");
+    this.modalCancellationView.$el.slideDown('slow');
   },
 
   completeModal: function () {
-    this.modalCompletionView.$el.addClass('is-active');
+    $('.modal-content').css({ backgroundColor: "#222222" });
+    $('.backdrop > .modal-screen').fadeIn("fast");
+    this.modalCompletionView.$el.slideDown('slow');
   }
 });

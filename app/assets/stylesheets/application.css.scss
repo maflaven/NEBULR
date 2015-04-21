@@ -21,14 +21,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#login button {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-#signup button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.navbar {
+  border: none;
 }
 
 .backdrop,
@@ -144,6 +138,10 @@ ul {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.mission-stats {
+  margin-bottom: 15px;
 }
 
 .mission-index {
@@ -395,7 +393,19 @@ ul {
   margin-bottom: 20px;
 }
 
-// Modal
+#enlist-btn {
+  margin-bottom: 10px;
+}
+
+#cancel-btn {
+  margin-bottom: 10px;
+}
+
+#complete-btn {
+  margin-bottom: 20px;
+}
+
+// MODAL
 
 .modal .center-block {
   margin-bottom: 5px;
@@ -404,10 +414,20 @@ ul {
 .modal {
   display: none;
 }
-.modal.is-active {
-  display: block;
-}
+
 .modal-screen {
+  display: none;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px);
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#login-modal-screen {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -416,6 +436,7 @@ ul {
   z-index: 999;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .modal-content {
   position: absolute;
   z-index: 1000;
@@ -424,6 +445,67 @@ ul {
   width: 400px;
   padding: 30px;
   transform: translateX(-50%);
-  background: rgb(28, 28, 28);
+  background-color: #222222;
   border-radius: 5px;
+}
+
+// ENLISTMENT MODAL
+
+#modal-enlistment .modal-content {
+  width: 280px;
+  top: 20px;
+  // box-shadow: 0 15px 10px -13px;
+  box-shadow: none;
+  border: none;
+  color: black;
+}
+
+#modal-enlistment h3 {
+  width: 145px;
+}
+
+#modal-enlistment .modal-content .btns {
+  width: 153px;
+}
+
+// COMPLETION MODAL
+
+#modal-completion .modal-content {
+  width: 280px;
+  top: 20px;
+  box-shadow: none;
+  border: none;
+  color: black;
+}
+
+#modal-completion h3 {
+  width: 143px;
+}
+
+#modal-completion .modal-content .btns {
+  width: 170px;
+}
+
+// CANCELLATION MODAL
+
+#modal-cancellation .modal-content {
+  width: 280px;
+  top: 20px;
+  box-shadow: none;
+  border: none;
+  color: black;
+}
+
+#modal-cancellation h3 {
+  width: 143px;
+}
+
+#modal-cancellation .modal-content .btns {
+  width: 153px;
+}
+
+// LOGIN MODAL
+
+#login .form-btns {
+  width: 153px;
 }

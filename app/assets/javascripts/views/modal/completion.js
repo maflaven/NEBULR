@@ -16,11 +16,15 @@ Nebulr.Views.ModalCompletion = Backbone.View.extend({
   },
 
   close: function () {
-    this.$el.removeClass('is-active');
+    this.$el.slideUp("fast");
+    $('.backdrop > .modal-screen').fadeOut("fast");
   },
 
   completeMission: function () {
     this.close();
+    this.$('.modal-content').animate({ backgroundColor: "#77b300" }, 500);
+    $('.navbar').animate({ backgroundColor: "#77b300" }, 500);
+    $('.navbar').animate({ backgroundColor: "#222222" }, 700);
     this.model.save({ completed: true }, { wait: true });
   }
 });

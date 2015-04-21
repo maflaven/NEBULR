@@ -12,9 +12,9 @@
     <div class="mission-options">
       <% if (this.model.get('is_leader') && !this.model.get('completed')) { %>
         <div id="modal-cancellation"></div>
-        <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL MISSION">
+        <input type="button" id="cancel-btn" class="btn btn-danger" value="CANCEL">
         <div id="modal-completion"></div>
-        <input type="button" id="complete-btn" class="btn btn-danger" value="COMPLETE MISSION">
+        <input type="button" id="complete-btn" class="btn btn-success" value="COMPLETE">
       <% } else if (this.model.get('completed')) { %>
         <h4>MISSION COMPLETE</h4>
         <label>YOUR RATING:</label>

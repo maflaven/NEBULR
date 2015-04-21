@@ -28,9 +28,13 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
 
   enlistModal: function () {
     if (!this.currentUser.id) {
-      $('#login #modal').addClass('is-active');
+      $('#login #modal').fadeIn("fast");
+      $('#login .modal-screen').fadeIn("fast");
     } else if (this.enlist.isNew()) {
-      this.modalEnlistmentView.$el.addClass('is-active');
+      // this.modalEnlistmentView.$el.addClass('is-active');
+      $('.modal-content').css({ backgroundColor: "#222222" });
+      $('.backdrop > .modal-screen').fadeIn("fast");
+      this.modalEnlistmentView.$el.slideDown("slow");
     } else {
       this.enlistUser();
     }

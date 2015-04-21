@@ -1,12 +1,18 @@
 Nebulr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.navHistory = [];
+    this.filterData = {};
+    this.bind("route", this.storeRoute);
     this.currentUser = new Nebulr.Models.User({ id: options.currentUserId });
     this.currentUser.fetch();
-    this.currentUserView = new Nebulr.Views.UserNav({ model: this.currentUser });
+    this.currentUserView = new Nebulr.Views.UserNav({
+      model: this.currentUser,
+      navHistory: this.navHistory
+    });
     this.missions = new Nebulr.Collections.Missions();
     this.users = new Nebulr.Collections.Users();
-    this.filterData = {};
+
   },
 
   routes: {
@@ -16,6 +22,10 @@ Nebulr.Routers.Router = Backbone.Router.extend({
     'missions/search': 'missionSearch',
     'missions/:id': 'missionShow',
     'users/:id': 'userShow'
+  },
+
+  storeRoute: function () {
+    this.navHistory.push(Backbone.history.fragment);
   },
 
   searchLanding: function () {
@@ -29,10 +39,14 @@ Nebulr.Routers.Router = Backbone.Router.extend({
 
   missionNew: function () {
     this.currentUserView.render();
-    
+
     if (!this.currentUser.id) {
-      $('#login #modal').addClass('is-active');
+      $('#login #modal').fadeIn("fast");
+      $('#login .modal-screen').fadeIn("fast");
+      this.storeRoute();
+      Backbone.history.navigate(this.navHistory[this.navHistory.length - 2], { trigger: false });
     } else {
+
       var model = new Nebulr.Models.Mission();
       var view = new Nebulr.Views.MissionForm({
         model: model,

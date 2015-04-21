@@ -3,9 +3,12 @@
     <input name="username" id="username" type="text" placeholder="USERNAME" class="form-control">
     <input name="password" id="password" type="password" placeholder="PASSWORD" class="form-control">
     <br>
-    <input type="submit" value="LOGIN" id="login-btn" class="btn btn-primary center-block">
+    <div class="form-btns center-block">
+      <input type="submit" value="LOGIN" id="login-btn" class="btn btn-primary">
+      <button class="signup btn btn-primary">SIGNUP</button>
+    </div>
   </form>
   <button class="guest-login btn btn-info center-block">GUEST LOGIN</button>
   <button class="modal-close btn btn-default center-block">CLOSE</button>
 </article>
-<div class="modal-screen"></div>
+<div class="modal-screen" id="login-modal-screen"></div>

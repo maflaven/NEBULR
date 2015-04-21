@@ -2,12 +2,14 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
   template: JST['user/nav'],
 
   initialize: function (options) {
+    this.navHistory = options.navHistory;
     this.$el = $('.backdrop');
     this.$nav = $('.user-nav');
-    this.modalLoginView = new Nebulr.Views.ModalLogin({ model: this.model });
+    this.modalLoginView = new Nebulr.Views.ModalLogin({
+      model: this.model,
+      navHistory: this.navHistory
+    });
     this.addSubview('#session-modals #login', this.modalLoginView);
-    // this.modalSignupView = new Nebulr.Views.ModalSignup({ model: this.model });
-    // this.attachSubview('#session-modals #signup', this.modalSignupView);
     this.listenTo(this.model, "change", this.refreshPage);
   },
 
@@ -17,7 +19,7 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
     if (this.model.id) {
       this.attachUserBtns();
     } else {
-      this.attachNewSessionBtns();
+      this.attachNewSessionBtn();
     }
 
     this.bindEvents();
@@ -27,7 +29,6 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
 
   bindEvents: function () {
     this.$nav.find('#loginBtn').on('click', this.attachLoginModal.bind(this));
-    // this.$nav.find('#signupBtn').on('click', this.attachSingupModal.bind(this));
     this.$nav.find('#logoutBtn').on('click', this.logoutUser.bind(this));
   },
 
@@ -40,16 +41,14 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
     this.$nav.find('#logout').html($logout);
   },
 
-  attachNewSessionBtns: function () {
+  attachNewSessionBtn: function () {
     var $login = $('<button class="btn btn-default navbar-btn" id="loginBtn">LOGIN</button>');
-    var $signup = $('<button class="btn btn-default navbar-btn" id="signupBtn">SIGNUP</button>');
     this.$nav.find('#login').html($login);
-    this.$nav.find('#signup').html($signup);
   },
 
   attachLoginModal: function () {
-
-    this.modalLoginView.$el.addClass('is-active');
+    this.modalLoginView.$('.modal-screen').fadeIn("fast");
+    this.modalLoginView.$el.fadeIn("fast");
   },
 
   attachSignupModal: function () {
@@ -64,7 +63,12 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
       method: 'DELETE'
     });
 
-    this.model.clear();
+    if (this.navHistory[this.navHistory.length - 1] === "missions/new") {
+      this.model.clear({ silent: true });
+      Backbone.history.history.back();
+    } else {
+      this.model.clear();
+    }
   },
 
   refreshPage: function () {

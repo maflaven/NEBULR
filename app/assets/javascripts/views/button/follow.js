@@ -20,7 +20,8 @@ Nebulr.Views.ButtonFollow = Backbone.View.extend({
 
   followMissionTree: function (event) {
     if (!this.currentUser.id) {
-      $('#login #modal').addClass('is-active');
+      $('#login #modal').fadeIn("fast");
+      $('#login .modal-screen').fadeIn("fast");
     } else {
       this.followMission(event);
     }
