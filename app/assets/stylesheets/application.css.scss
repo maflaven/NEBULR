@@ -251,6 +251,30 @@ ul {
   max-height: 100%;
 }
 
+.map .mission-index-item, .map .mission-index-item * {
+  transform: none;
+}
+
+.map .mission-index-item .leader-avatar {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+}
+
+.map .mission-index-item .title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: black;
+  opacity: 0.8;
+}
+
+.map .mission-index-item p {
+  margin: 0
+}
+
 .data-missions-feed {
   height: 800px;
 }

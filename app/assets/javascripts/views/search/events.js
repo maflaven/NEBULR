@@ -100,6 +100,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
       position: latLng,
       map: this._map,
       title: mission.get('title'),
+      id: mission.id,
       animation: google.maps.Animation.DROP
     });
 
@@ -137,9 +138,21 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     // fancier if you wanted (maybe use a template for the content of the window?)
     var infoWindow;
 
+    var mission = this.collection.get(marker.id);
+    var thumbnail = "https://www.filepicker.io/api/file/UuGSt7rqR4aVqjX5K54S";
+    if (mission.images().length > 0) {
+      thumbnail = mission.images().first().get('filepicker_url');
+    }
+    $missionDiv = $('<div class="mission-window">');
+    $missionDiv.html(JST['mission/index_item']({
+      mission: mission,
+      thumbnail: thumbnail
+    }));
+
     if (!this._infoWindows[marker.title]) {
       infoWindow = new google.maps.InfoWindow({
-        content: marker.title
+        content: $missionDiv.html(),
+        maxWidth: 200
       });
       this._infoWindows[marker.title] = infoWindow;
     } else {
