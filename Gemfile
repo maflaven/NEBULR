@@ -18,6 +18,7 @@ gem 'figaro'
 
 group :production do
   gem 'unicorn'
+  gem 'rails_12factor'
 end
 
 group :doc do

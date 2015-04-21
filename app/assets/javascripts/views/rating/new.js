@@ -7,7 +7,7 @@ Nebulr.Views.RatingNew = Backbone.View.extend({
 
   render: function () {
     var that = this;
-    if (this.model.get('completed') && this.model.get('is_enlisted')) {
+    if (this.currentUser.id && this.model.get('completed') && this.model.get('is_enlisted')) {
       this.setRatingModel();
       this.$el.rateYo({
         ratedFill: "#E74C3C",
@@ -54,9 +54,11 @@ Nebulr.Views.RatingNew = Backbone.View.extend({
   },
 
   setRatingModel: function () {
-    this.ratingModel = this.model.ratings().findWhere({
-      user_id: this.currentUser.id.toString()
-    });
+    if (this.currentUser.id) {
+      this.ratingModel = this.model.ratings().findWhere({
+        user_id: this.currentUser.id.toString()
+      });
+    }
 
     if (!this.ratingModel) {
       this.ratingModel = new Nebulr.Models.Rating({
