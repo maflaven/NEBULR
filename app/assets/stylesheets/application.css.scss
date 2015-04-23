@@ -388,8 +388,11 @@ ul {
   padding-top: 10px;
 }
 
-.update-index-item:not(:last-child) {
+.update-index-item {
   padding: 10px 0;
+}
+
+.update-index-item:not(:last-child) {
   border-bottom: 1px solid white;
 }
 
