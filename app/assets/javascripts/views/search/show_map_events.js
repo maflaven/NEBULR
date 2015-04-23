@@ -8,17 +8,38 @@ Nebulr.Views.MissionMapShow = Backbone.View.extend({
   },
 
   render: function () {
+    var solarSystemTypeOptions = {
+      getTileUrl: function(coord, zoom) {
+          return "http://googledrive.com/host/0B87UzFwwOBvxflZwTGZhc3IzUjJNUjZYQUVUWnJoUUotdU0tNmczYjN2UUhLOS01amo1Umc" +
+                 "/tile_" + zoom + "_" + coord.x + "-" +
+                 coord.y + ".png";
+      },
+      tileSize: new google.maps.Size(256, 256),
+      maxZoom: 5,
+      minZoom: 0,
+      // radius: 1738000,
+      name: "Solar System"
+    };
+
     var mapOptions = {
       center: { lat: this.model.get('latitude'), lng: this.model.get('longitude') },
-      zoom: 5,
+      zoom: 4,
+      backgroundColor: 'black',
       draggable: false,
       disableDoubleClickZoom: true,
       overviewMapControl: false,
       overviewMapControlOptions: false,
-      scrollwheel: false
+      scrollwheel: false,
+      streetViewControl: false,
+      mapTypeControlOptions: {
+        mapTypeIds: ["solarSystem"]
+      }
     };
 
+    var solarSystemMapType = new google.maps.ImageMapType(solarSystemTypeOptions);
     this._map = new google.maps.Map(this.el, mapOptions);
+    this._map.mapTypes.set('solarSystem', solarSystemMapType);
+    this._map.setMapTypeId('solarSystem');
 
     this.addMarker(this.model);
 

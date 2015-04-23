@@ -12,45 +12,44 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
   },
 
   render: function () {
-    var mapOptions = {
-      center: { lat: 37.7833, lng: -122.4167},
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.SATELLITE
+    var solarSystemTypeOptions = {
+      getTileUrl: function(coord, zoom) {
+          if (coord.x < 0 || coord.y < 0) {
+            return null;
+          }
+          if ((coord.x > Math.pow(2, zoom) - 1) || (coord.y > Math.pow(2, zoom) - 1)) {
+            return null;
+          }
+          return "http://googledrive.com/host/0B87UzFwwOBvxflZwTGZhc3IzUjJNUjZYQUVUWnJoUUotdU0tNmczYjN2UUhLOS01amo1Umc" +
+                 "/tile_" + zoom + "_" + coord.x + "-" +
+                 coord.y + ".png";
+      },
+      tileSize: new google.maps.Size(256, 256),
+      maxZoom: 5,
+      minZoom: 0,
+      radius: 1738000,
+      name: "Solar System"
     };
-    var that = this;
-    // var moonTypeOptions = {
-    //   getTileUrl: function(coord, zoom) {
-    //       var normalizedCoord = that.getNormalizedCoord(coord, zoom);
-    //       if (!normalizedCoord) {
-    //         return null;
-    //       }
-    //       var bound = Math.pow(2, zoom);
-    //       return "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/clem_bw" +
-    //           "/" + zoom + "/" + normalizedCoord.x + "/" +
-    //           (bound - normalizedCoord.y - 1) + ".jpg";
-    //   },
-    //   tileSize: new google.maps.Size(256, 256),
-    //   maxZoom: 9,
-    //   minZoom: 0,
-    //   radius: 1738000,
-    //   name: "Moon"
-    // };
 
     var mapOptions = {
-      center: { lat: 37.7833, lng: -122.4167},
-      zoom: 7,
+      center: { lat: 0, lng: 0},
+      zoom: 3,
       streetViewControl: false,
+      backgroundColor: 'black',
       mapTypeControlOptions: {
-        mapTypeIds: ["moon"]
+        mapTypeIds: ["solarSystem"]
       }
     };
 
-    // var moonMapType = new google.maps.ImageMapType(moonTypeOptions);
-    // this._map = new google.maps.Map(this.el, mapOptions);
-    // this._map.mapTypes.set('moon', moonMapType);
-    // this._map.setMapTypeId('moon');
-
+    var solarSystemMapType = new google.maps.ImageMapType(solarSystemTypeOptions);
     this._map = new google.maps.Map(this.el, mapOptions);
+    this._map.mapTypes.set('solarSystem', solarSystemMapType);
+    this._map.setMapTypeId('solarSystem');
+
+    this.strictBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-85, -180),
+      new google.maps.LatLng(85, 180)
+    );
 
     this.collection.each(this.addMarker.bind(this));
     this.attachMapListeners();
@@ -58,6 +57,26 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
 
   attachMapListeners: function () {
     google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
+    google.maps.event.addListener(this._map, 'dragend', this.limitExtent.bind(this));
+  },
+
+  limitExtent: function () {
+    if (this.strictBounds.contains(this._map.getCenter())) return;
+
+    var c = this._map.getCenter(),
+        x = c.lng(),
+        y = c.lat(),
+        maxX = this.strictBounds.getNorthEast().lng(),
+        maxY = this.strictBounds.getNorthEast().lat(),
+        minX = this.strictBounds.getSouthWest().lng(),
+        minY = this.strictBounds.getSouthWest().lat();
+
+    if (x < minX) x = minX;
+    if (x > maxX) x = maxX;
+    if (y < minY) y = minY;
+    if (y > maxY) y = maxY;
+
+    this._map.setCenter(new google.maps.LatLng(y, x));
   },
 
   // Normalizes the coords that tiles repeat across the x axis (horizontally)

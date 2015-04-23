@@ -224,6 +224,7 @@ ul {
   top: 220px;
   bottom: 0;
   height: calc(100% - 220px);
+  width: calc(100% - 15px);
 }
 
 .filtered-mission-index .mission-index-li {
@@ -263,12 +264,22 @@ ul {
   right: 30px;
 }
 
+.map .mission-index-item .leader-avatar img {
+  height: 50px;
+  width: 50px;
+}
+
 .map .mission-index-item .title {
   position: absolute;
   bottom: 10px;
   left: 10px;
   background: black;
   opacity: 0.8;
+}
+
+.map .mission-index-item .compensation {
+  position: absolute;
+  bottom: 70%;
 }
 
 .map .mission-index-item p {
