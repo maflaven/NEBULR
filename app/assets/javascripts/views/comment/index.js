@@ -1,5 +1,6 @@
 Nebulr.Views.CommentIndex = Backbone.CompositeView.extend({
   template: JST['comment/index'],
+  className: 'list',
 
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
@@ -23,7 +24,7 @@ Nebulr.Views.CommentIndex = Backbone.CompositeView.extend({
       user: this.user,
       model: comment
     });
-    this.addSubview('ul', subview);
+    this.addSubview('ul', subview, true);
   },
 
   removeCommentView: function (comment) {

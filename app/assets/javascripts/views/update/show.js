@@ -24,6 +24,7 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
       update: this.model
     }));
 
+    this.$el.fadeIn("fast");
     return this;
   },
 
@@ -38,6 +39,6 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
 
   delete: function (event) {
     $(event.currentTarget).prop('disabled', true);
-    this.model.destroy();
+    this.$el.fadeOut("fast", this.model.destroy.bind(this.model));
   }
 });

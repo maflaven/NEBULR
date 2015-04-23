@@ -11,7 +11,7 @@ Backbone.CompositeView = Backbone.View.extend({
 
   attachSubview: function (selector, subview, prepend) {
     if (prepend) {
-      this.$selector.prepend(subview.$el);
+      this.$(selector).prepend(subview.$el);
     } else {
       this.$(selector).append(subview.$el);
     }

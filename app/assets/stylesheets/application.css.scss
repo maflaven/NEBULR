@@ -375,8 +375,21 @@ ul {
   height: 50px;
 }
 
+.comments-index .list {
+  overflow-y: scroll;
+  max-height: 500px;
+}
+
+.comments-index .list > ul {
+  padding-top: 10px;
+}
+
+.updates-index > ul {
+  padding-top: 10px;
+}
+
 .update-index-item:not(:last-child) {
-  margin-bottom: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid white;
 }
 
@@ -391,6 +404,9 @@ ul {
 
 .update-index-item:hover .delete-update {
   visibility: visible;
+  position: relative;
+  bottom: 55px;
+  left: calc(100% - 65px);
 }
 
 .update-new-form {
@@ -422,6 +438,9 @@ ul {
 
 .comment-index-item:hover .delete-comment {
   visibility: visible;
+  position: relative;
+  bottom: 55px;
+  left: calc(100% - 65px);
 }
 
 .comment-new-form {

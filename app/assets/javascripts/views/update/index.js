@@ -21,7 +21,7 @@ Nebulr.Views.UpdateIndex = Backbone.CompositeView.extend({
       mission: this.mission,
       model: update
     });
-    this.addSubview('ul', subview);
+    this.addSubview('ul', subview, true);
   },
 
   removeUpdateView: function (update) {

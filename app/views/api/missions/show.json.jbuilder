@@ -18,7 +18,7 @@ json.ratings_total @mission.ratings.pluck(:value).reduce(:+) || 0
 json.ratings_count @mission.ratings.count
 json.ratings_avg (@mission.ratings.count > 0 &&
   @mission.ratings.pluck(:value).reduce(:+) / @mission.ratings.count) || 0
-json.updates @mission.updates.order(:created_at), :id, :text, :created_at
+json.updates @mission.updates.sort_by(&:created_at), :id, :text, :created_at
 
 json.is_enlisted current_user && @mission.enlisted_users.include?(current_user)
 json.is_leader current_user && current_user.id == @mission.leader_id
