@@ -86,7 +86,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.updatesView = new Nebulr.Views.UpdateIndex({
       collection: this.model.updates(),
       currentUserId: this.currentUser.id,
-      mission: this.model
+      mission: this.model,
+      missionShow: true
     });
     this.addSubview('.updates-index', this.updatesView);
   },
@@ -99,7 +100,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({
       mission: this.model,
-      spotsLeft: this.spotsLeft()
+      spotsLeft: this.spotsLeft(),
+      currentUser: this.currentUser
     }));
 
     this.attachSubviews();

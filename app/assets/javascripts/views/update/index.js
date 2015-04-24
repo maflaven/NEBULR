@@ -4,6 +4,7 @@ Nebulr.Views.UpdateIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
     this.mission = options.mission;
+    this.missionShow = options.missionShow;
     this.listenTo(this.collection, "add", this.addUpdateView);
     this.collection.each(this.addUpdateView.bind(this));
     this.listenTo(this.collection, "remove", this.removeUpdateView);
@@ -19,7 +20,8 @@ Nebulr.Views.UpdateIndex = Backbone.CompositeView.extend({
     var subview = new Nebulr.Views.UpdateShow({
       currentUserId: this.currentUserId,
       mission: this.mission,
-      model: update
+      model: update,
+      missionShow: this.missionShow
     });
     this.addSubview('ul', subview, true);
   },

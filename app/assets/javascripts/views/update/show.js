@@ -6,6 +6,7 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
   initialize: function (options) {
     this.currentUserId = options.currentUserId;
     this.mission = options.mission;
+    this.missionShow = options.missionShow;
     this.mission && this.listenTo(this.mission, "sync", this.render);
   },
 
@@ -21,7 +22,8 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
       leaderId: this.mission.leader().id,
       thumbnail: this.thumbnail,
       mission: this.mission,
-      update: this.model
+      update: this.model,
+      missionShow: this.missionShow
     }));
 
     this.$el.fadeIn("fast");

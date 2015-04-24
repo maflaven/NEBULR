@@ -17,8 +17,10 @@
         <input type="button" id="complete-btn" class="btn btn-success" value="COMPLETE">
       <% } else if (this.model.get('completed')) { %>
         <h4>MISSION COMPLETE</h4>
-        <label>YOUR RATING:</label>
-        <div class="rating-new"></div>
+        <% if (currentUser.id) { %>
+          <label>YOUR RATING:</label>
+          <div class="rating-new"></div>
+        <% } %>
       <% } else if (spotsLeft === 0) { %>
         <div class="btn-follow"></div>
       <% } else { %>

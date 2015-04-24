@@ -401,6 +401,11 @@ ul {
   height: 50px;
 }
 
+.mission-show .updates-index {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
 .delete-update {
   visibility: hidden;
 }
@@ -508,7 +513,7 @@ ul {
   top: 23%;
   left: 50%;
   width: 400px;
-  padding: 30px;
+  padding: 20px;
   transform: translateX(-50%);
   background-color: #222222;
   border-radius: 5px;
@@ -517,7 +522,7 @@ ul {
 // ENLISTMENT MODAL
 
 #modal-enlistment .modal-content {
-  width: 280px;
+  width: 230px;
   top: 20px;
   // box-shadow: 0 15px 10px -13px;
   box-shadow: none;
@@ -536,7 +541,7 @@ ul {
 // COMPLETION MODAL
 
 #modal-completion .modal-content {
-  width: 280px;
+  width: 230px;
   top: 20px;
   box-shadow: none;
   border: none;
@@ -554,7 +559,7 @@ ul {
 // CANCELLATION MODAL
 
 #modal-cancellation .modal-content {
-  width: 280px;
+  width: 230px;
   top: 20px;
   box-shadow: none;
   border: none;

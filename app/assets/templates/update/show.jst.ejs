@@ -5,7 +5,9 @@
     </a>
   </div>
   <div class="media-body">
-    <h6 class="media-heading"><%= mission.escape('title') %></h6>
+    <% if (!missionShow) { %>
+      <h6 class="media-heading"><%= mission.escape('title') %></h6>
+    <% } %>
     <% if (update.escape('text').length > 30) { %>
       <p><%= update.escape('text').slice(0, 29) %>...</p>
     <% } else { %>

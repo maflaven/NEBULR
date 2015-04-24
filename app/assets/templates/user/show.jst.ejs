@@ -13,19 +13,25 @@
 
   </div>
 
+  <% if (itemSize === 12) { %>
   <div class="enlisted-missions col-xs-5">
+  <% } else { %>
+  <div class="enlisted-missions col-xs-9">
+  <% } %>
+
 
     <h4>ENLISTED MISSIONS</h4>
     <div class="enlisted-missions-index"></div>
 
   </div>
 
+  <% if (itemSize === 12) { %>
   <div class="feed col-xs-4">
-
-    <h4>FEED</h4>
-    <div class="updates"></div>
-
+  <h4>FEED</h4>
+  <div class="updates"></div>
   </div>
+  <% } %>
+
 </div>
 
 <div class="comments-comments-header row">

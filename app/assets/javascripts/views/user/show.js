@@ -6,16 +6,21 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
     this.currentUser = options.currentUser;
     this.listenTo(this.model, "sync", this.render);
 
+    this.itemSize;
+    this.currentUser.id == this.model.id ? this.itemSize = 12 : this.itemSize = 6;
+
     this.enlistedMissionsIndexView = new Nebulr.Views.MissionIndex({
       collection: this.model.enlistedMissions(),
-      itemSize: 12
+      itemSize: this.itemSize
     });
     this.addSubview('.enlisted-missions-index', this.enlistedMissionsIndexView);
 
-    this.updatesView = new Nebulr.Views.UpdateFeed({
-      collection: this.model.feed()
-    });
-    this.addSubview('.updates', this.updatesView);
+    if (this.itemSize === 12) {
+      this.updatesView = new Nebulr.Views.UpdateFeed({
+        collection: this.model.feed()
+      });
+      this.addSubview('.updates', this.updatesView);
+    }
 
     this.commentNewView = new Nebulr.Views.CommentNew({
       userId: this.model.id,
@@ -36,7 +41,8 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({
       user: this.model,
-      isSameUser: this.model.get('is_same_user')
+      isSameUser: this.model.get('is_same_user'),
+      itemSize: this.itemSize
     }));
 
     this.attachSubviews();
