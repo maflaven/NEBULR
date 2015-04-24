@@ -16,7 +16,7 @@
  *= require jquery-ui
  *= require jquery.rateyo
  */
-// $font-family-base: 'Droid Sans Mono';
+$font-family-base: 'Droid Sans Mono';
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -169,8 +169,9 @@ ul {
 
 .mission-index-item .title {
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   left: 10%;
+  max-width: 230px;
 }
 
 .mission-index-item .leader-avatar {
@@ -271,7 +272,7 @@ ul {
 
 .map .mission-index-item .title {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 10px;
   background: black;
   opacity: 0.8;
@@ -378,6 +379,7 @@ ul {
 .comments-index .list {
   overflow-y: scroll;
   max-height: 500px;
+  min-height: 200px;
 }
 
 .comments-index .list > ul {
@@ -403,6 +405,7 @@ ul {
 
 .mission-show .updates-index {
   max-height: 500px;
+  min-height: 200px;
   overflow-y: scroll;
 }
 
@@ -414,7 +417,7 @@ ul {
   visibility: visible;
   position: relative;
   bottom: 55px;
-  left: calc(100% - 65px);
+  left: calc(100% - 75px);
 }
 
 .update-new-form {
@@ -448,7 +451,7 @@ ul {
   visibility: visible;
   position: relative;
   bottom: 55px;
-  left: calc(100% - 65px);
+  left: calc(100% - 75px);
 }
 
 .delete-comment-div {
@@ -578,4 +581,16 @@ ul {
 
 #login .form-btns {
   width: 153px;
+}
+
+.alert {
+  padding: 5px;
+  margin: 10px 0 0 0;
+}
+
+.mission-new .image-index-item img {
+  max-width: 100%;
+  max-height: 200px;
+  border: 1px dotted white;
+  margin-bottom: 10px;
 }

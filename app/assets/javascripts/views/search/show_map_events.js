@@ -10,14 +10,19 @@ Nebulr.Views.MissionMapShow = Backbone.View.extend({
   render: function () {
     var solarSystemTypeOptions = {
       getTileUrl: function(coord, zoom) {
-          return "http://googledrive.com/host/0B87UzFwwOBvxflZwTGZhc3IzUjJNUjZYQUVUWnJoUUotdU0tNmczYjN2UUhLOS01amo1Umc" +
-                 "/tile_" + zoom + "_" + coord.x + "-" +
-                 coord.y + ".png";
+        if (coord.x < 0 || coord.y < 0) {
+          return null;
+        }
+        if ((coord.x > Math.pow(2, zoom) - 1) || (coord.y > Math.pow(2, zoom) - 1)) {
+          return null;
+        }
+        return "http://googledrive.com/host/0B87UzFwwOBvxflZwTGZhc3IzUjJNUjZYQUVUWnJoUUotdU0tNmczYjN2UUhLOS01amo1Umc" +
+               "/tile_" + zoom + "_" + coord.x + "-" +
+               coord.y + ".png";
       },
       tileSize: new google.maps.Size(256, 256),
       maxZoom: 5,
-      minZoom: 0,
-      // radius: 1738000,
+      minZoom: 1,
       name: "Solar System"
     };
 

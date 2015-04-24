@@ -22,10 +22,13 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
 
   close: function () {
     this.$('.modal-screen').fadeOut("slow");
-    this.$el.fadeOut("fast");
-    this.$('form').find('#username').val("");
-    this.$('form').find('#password').val("");
-    this.toggleBtns("enable");
+    this.$el.fadeOut("fast", function () {
+      this.$('form').find('#username').val("");
+      this.$('form').find('#password').val("");
+      this._clearErrors();
+      this.$('*').removeClass('ui-state-highlight');
+      this.toggleBtns("enable");
+    }.bind(this));
   },
 
   loginGuest: function (event) {
@@ -35,11 +38,13 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
 
   loginUser: function (event) {
     event.preventDefault();
+    this._clearErrors();
     this.toggleBtns("disable");
 
-    if (!this.credentials) {
+    if ($.isEmptyObject(this.credentials)) {
       this.credentials = this.$('form').serializeJSON();
     }
+
     var data = {'user': this.credentials};
 
     var that = this;
@@ -58,6 +63,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
         }
       },
       error: function (response) {
+        that._processError(response.responseText, true);
         that.credentials = {};
         that.toggleBtns("enable");
       }
@@ -67,6 +73,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
 
   signupUser: function (event) {
     event.preventDefault();
+    this._clearErrors();
     this.toggleBtns("disable");
 
     this.credentials = this.$('form').serializeJSON();
@@ -88,6 +95,9 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
         }
       },
       error: function (response) {
+        response.responseJSON.forEach( function (error) {
+          that._processError(error);
+        });
         that.credentials = {};
         that.toggleBtns("enable");
       }
@@ -106,5 +116,23 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
       this.$('.guest-login').prop('disabled', true);
       this.$('.modal-close').prop('disabled', true);
     }
+  },
+
+  _processError: function (error, text) {
+    if (text) {
+      var $field = this.$('#username');
+    } else {
+      var errorId = error.split(' ')[0].toLowerCase();
+      var $field = this.$("#" + errorId);
+      $field.addClass('ui-state-highlight');
+    }
+    var $errorDiv = $('<div class="error-message">');
+    $errorDiv.html(error).addClass('alert alert-warning').hide();
+    $errorDiv.insertBefore($field);
+    $errorDiv.fadeIn("fast");
+  },
+
+  _clearErrors: function () {
+    this.$('.error-message').remove();
   }
 });

@@ -46,6 +46,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   },
 
   submitForm: function (event) {
+    this.renderForm();
     event.preventDefault();
     var button = $(event.currentTarget);
     button.prop('disabled', true);
@@ -62,10 +63,8 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
       },
 
       error: function (model, response, options) {
-        var errors = response.responseJSON;
-        errors.forEach( function (error) {
+        response.responseJSON.forEach( function (error) {
           that._processError(error);
-          // this.$el.prepend('<p>' + error + '<p>');
         });
         button.prop('disabled', false);
       }
@@ -88,6 +87,10 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     var errorId = error.split(' ')[0].toLowerCase();
     var $field = this.$("#" + errorId);
     $field.addClass('ui-state-highlight');
+    var $errorDiv = $('<div class="error-message">');
+    $errorDiv.html(error).addClass('alert alert-warning').hide();
+    $errorDiv.insertBefore($field);
+    $errorDiv.fadeIn("fast");
   },
 
   remove: function () {

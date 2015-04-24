@@ -24,8 +24,7 @@ Nebulr.Views.EventMapLocationShow = Backbone.View.extend({
       },
       tileSize: new google.maps.Size(256, 256),
       maxZoom: 5,
-      minZoom: 0,
-      radius: 1738000,
+      minZoom: 1,
       name: "Solar System"
     };
 

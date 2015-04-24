@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
       sign_in!(@user)
       render json: @user.id
     else
-      render json: @user.errors.full_messages, status: :unprocessable_entity
+      render json: "Invalid username and/or password"
     end
   end
 
   def destroy
     sign_out!
-    render text: "Successfully logged out."
+    render text: "Successfully logged out"
   end
 end
