@@ -3,8 +3,8 @@
   <textarea name="description" class="form-control" placeholder="DESCRIPTION" id="description" required><%= mission.escape('description') %></textarea><br>
   <input type="number" name="compensation" class="form-control" id="compensation" value="<%= mission.escape('compensation') %>"
          min="0" placeholder="$COMPENSATION"><br>
-  <input type="text" name="latitude" class="form-control" placeholder="LATITUDE" id="latitude" value="<%= mission.escape('latitude') %>" required>
-  <input type="text" name="longitude" class="form-control" placeholder="LONGITUDE" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
+  <input type="text" name="latitude" class="form-control" placeholder="LATITUDE [CLICK MAP]" id="latitude" value="<%= mission.escape('latitude') %>" required>
+  <input type="text" name="longitude" class="form-control" placeholder="LONGITUDE [CLICK MAP]" id="longitude" value="<%= mission.escape('longitude') %>" required><br>
   <label>START: </label>
   <input type="date" name="start_date" class="form-control" id="start_date" value="<%= mission.get('start_date') %>" required>
   <label>END: </label>

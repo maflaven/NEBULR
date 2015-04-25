@@ -21,7 +21,7 @@
           <label>YOUR RATING:</label>
           <div class="rating-new"></div>
         <% } %>
-      <% } else if (spotsLeft === 0) { %>
+      <% } else if (spotsLeft === 0 && !this.model.get('is_enlisted')) { %>
         <div class="btn-follow"></div>
       <% } else { %>
         <div class="btn-enlist"></div>
