@@ -133,10 +133,15 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     if (mission.images().length > 0) {
       thumbnail = mission.images().first().get('filepicker_url');
     }
+    var leaderThumbnail = "https://www.filepicker.io/api/file/UzhxqFdQymmheDJt0dOg";
+    if (mission.leader().get('filepicker_url')) {
+      leaderThumbnail = mission.leader().get('filepicker_url');
+    }
     $missionDiv = $('<div class="mission-window">');
     $missionDiv.html(JST['mission/index_item']({
       mission: mission,
-      thumbnail: thumbnail
+      thumbnail: thumbnail,
+      leaderThumbnail: leaderThumbnail
     }));
 
     if (!this._infoWindows[marker.title]) {
@@ -194,9 +199,9 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
         centerV = true;
     } else { // test positive and negative wrap respectively
       wrap = currentBounds.getNorthEast().lat() < cc.lat();  if (wrap) { alert("WRAp detected top") } // else alert("no wrap:"+currentBounds); wrap = false;
-      this.max_lat = !wrap ? currentBounds.getNorthEast().lat()  : allowed_ne_lat + (currentBounds.getNorthEast().lat() +90) + (90 - allowed_ne_lat);
+      this.max_lat = !wrap ? currentBounds.getNorthEast().lat()  : allowed_ne_lat + (currentBounds.getNorthEast().lat() + 100) + (100 - allowed_ne_lat);
       wrap = currentBounds.getSouthWest().lat() > cc.lat();  if (wrap) { alert("WRAp detected btm") } //alert("no wrap:"+currentBounds);
-      this.min_lat = !wrap ?  currentBounds.getSouthWest().lat() : allowed_sw_lat - (90 - currentBounds.getSouthWest().lat()) - (allowed_sw_lat + 90);
+      this.min_lat = !wrap ?  currentBounds.getSouthWest().lat() : allowed_sw_lat - (100 - currentBounds.getSouthWest().lat()) - (allowed_sw_lat + 100);
     }
   }
 });

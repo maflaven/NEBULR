@@ -10,7 +10,7 @@ Nebulr.Views.UserIndex = Backbone.View.extend({
     this.$el.html(this.template());
 
     this.collection.each( function (user) {
-      var thumbnail = "https://www.filepicker.io/api/file/PNXcJrvgR82BzwR5rfeO";
+      var thumbnail = "https://www.filepicker.io/api/file/UzhxqFdQymmheDJt0dOg";
       if (user.get('filepicker_url')) {
         thumbnail = user.get('filepicker_url');
       }

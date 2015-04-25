@@ -39,7 +39,13 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    var thumbnail = "https://www.filepicker.io/api/file/UzhxqFdQymmheDJt0dOg";
+    if (this.model.get('filepicker_url')) {
+      thumbnail = this.model.get('filepicker_url');
+    }
+
     this.$el.html(this.template({
+      thumbnail: thumbnail,
       user: this.model,
       isSameUser: this.model.get('is_same_user'),
       itemSize: this.itemSize
