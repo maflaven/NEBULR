@@ -48,8 +48,10 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
   submitForm: function (event) {
     this.renderForm();
     event.preventDefault();
-    var button = $(event.currentTarget);
-    button.prop('disabled', true);
+    var $submitButton = $(event.currentTarget);
+    $submitButton.prop('disabled', true);
+    var $imgButton = this.$('button.filepicker');
+    $imgButton.prop('disabled', true);
 
     var attrs = this.$('form').serializeJSON();
     var that = this;
@@ -66,7 +68,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
         response.responseJSON.forEach( function (error) {
           that._processError(error);
         });
-        button.prop('disabled', false);
+        $submitButton.prop('disabled', false);
       }
     });
   },

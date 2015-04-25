@@ -78,32 +78,6 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     this._map.setCenter(new google.maps.LatLng(y, x));
   },
 
-  // Normalizes the coords that tiles repeat across the x axis (horizontally)
-  // like the standard Google map tiles.
-  getNormalizedCoord: function (coord, zoom) {
-    var y = coord.y;
-    var x = coord.x;
-
-    // tile range in one direction range is dependent on zoom level
-    // 0 = 1 tile, 1 = 2 tiles, 2 = 4 tiles, 3 = 8 tiles, etc
-    var tileRange = 1 << zoom;
-
-    // don't repeat across y-axis (vertically)
-    if (y < 0 || y >= tileRange) {
-      return null;
-    }
-
-    // repeat across x-axis
-    if (x < 0 || x >= tileRange) {
-      x = (x % tileRange + tileRange) % tileRange;
-    }
-
-    return {
-      x: x,
-      y: y
-    };
-  },
-
   // Event handlers
   addMarker: function (mission) {
     if (this._markers[mission.id]) { return; }
@@ -130,13 +104,11 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
   },
 
   search: function () {
-    var mapBounds = this._map.getBounds();
-    var ne = mapBounds.getNorthEast();
-    var sw = mapBounds.getSouthWest();
+    this.checkBounds();
 
     this.filterData = $.extend(this.filterData, {
-      min_lat: sw.lat(), max_lat: ne.lat(),
-      min_lng: sw.lng(), max_lng: ne.lng()
+      min_lat: this.min_lat, max_lat: this.max_lat,
+      min_lng: this.min_lng, max_lng: this.max_lng
     });
 
     this.collection.fetch({
@@ -188,5 +160,43 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
   stopBounce: function (id) {
     var marker = this._markers[id];
     marker.setAnimation(null);
+  },
+
+
+
+  checkBounds: function () {
+    var currentBounds = this._map.getBounds();
+    if (currentBounds == null) return;
+
+    var allowed_ne_lng = this.strictBounds.getNorthEast().lng();
+    var allowed_ne_lat = this.strictBounds.getNorthEast().lat();
+    var allowed_sw_lng = this.strictBounds.getSouthWest().lng();
+    var allowed_sw_lat = this.strictBounds.getSouthWest().lat();
+
+    var wrap;
+    var cc = this._map.getCenter();
+    var centerH = false;
+    var centerV = false;
+
+    // Check horizontal wraps and offsets
+    if ( currentBounds.toSpan().lng() > this.strictBounds.toSpan().lng() ) {
+        centerH = true;
+    } else {  // test positive and negative wrap respectively
+      wrap = currentBounds.getNorthEast().lng() < cc.lng();
+      this.max_lng = !wrap ?  currentBounds.getNorthEast().lng() : allowed_ne_lng + (currentBounds.getNorthEast().lng() + 180)  + (180 - allowed_ne_lng);
+      wrap = currentBounds.getSouthWest().lng() > cc.lng();
+      this.min_lng = !wrap ?  currentBounds.getSouthWest().lng() : allowed_sw_lng - (180 - currentBounds.getSouthWest().lng()) - (allowed_sw_lng+180);
+    }
+
+
+    // Check vertical wraps and offsets
+    if ( currentBounds.toSpan().lat() > this.strictBounds.toSpan().lat() ) {
+        centerV = true;
+    } else { // test positive and negative wrap respectively
+      wrap = currentBounds.getNorthEast().lat() < cc.lat();  if (wrap) { alert("WRAp detected top") } // else alert("no wrap:"+currentBounds); wrap = false;
+      this.max_lat = !wrap ? currentBounds.getNorthEast().lat()  : allowed_ne_lat + (currentBounds.getNorthEast().lat() +90) + (90 - allowed_ne_lat);
+      wrap = currentBounds.getSouthWest().lat() > cc.lat();  if (wrap) { alert("WRAp detected btm") } //alert("no wrap:"+currentBounds);
+      this.min_lat = !wrap ?  currentBounds.getSouthWest().lat() : allowed_sw_lat - (90 - currentBounds.getSouthWest().lat()) - (allowed_sw_lat + 90);
+    }
   }
 });
