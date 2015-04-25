@@ -252,7 +252,7 @@ ul {
 }
 
 .filtered-mission-index .mission-index-li {
-  height: 450px;
+  height: 360px;
 }
 
 .enlisted-missions-index .mission-index-li {
@@ -311,7 +311,7 @@ ul {
 }
 
 .data-missions-feed {
-  height: 800px;
+  max-height: 800px;
 }
 
 .user-show .feed {
@@ -620,5 +620,9 @@ ul {
 
 .user-index-item {
   width: 50px;
+  padding: 0;
+}
+
+.nav .button-title {
   padding: 0;
 }

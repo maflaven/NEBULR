@@ -49,10 +49,7 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
   attachLoginModal: function () {
     this.modalLoginView.$('.modal-screen').fadeIn("fast");
     this.modalLoginView.$el.fadeIn("fast");
-  },
-
-  attachSignupModal: function () {
-    this.modalSignupView.$el.addClass('is-active');
+    $('form #username').focus();
   },
 
   logoutUser: function () {

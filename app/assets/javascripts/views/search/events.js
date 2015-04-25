@@ -30,8 +30,16 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
       name: "Solar System"
     };
 
+    var centerLat = 0; var centerLng = 0;
+    if (this.filterData['center_lat']) {
+      centerLat = this.filterData['center_lat'];
+      centerLng = this.filterData['center_lng'];
+      delete this.filterData['center_lat'];
+      delete this.filterData['center_lng'];
+    }
+
     var mapOptions = {
-      center: { lat: 0, lng: 0},
+      center: { lat: centerLat, lng: centerLng},
       zoom: 3,
       streetViewControl: false,
       backgroundColor: 'black',

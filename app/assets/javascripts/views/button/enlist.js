@@ -48,6 +48,11 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
     if (that.enlist.isNew()) {
       that.enlist.save({}, {
         success: function () {
+          var $followBtn = $('#follow-btn');
+          if ($followBtn.val() === "FOLLOW") {
+            $followBtn.trigger('click');
+          }
+          
           var userModel = new Nebulr.Models.User({ id: that.currentUser.id });
           userModel.fetch().then( function () {
             that.model.enlistedUsers().add(userModel);

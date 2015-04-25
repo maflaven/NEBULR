@@ -43,6 +43,8 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     this.$('.form').html(JST['mission/form']({
       mission: this.model
     }));
+
+    this.$('#title').focus();
   },
 
   submitForm: function (event) {
