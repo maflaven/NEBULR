@@ -19,6 +19,10 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
       if (mission.leader().get('filepicker_url')) {
         leaderThumbnail = mission.leader().get('filepicker_url');
       }
+      var compensation = 0;
+      if (mission.get('compensation')) {
+        compensation = mission.get('compensation');
+      }
 
       var $li = $("<li class='mission-index-li'>");
       $li.addClass('col-md-' + this.itemSize);
@@ -26,7 +30,8 @@ Nebulr.Views.MissionIndex = Backbone.View.extend({
       $li.html(JST['mission/index_item']({
         mission: mission,
         thumbnail: thumbnail,
-        leaderThumbnail: leaderThumbnail
+        leaderThumbnail: leaderThumbnail,
+        compensation: compensation
       }));
       this.$('ul').append($li);
     }.bind(this));

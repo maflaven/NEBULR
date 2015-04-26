@@ -38,9 +38,15 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
       delete this.filterData['center_lng'];
     }
 
+    var zoom = 3;
+    if (this.filterData['zoom'] || this.filterData['zoom'] === 0) {
+      zoom = this.filterData['zoom'];
+      delete this.filterData['zoom'];
+    }
+
     var mapOptions = {
       center: { lat: centerLat, lng: centerLng},
-      zoom: 3,
+      zoom: zoom,
       streetViewControl: false,
       backgroundColor: "#222222",
       mapTypeControlOptions: {
@@ -101,7 +107,8 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
       map: this._map,
       title: mission.get('title'),
       id: mission.id,
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
+      icon: "https://www.filepicker.io/api/file/0Eu5gpIQRLyzHw77TiQK"
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
@@ -145,17 +152,24 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     if (mission.leader().get('filepicker_url')) {
       leaderThumbnail = mission.leader().get('filepicker_url');
     }
+    var compensation = 0;
+    if (mission.get('compensation')) {
+      compensation = mission.get('compensation');
+    }
+
     $missionDiv = $('<div class="mission-window">');
     $missionDiv.html(JST['mission/index_item']({
       mission: mission,
       thumbnail: thumbnail,
-      leaderThumbnail: leaderThumbnail
+      leaderThumbnail: leaderThumbnail,
+      compensation: compensation
     }));
 
     if (!this._infoWindows[marker.title]) {
       infoWindow = new google.maps.InfoWindow({
         content: $missionDiv.html(),
-        maxWidth: 200
+        maxWidth: 200,
+        backgroundColor: "#222222"
       });
       this._infoWindows[marker.title] = infoWindow;
     } else {

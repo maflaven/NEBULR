@@ -24,9 +24,7 @@ Nebulr.Views.MissionCarousel = Backbone.View.extend({
 
     this.$el.html(this.template({ images: images }));
 
-    this.$('.slick-carousel').slick({
-
-    });
+    this.$('.slick-carousel').slick();
 
     return this;
   },

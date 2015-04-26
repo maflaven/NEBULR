@@ -231,8 +231,8 @@ ul {
 
 .mission-index .leader-avatar {
   position: absolute;
-  bottom: 5%;
-  left: 75%;
+  bottom: 2%;
+  left: 70%;
   width:  80px;
   height: 80px;
 }
@@ -643,4 +643,15 @@ ul {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.search-filter .ui-widget-content, .search-filter .ui-widget-content * {
+  background: #222222;
+  border-color: black;
+}
+
+#cmp-range, #rating-range {
+  background: #222222;
+  border: black;
+  text-align: center;
 }

@@ -99,10 +99,16 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    var compensation = 0;
+    if (this.model.get('compensation')) {
+      compensation = this.model.get('compensation');
+    }
+
     this.$el.html(this.template({
       mission: this.model,
       spotsLeft: this.spotsLeft(),
-      currentUser: this.currentUser
+      currentUser: this.currentUser,
+      compensation: compensation
     }));
 
     this.attachSubviews();

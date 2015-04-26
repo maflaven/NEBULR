@@ -7,7 +7,7 @@
       <div class="mission-leader"></div><br>
       START: <%= mission.escape('start_date') %><br>
       END: <%= mission.escape('end_date') %><br>
-      COMPENSATION: <%= mission.get('compensation') %><br>
+      COMPENSATION: $<%= compensation %><br>
     </div>
     <div class="mission-options">
       <% if (this.model.get('is_leader') && !this.model.get('completed')) { %>
