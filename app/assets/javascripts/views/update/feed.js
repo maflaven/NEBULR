@@ -1,5 +1,5 @@
 Nebulr.Views.UpdateFeed = Backbone.CompositeView.extend({
-  template: JST['update/index'],
+  template: JST['update'],
   className: 'updates-index',
 
   initialize: function (options) {
