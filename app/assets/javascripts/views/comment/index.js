@@ -1,5 +1,5 @@
 Nebulr.Views.CommentIndex = Backbone.CompositeView.extend({
-  template: JST['comment/index'],
+  template: JST['comment'],
   className: 'list',
 
   initialize: function (options) {

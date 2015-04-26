@@ -1,5 +1,5 @@
 Nebulr.Views.UserIndex = Backbone.View.extend({
-  template: JST['user/index'],
+  template: JST['user'],
   className: 'user-index row',
 
   initialize: function () {

@@ -29,7 +29,7 @@ Nebulr.Views.MissionMapShow = Backbone.View.extend({
     var mapOptions = {
       center: { lat: this.model.get('latitude'), lng: this.model.get('longitude') },
       zoom: 4,
-      backgroundColor: 'black',
+      backgroundColor: "#222222",
       draggable: false,
       disableDoubleClickZoom: true,
       overviewMapControl: false,

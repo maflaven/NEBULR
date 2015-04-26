@@ -1,5 +1,5 @@
 Nebulr.Views.UpdateIndex = Backbone.CompositeView.extend({
-  template: JST['update/index'],
+  template: JST['update'],
 
   initialize: function (options) {
     this.currentUserId = options.currentUserId;

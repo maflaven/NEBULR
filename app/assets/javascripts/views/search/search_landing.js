@@ -8,7 +8,7 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
       'sun': [82, 0], 'mercury': [64, 0], 'venus': [60.4, 0],
       'earth': [55.67, 0], 'moon': [55.67, -7.33], 'mars': [51, 0],
       'jupiter': [15.1, 0], 'saturn': [-43.7, 0], 'uranus': [-67.2, 0],
-      'neptune': [-75.6, 0], 'solar-system': [0, 0]
+      'neptune': [-75.6, 0]
     }
   },
 

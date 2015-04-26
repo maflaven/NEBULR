@@ -15,6 +15,7 @@ gem 'uglifier'
 gem 'newrelic_rpm'
 gem 'filepicker-rails'
 gem 'figaro'
+gem 'jquery-slick-rails'
 
 group :production do
   gem 'unicorn'

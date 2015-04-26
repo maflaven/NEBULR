@@ -15,6 +15,8 @@
  *= bootstrap
  *= require jquery-ui
  *= require jquery.rateyo
+ *= require slick
+ *= require slick-theme
  */
 $font-family-base: 'Droid Sans Mono';
 
@@ -94,6 +96,7 @@ ul {
   height: 100%;
   padding: 0;
   margin: 0;
+  border: 1px solid black;
 }
 
 .sidebar {
@@ -223,6 +226,7 @@ ul {
 .mission-index .leader-avatar img {
   width: 80px;
   height: 80px;
+  border: 2px solid rgb(24, 24, 24);
 }
 
 .mission-index .leader-avatar {
@@ -311,7 +315,7 @@ ul {
 }
 
 .data-missions-feed {
-  max-height: 800px;
+  height: 600px;
 }
 
 .user-show .feed {
@@ -371,10 +375,6 @@ ul {
   height: 100%;
 }
 
-.user-index {
-
-}
-
 .delete-comment {
   position: relative;
   bottom: 5px;
@@ -392,6 +392,10 @@ ul {
 .comment-index-item:not(:last-child) {
   margin-bottom: 10px;
   border-bottom: 1px solid white;
+}
+
+.comment-index-item .media {
+  margin-bottom: 10px;
 }
 
 .comment-index-item img {
@@ -422,8 +426,8 @@ ul {
 }
 
 .update-index-item img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  max-height: 60px;
 }
 
 .mission-show .updates-index {
@@ -625,4 +629,18 @@ ul {
 
 .nav .button-title {
   padding: 0;
+}
+
+.slick-slide img {
+  max-width: 100%;
+}
+
+.carousel-image-container {
+  height: 510px;
+}
+
+.carousel-image-container img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

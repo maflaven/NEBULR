@@ -35,7 +35,7 @@ Nebulr.Views.CommentShow = Backbone.View.extend({
       this.pageOwnerId = this.user.id;
     }
     this.commenter = this.model.user();
-    this.thumbnail = "https://www.filepicker.io/api/file/PNXcJrvgR82BzwR5rfeO";
+    this.thumbnail = "https://www.filepicker.io/api/file/UzhxqFdQymmheDJt0dOg";
     if (this.commenter.get('filepicker_url')) {
       this.thumbnail = this.commenter.get('filepicker_url');
     }

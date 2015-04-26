@@ -1,31 +1,9 @@
-<div id="mission-carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#mission-carousel" data-slide-to="0" class="active"></li>
-    <% images.slice(1).forEach( function (image, index) { %>
-      <li data-target="#mission-carousel" data-slide-to="<%= index + 1 %>"></li>
-    <% }) %>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img class="carousel-img center-block" src="<%= images.first() && images.first().get('filepicker_url') %>"/>
+<div class="slick-carousel">
+  <% images.forEach( function (image, index) { %>
+    <div>
+      <div class="carousel-image-container">
+        <img class="center-block" src="<%= image.get('filepicker_url') %>"/>
       </div>
-    <% images.slice(1).forEach( function (image) { %>
-      <div class="item">
-        <img class="carousel-img center-block" src="<%= image.get('filepicker_url') %>"/>
-      </div>
-    <% })%>
-  </div>
-
-  <!-- Left and right controls -->
-  <!-- <a class="left carousel-control" href="#mission-carousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#mission-carousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a> -->
+    </div>
+  <% }); %>
 </div>

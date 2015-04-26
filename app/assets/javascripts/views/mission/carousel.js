@@ -3,7 +3,12 @@ Nebulr.Views.MissionCarousel = Backbone.View.extend({
   className: 'mission-carousel',
 
   initialize: function (options) {
-    this.listenTo(this.collection, "add sync", this.render);
+    this.listenTo(this.model, "sync", this.render);
+  },
+
+  events: {
+    'click .slick-next': 'nextImage',
+    'click .slick-prev': 'prevImage'
   },
 
   render: function () {
@@ -19,6 +24,18 @@ Nebulr.Views.MissionCarousel = Backbone.View.extend({
 
     this.$el.html(this.template({ images: images }));
 
+    this.$('.slick-carousel').slick({
+
+    });
+
     return this;
+  },
+
+  nextImage: function () {
+    $('.slick-carousel').slick('slickNext');
+  },
+
+  prevImage: function () {
+    $('.slick-carousel').slick('slickPrev');
   }
 });

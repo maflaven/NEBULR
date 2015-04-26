@@ -31,7 +31,7 @@ Nebulr.Views.EventMapLocationShow = Backbone.View.extend({
     var mapOptions = {
       center: { lat: 0, lng: 0},
       zoom: 3,
-      backgroundColor: 'black',
+      backgroundColor: "#222222",
       streetViewControl: false,
       mapTypeControlOptions: {
         mapTypeIds: ["solarSystem"]

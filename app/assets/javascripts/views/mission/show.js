@@ -7,7 +7,8 @@ Nebulr.Views.MissionShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
 
     this.imageCarouselView = new Nebulr.Views.MissionCarousel({
-      collection: this.model.images()
+      collection: this.model.images(),
+      model: this.model
     });
     this.addSubview('.mission-images', this.imageCarouselView);
 

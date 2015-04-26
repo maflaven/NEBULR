@@ -1,5 +1,5 @@
 Nebulr.Views.MissionIndex = Backbone.View.extend({
-  template: JST['mission/index'],
+  template: JST['mission'],
   className: 'mission-index',
 
   initialize: function (options) {

@@ -92,7 +92,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     var $field = this.$("#" + errorId);
     $field.addClass('ui-state-highlight');
     var $errorDiv = $('<div class="error-message">');
-    $errorDiv.html(error).addClass('alert alert-warning').hide();
+    $errorDiv.html(error.toUpperCase()).addClass('alert alert-warning').hide();
     $errorDiv.insertBefore($field);
     $errorDiv.fadeIn("fast");
   },

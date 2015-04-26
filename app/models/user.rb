@@ -13,7 +13,7 @@
 
 class User < ActiveRecord::Base
   validates :username, :session_token, presence: true
-  validates :password_digest, presence: { message: "Password can't be blank" }
+  validates :password_digest, presence: { message: "PASSWORD CAN'T BE BLANK" }
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :username, uniqueness: true
 

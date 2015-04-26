@@ -20,6 +20,7 @@
 class Mission < ActiveRecord::Base
   validates :leader_id, :title, :description, :latitude, :longitude,
             :start_date, :end_date, presence: true
+  validates :title, uniqueness: true
 
   belongs_to :leader, class_name: :User
   has_many :enlists, class_name: 'Enlist', dependent: :destroy
