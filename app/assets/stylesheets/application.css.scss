@@ -655,3 +655,59 @@ ul {
   border: black;
   text-align: center;
 }
+
+.landing-background {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 50px;
+}
+
+.search-landing .mission-search {
+  height: 500px;
+}
+
+.search-landing .mission-search-form {
+  position: relative;
+  margin-top: 10%;
+}
+
+.landing-heading {
+  margin-top: 200px;
+}
+
+.landing-heading h1 {
+  font-weight: 900px;
+  text-align: center;
+}
+
+.mission-search-form label {
+  color: white;
+}
+
+.mission-search-form .ss-object-div {
+  width: 33%;
+  float: left;
+}
+
+.mission-search-form select.ss-object {
+  border-radius: none;
+}
+
+.mission-search-form .start-div {
+  width: 33%;
+  float: left;
+}
+
+.mission-search-form input.start-date {
+  border-radius: none;
+}
+
+.mission-search-form .end-div {
+  width: 33%;
+  float: left;
+}
+
+.mission-search-form input.end-date {
+  border-radius: none;
+}

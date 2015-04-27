@@ -1,6 +1,6 @@
 Nebulr.Views.SearchLanding = Backbone.View.extend({
   template: JST['search/landing'],
-  className: 'search-landing row',
+  className: 'search-landing',
 
   initialize: function (options) {
     this.filterData = options.filterData;
