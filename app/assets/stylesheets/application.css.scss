@@ -661,6 +661,7 @@ ul {
   position: fixed;
   left: 0;
   top: 50px;
+  opacity: 0.4;
 }
 
 .search-landing .mission-search {
@@ -690,24 +691,12 @@ ul {
   float: left;
 }
 
-.mission-search-form select.ss-object {
-  border-radius: none;
-}
-
 .mission-search-form .start-div {
   width: 33%;
   float: left;
 }
 
-.mission-search-form input.start-date {
-  border-radius: none;
-}
-
 .mission-search-form .end-div {
   width: 33%;
   float: left;
-}
-
-.mission-search-form input.end-date {
-  border-radius: none;
 }

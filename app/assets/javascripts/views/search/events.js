@@ -220,9 +220,9 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     if ( currentBounds.toSpan().lat() > this.strictBounds.toSpan().lat() ) {
         centerV = true;
     } else { // test positive and negative wrap respectively
-      wrap = currentBounds.getNorthEast().lat() < cc.lat();  if (wrap) { alert("WRAp detected top") } // else alert("no wrap:"+currentBounds); wrap = false;
+      wrap = currentBounds.getNorthEast().lat() < cc.lat();
       this.max_lat = !wrap ? currentBounds.getNorthEast().lat()  : allowed_ne_lat + (currentBounds.getNorthEast().lat() + 100) + (100 - allowed_ne_lat);
-      wrap = currentBounds.getSouthWest().lat() > cc.lat();  if (wrap) { alert("WRAp detected btm") } //alert("no wrap:"+currentBounds);
+      wrap = currentBounds.getSouthWest().lat() > cc.lat();
       this.min_lat = !wrap ?  currentBounds.getSouthWest().lat() : allowed_sw_lat - (100 - currentBounds.getSouthWest().lat()) - (allowed_sw_lat + 100);
     }
   }

@@ -23,7 +23,7 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
 
   search: function (event) {
     event.preventDefault();
-    var data = this.$('.mission-search').serializeJSON();
+    var data = this.$('.mission-search-form').serializeJSON();
 
     if (data['ss-object']) {
       var object = data['ss-object'];
