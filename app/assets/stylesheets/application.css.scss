@@ -239,9 +239,9 @@ ul {
 
 .filtered-mission-index > .mission-index {
   position: absolute;
-  top: 250px;
+  top: 270px;
   left: 15px;
-  height: calc(100% - 280px);
+  height: calc(100% - 300px);
   width: calc(100% - 60px);
 }
 
@@ -737,4 +737,8 @@ ul {
 
 .sidebar .filter {
   padding: 30px 0 0 30px;
+}
+
+.sidebar label {
+  font-size: 18px
 }
