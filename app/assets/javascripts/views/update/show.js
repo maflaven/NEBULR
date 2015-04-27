@@ -32,7 +32,7 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
 
   setAttributes: function () {
     this.thumbnail = "https://www.filepicker.io/api/file/UuGSt7rqR4aVqjX5K54S";
-    if (this.mission.get('images')) {
+    if (this.mission.get('images') && this.mission.get('images').length > 0) {
       this.thumbnail = this.mission.get('images')[0].filepicker_url;
     } else if (this.mission.images().first()) {
       this.thumbnail = this.mission.images().first().get('filepicker_url');

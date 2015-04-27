@@ -105,7 +105,6 @@ ul {
 }
 
 .mission-stats-pics-loc {
-  padding: 20px;
   position: relative;
 }
 
@@ -125,18 +124,9 @@ ul {
   padding: 20px;
 }
 
-.mission-desc-users {
-  padding: 20px;
-}
-
-.mission-show .comments {
-  padding: 20px;
-}
-
 #filter-submit {
   width: 500px;
 }
-
 
 .mission-title-search-input {
   width: 200px;
@@ -249,10 +239,10 @@ ul {
 
 .filtered-mission-index > .mission-index {
   position: absolute;
-  top: 220px;
-  bottom: 0;
-  height: calc(100% - 220px);
-  width: calc(100% - 15px);
+  top: 250px;
+  left: 15px;
+  height: calc(100% - 280px);
+  width: calc(100% - 60px);
 }
 
 .filtered-mission-index .mission-index-li {
@@ -352,6 +342,7 @@ ul {
 }
 
 .mission-desc-users {
+  margin-top: 20px;
   height: 200px;
 }
 
@@ -734,4 +725,16 @@ ul {
 
 .planet:hover .planet-label {
   opacity: 1;
+}
+
+.mission-show,
+.mission-index-search,
+.mission-new .form,
+.mission-new .images,
+.user-show {
+  padding: 30px
+}
+
+.sidebar .filter {
+  padding: 30px 0 0 30px;
 }
