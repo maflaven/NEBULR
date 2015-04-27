@@ -94,7 +94,8 @@ Nebulr.Views.EventMapLocationShow = Backbone.View.extend({
       position: latLng,
       map: this._map,
       title: mission.get('title'),
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
+      icon: "https://www.filepicker.io/api/file/0Eu5gpIQRLyzHw77TiQK"
     });
 
     this._markers[mission.id] = marker;
