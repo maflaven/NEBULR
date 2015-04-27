@@ -7,13 +7,14 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
     this.ssObjects = {
       'sun': [82, 0, 0], 'mercury': [64, 0, 5], 'venus': [60.4, 0, 5],
       'earth': [55.67, 0, 5], 'moon': [55.67, -7.33, 5], 'mars': [51, 0, 5],
-      'jupiter': [15.1, 0, 2], 'saturn': [-43.7, 0, 1], 'uranus': [-67.2, 0, 3],
+      'jupiter': [15.1, 0, 2], 'saturn': [-43.7, 0, 2], 'uranus': [-67.2, 0, 3],
       'neptune': [-75.6, 0, 3]
     };
   },
 
   events: {
-    'click #search-btn': 'search'
+    'click #search-btn': 'search',
+    'click .planet-label': 'search'
   },
 
   render: function () {
@@ -23,7 +24,14 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
 
   search: function (event) {
     event.preventDefault();
-    var data = this.$('.mission-search-form').serializeJSON();
+    $link = $(event.currentTarget);
+    var data = {};
+
+    if ($link.hasClass('planet-label')) {
+      data['ss-object'] = $link.prop('id');
+    } else {
+      data = this.$('.mission-search-form').serializeJSON();
+    }
 
     if (data['ss-object']) {
       var object = data['ss-object'];

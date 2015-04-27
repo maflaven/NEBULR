@@ -700,3 +700,38 @@ ul {
   width: 33%;
   float: left;
 }
+
+.ssobject-browse {
+  margin-bottom: 40px;
+}
+
+.ssobject-browse img {
+  max-width: 100%;
+  border-radius: 5px;
+  border: 2px solid #222222;
+}
+
+.ssobject-browse .planet-label {
+  position: absolute;
+  width: calc(100% - 30px);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+
+.planet-label p {
+  margin: 0;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.planet:hover .planet-label {
+  opacity: 1;
+}
