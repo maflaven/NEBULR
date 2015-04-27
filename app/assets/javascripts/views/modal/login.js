@@ -32,8 +32,17 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
   },
 
   loginGuest: function (event) {
-    this.credentials = {'username': 'jlpicard', 'password': 'password'};
-    this.loginUser(event);
+    var that = this;
+    this.$('form #username').typed({
+      strings: ["jlpicard"],
+      typeSpeed: 30
+    });
+    this.$('form #password').typed({
+      strings: ["password"],
+      startDelay: 200,
+      typeSpeed: 30,
+      callback: function () {that.loginUser(event);}
+    });
   },
 
   loginUser: function (event) {
@@ -41,9 +50,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
     this._clearErrors();
     this.toggleBtns("disable");
 
-    if ($.isEmptyObject(this.credentials)) {
-      this.credentials = this.$('form').serializeJSON();
-    }
+    this.credentials = this.$('form').serializeJSON();
 
     var data = {'user': this.credentials};
 

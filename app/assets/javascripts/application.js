@@ -16,6 +16,7 @@
 //= require jquery.serializejson
 //= require jquery.rateyo
 //= require jquery.slick
+//= require typed.min
 //= require underscore
 //= require bootstrap-sprockets
 //= require backbone

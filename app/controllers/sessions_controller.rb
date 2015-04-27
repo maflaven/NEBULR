@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in!(@user)
       render json: @user.id
     else
-      render json: "Invalid username and/or password"
+      render json: "Invalid username and/or password", status: :unprocessable_entity
     end
   end
 
