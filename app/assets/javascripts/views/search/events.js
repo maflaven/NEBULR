@@ -20,7 +20,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
           if ((coord.x > Math.pow(2, zoom) - 1) || (coord.y > Math.pow(2, zoom) - 1)) {
             return null;
           }
-          return "http://googledrive.com/host/0B87UzFwwOBvxflZwTGZhc3IzUjJNUjZYQUVUWnJoUUotdU0tNmczYjN2UUhLOS01amo1Umc" +
+          return "https://s3-us-west-1.amazonaws.com/nebulr/ss_map_vert" +
                  "/tile_" + zoom + "_" + coord.x + "-" +
                  coord.y + ".png";
       },

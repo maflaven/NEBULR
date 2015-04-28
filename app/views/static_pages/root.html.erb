@@ -11,3 +11,6 @@
     Nebulr.initialize({ currentUserId: <%= current_user ? current_user.id : 'undefined' %> });
   });
 </script>
+<script>
+  filepicker.setKey("<%= Figaro.env.FILEPICKER_API_KEY %>");
+</script>
