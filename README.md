@@ -89,7 +89,7 @@ missions, and a few comments, follows, and enlistments for each user/mission.
 
 ### Bonus Features
 - [x] User avatars
-- [ ] View a feed of mission updates in "followed missions"
+- [x] View a feed of mission updates in "followed missions"
 - [x] Google Map centered and zoomed-in on mission location (mission/show)
 - [ ] Pagination/infinite scroll
 - [ ] OmniAuth

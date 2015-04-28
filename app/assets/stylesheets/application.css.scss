@@ -647,6 +647,10 @@ ul {
   text-align: center;
 }
 
+#min-date, #max-date {
+  text-align: center;
+}
+
 .landing-background {
   width: 100%;
   position: fixed;
@@ -668,9 +672,12 @@ ul {
   margin-top: 200px;
 }
 
-.landing-heading h1 {
-  font-weight: 900px;
+.landing-heading h1, .landing-heading2 h1 {
   text-align: center;
+}
+
+.landing-heading2 {
+  margin-bottom: 50px;
 }
 
 .mission-search-form label {
@@ -680,6 +687,14 @@ ul {
 .mission-search-form .ss-object-div {
   width: 33%;
   float: left;
+}
+
+.mission-search-form #ss-object {
+  border-radius: 5px 0 0 5px;
+}
+
+.mission-search-form #end-date {
+  border-radius: 0 5px 5px 0;
 }
 
 .mission-search-form .start-div {
@@ -741,4 +756,24 @@ ul {
 
 .sidebar label {
   font-size: 18px
+}
+
+.mission-new form * {
+  border-radius: 5px;
+}
+
+.modal #username {
+  border-radius: 5px 5px 0 0;
+}
+
+.modal #password {
+  border-radius: 0 0 5px 5px;
+}
+
+.search-filter input {
+  border-radius: 5px;
+}
+
+#ui-datepicker-div {
+  z-index: 5 !important;
 }

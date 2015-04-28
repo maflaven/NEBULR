@@ -19,6 +19,14 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template());
+    this.$('#start-date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
+    this.$('#end-date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
     return this;
   },
 

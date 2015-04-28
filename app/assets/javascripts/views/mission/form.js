@@ -32,6 +32,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
     this.$('.map').html(this.missionLocationView.$el);
     this.missionLocationView.render();
+
     return this;
   },
 
@@ -43,6 +44,15 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     this.$('.form').html(JST['mission/form']({
       mission: this.model
     }));
+
+    $('#start_date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
+    $('#end_date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
 
     this.$('#title').focus();
   },

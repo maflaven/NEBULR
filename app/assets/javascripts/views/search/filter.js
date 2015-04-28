@@ -22,6 +22,14 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
     }));
     this.attachCompensationSlider();
     this.attachRatingSlider();
+    this.$('#min-date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
+    this.$('#max-date').datepicker({
+      showAnim: 'fadeIn',
+      dateFormat: 'yy-mm-dd'
+    });
 
     return this;
   },
