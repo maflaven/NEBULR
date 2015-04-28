@@ -99,6 +99,13 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
   _processError: function (error) {
     var errorId = error.split(' ')[0].toLowerCase();
+
+    if (errorId === "start") {
+      errorId = "start_date";
+    } else if (errorId === "end") {
+      errorId = "end_date";
+    }
+
     var $field = this.$("#" + errorId);
     $field.addClass('ui-state-highlight');
     var $errorDiv = $('<div class="error-message">');
