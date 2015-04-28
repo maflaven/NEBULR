@@ -1,5 +1,5 @@
 <% if Rails.env.production? %>
-  <% maps_api_key = "key=AIzaSyAgLCzfzdZ43OSavsQUSsV1Sj3WTknpMc0" %>
+  <% maps_api_key = Figaro.env.maps_api_key %>
 <% else %>
   <% maps_api_key = '' %>
 <% end %>
