@@ -26,6 +26,10 @@ Nebulr.Views.MissionIndexSearch = Backbone.View.extend({
     this.form = $('#mission-title-search');
     this.form.on('submit', this.searchMissions.bind(this));
     $('#ss-object').on('focus', this.searchMissions.bind(this));
+    $('#mission-browse').on('click', function () {
+      this.render();
+      this.searchMissions();
+    }.bind(this));
   },
 
   render: function () {
@@ -35,7 +39,9 @@ Nebulr.Views.MissionIndexSearch = Backbone.View.extend({
   },
 
   searchMissions: function (event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     var data = this.form.serializeJSON();
     if (data['ss-object']) {
       data.min_lat = this.ssObjectBounds[data['ss-object']]['min_lat'];
