@@ -16,7 +16,7 @@ gem 'newrelic_rpm'
 gem 'filepicker-rails'
 gem 'figaro'
 gem 'jquery-slick-rails'
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
 
 group :production do
   gem 'unicorn'
