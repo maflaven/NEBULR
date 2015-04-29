@@ -67,5 +67,8 @@ Nebulr.Views.MissionSearchShow = Backbone.View.extend({
     this.mapView.remove();
     this.missionIndex.remove();
     this.filterView.remove();
+    $.each(this.filterData, function (key, value) {
+      this.filterData[key] = undefined;
+    }.bind(this));
   }
 });

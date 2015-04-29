@@ -23,6 +23,10 @@ $font-family-base: 'Droid Sans Mono';
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 .navbar {
   border: none;
 }
@@ -293,6 +297,7 @@ ul {
   left: 10px;
   background: black;
   opacity: 0.8;
+  width: 58%
 }
 
 .map .mission-index-item .compensation {
@@ -776,4 +781,8 @@ ul {
 
 #ui-datepicker-div {
   z-index: 5 !important;
+}
+
+.filtered-mission-index .mission-index .title {
+  width: 58%
 }
