@@ -139,6 +139,7 @@ user28 = User.create(
 current_year = DateTime.now.year
 current_month = DateTime.now.month
 
+updates = []
 
 mission0 = Mission.create(
   latitude: 75.75894014501688,
@@ -167,11 +168,11 @@ mission0.images.create(
 mission0.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/dIK3cGVMTBGSMVyDjhuX"
 )
-mission0.updates.create(text: "Shuttlecraft fitted with prototype")
-mission0.updates.create(text: "Simulations are all green!")
-mission0.updates.create(text: "Field test in three weeks.")
-mission0.updates.create(text: "I'm still looking for people. Please keep enlisting!")
-mission0.updates.create(text: "Prelaunch checklist is complete.")
+updates << [mission0.updates.new(text: "Shuttlecraft fitted with prototype"),
+mission0.updates.new(text: "Simulations are all green!"),
+mission0.updates.new(text: "Field test in three weeks."),
+mission0.updates.new(text: "I'm still looking for people. Please keep enlisting!"),
+mission0.updates.new(text: "Prelaunch checklist is complete.")]
 mission0.comments.create(body: "Let me know if you want to collaborate.", user_id: user14.id)
 mission0.comments.create(body: "Will do.", user_id: user0.id)
 mission0.enlists.create(user_id: user0.id)
@@ -204,11 +205,11 @@ mission1.images.create(
 mission1.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/X73DpfXRSUKMzRFE1IsZ"
 )
-mission1.updates.create(text: "Breaking ground ceremony today. Exciting first step!")
-mission1.updates.create(text: "Exciting imagery to come!")
-mission1.updates.create(text: "Spraying for Helionic Demons...")
-mission1.updates.create(text: "Facility is built!")
-mission1.updates.create(text: "Crew quarters ready to be filled.")
+updates << [mission1.updates.new(text: "Breaking ground ceremony today. Exciting first step!"),
+mission1.updates.new(text: "Exciting imagery to come!"),
+mission1.updates.new(text: "Spraying for Helionic Demons..."),
+mission1.updates.new(text: "Facility is built!"),
+mission1.updates.new(text: "Crew quarters ready to be filled.")]
 mission1.comments.create(body: "Let me know if you ever want to do a photo swap.", user_id: user12.id)
 mission1.comments.create(body: "Good luck.", user_id: user0.id)
 mission1.enlists.create(user_id: user14.id)
@@ -239,12 +240,12 @@ mission2.images.create(
 mission2.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/BMlzpfCcTeWD4xLDGQh4"
 )
-mission2.updates.create(text: "First wave approaching.")
-mission2.updates.create(text: "First wave destroyed.")
-mission2.updates.create(text: "Calling for reinforcements from Mars.")
-mission2.updates.create(text: "Join the hunt!")
-mission2.updates.create(text: "Small retaliatory group.")
-mission2.updates.create(text: "Easily defeated.")
+updates << [mission2.updates.new(text: "First wave approaching."),
+mission2.updates.new(text: "First wave destroyed."),
+mission2.updates.new(text: "Calling for reinforcements from Mars."),
+mission2.updates.new(text: "Join the hunt!"),
+mission2.updates.new(text: "Small retaliatory group."),
+mission2.updates.new(text: "Easily defeated.")]
 mission2.comments.create(body: "YOU MONSTERS!", user_id: user13.id)
 mission2.comments.create(body: "You brought this upon yourselves.", user_id: user10.id)
 mission2.comments.create(body: "Hell yeah!", user_id: user25.id)
@@ -280,11 +281,11 @@ mission3.images.create(
 mission3.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/s8P4ljCtSi8wy7Chfcfv"
 )
-mission3.updates.create(text: "The brutal bastards!")
-mission3.updates.create(text: "It's a slaughter...")
-mission3.updates.create(text: "WE NEED HELP!")
-mission3.updates.create(text: "Gather at sector A9!!")
-mission3.updates.create(text: "HELP!")
+updates << [mission3.updates.new(text: "The brutal bastards!"),
+mission3.updates.new(text: "It's a slaughter..."),
+mission3.updates.new(text: "WE NEED HELP!"),
+mission3.updates.new(text: "Gather at sector A9!!"),
+mission3.updates.new(text: "HELP!")]
 mission3.comments.create(body: "I'm here for us Wisper!", user_id: user16.id)
 mission3.comments.create(body: "Wispers United! Wispers Ascended!", user_id: user17.id)
 mission3.comments.create(body: "Wispers United!", user_id: user13.id)
@@ -322,9 +323,9 @@ mission4.images.create(
 mission4.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/1keZc3TtCjY7fF5kSWxw"
 )
-mission4.updates.create(text: "Already 2000 km down")
-mission4.updates.create(text: "Planet center imminent!")
-mission4.updates.create(text: "No...Why?...")
+updates << [mission4.updates.new(text: "Already 2000 km down"),
+mission4.updates.new(text: "Planet center imminent!"),
+mission4.updates.new(text: "No...Why?...")]
 mission4.comments.create(body: "I hope we're still in agreement, Siped.", user_id: user5.id)
 mission4.comments.create(body: "Of course, Guo.", user_id: user6.id)
 mission4.enlists.create(user_id: user6.id)
@@ -367,12 +368,12 @@ mission5.images.create(
 mission5.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/yOYA1NOZSueD5AcvI1tQ"
 )
-mission5.updates.create(text: "What shall it be?")
-mission5.updates.create(text: "Join the Unity?")
-mission5.updates.create(text: "Or do you die?")
-mission5.updates.create(text: "Join!")
-mission5.updates.create(text: "Die!")
-mission5.updates.create(text: "Join!")
+updates << [mission5.updates.new(text: "What shall it be?"),
+mission5.updates.new(text: "Join the Unity?"),
+mission5.updates.new(text: "Or do you die?"),
+mission5.updates.new(text: "Join!"),
+mission5.updates.new(text: "Die!"),
+mission5.updates.new(text: "Join!")]
 mission5.comments.create(body: "The Unity will bring about the master race.", user_id: user7.id)
 mission5.comments.create(body: "Help me bring peace to the wasteland.", user_id: user7.id)
 mission5.enlists.create(user_id: user0.id)
@@ -406,11 +407,11 @@ mission6.images.create(
 mission6.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/6LKxJIg3TEKyz4uBsPBE"
 )
-mission6.updates.create(text: "Still no sight of them...")
-mission6.updates.create(text: "They're were so sweet and gentle.")
-mission6.updates.create(text: "Oh! I think I hear them!")
-mission6.updates.create(text: "2 helpers arrive today!")
-mission6.updates.create(text: "We came close but alas, no whales.")
+updates << [mission6.updates.new(text: "Still no sight of them..."),
+mission6.updates.new(text: "They're were so sweet and gentle."),
+mission6.updates.new(text: "Oh! I think I hear them!"),
+mission6.updates.new(text: "2 helpers arrive today!"),
+mission6.updates.new(text: "We came close but alas, no whales.")]
 mission6.comments.create(body: "I'll be in near-Moon orbit soon. Will message you if I spot them.", user_id: user0.id)
 mission6.comments.create(body: "Perhaps they don't belong on a Moon farm?", user_id: user1.id)
 mission6.enlists.create(user_id: user8.id)
@@ -442,10 +443,10 @@ mission7.images.create(
 mission7.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/Wxu8WjNBShWqPlzoP79A"
 )
-mission7.updates.create(text: "Crew back from vacation.")
-mission7.updates.create(text: "Storm as strong as ever!")
-mission7.updates.create(text: "Still accepting candidates.")
-mission7.updates.create(text: "New equipment available.")
+updates << [mission7.updates.new(text: "Crew back from vacation."),
+mission7.updates.new(text: "Storm as strong as ever!"),
+mission7.updates.new(text: "Still accepting candidates."),
+mission7.updates.new(text: "New equipment available.")]
 mission7.comments.create(body: "Your team does quite stunning work.", user_id: user14.id)
 mission7.comments.create(body: "Thanks! Keep a lookout for new storm photos soon!", user_id: user12.id)
 mission7.comments.create(body: "Is it too late to enlist?", user_id: user18.id)
@@ -477,10 +478,10 @@ mission8.images.create(
 mission8.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/aZEkke3wQTmCfvRkC9Wh"
 )
-mission8.updates.create(text: "Another quarter left.")
-mission8.updates.create(text: "Damn the Wisp war...")
-mission8.updates.create(text: "We need someone now!")
-mission8.updates.create(text: "My dream...")
+updates << [mission8.updates.new(text: "Another quarter left."),
+mission8.updates.new(text: "Damn the Wisp war..."),
+mission8.updates.new(text: "We need someone now!"),
+mission8.updates.new(text: "My dream...")]
 mission8.comments.create(body: "Sorry Lulu, I need to help my Wispers.", user_id: user19.id)
 mission8.comments.create(body: "But you're the reason we switched to Cordrazine!!!", user_id: user15.id)
 mission8.enlists.create(user_id: user15.id)
@@ -509,10 +510,10 @@ mission9.images.create(
 mission9.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/11QZ491QsuvTtDJBJPy0"
 )
-mission9.updates.create(text: "3 gigatons mined today!")
-mission9.updates.create(text: "Dilithium is trading well.")
-mission9.updates.create(text: "May have hit motherlode!")
-mission9.updates.create(text: "Now's the time to enlist!")
+updates << [mission9.updates.new(text: "3 gigatons mined today!"),
+mission9.updates.new(text: "Dilithium is trading well."),
+mission9.updates.new(text: "May have hit motherlode!"),
+mission9.updates.new(text: "Now's the time to enlist!")]
 mission9.comments.create(body: "I'd love to talk to you sometime about your terrawatt plasma drill tech", user_id: user6.id,)
 mission9.comments.create(body: "Will do.", user_id: user5.id)
 mission9.enlists.create(user_id: user5.id)
@@ -548,9 +549,9 @@ mission10.images.create(
 mission10.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/s8ml247DSeqZcD9CJWKz"
 )
-mission10.updates.create(text: "New shipment of screeching moon whales just arrived.")
-mission10.updates.create(text: "Moon whales adjusting well!")
-mission10.updates.create(text: "It's beautiful today!")
+updates << [mission10.updates.new(text: "New shipment of screeching moon whales just arrived."),
+mission10.updates.new(text: "Moon whales adjusting well!"),
+mission10.updates.new(text: "It's beautiful today!")]
 mission10.comments.create(body: "How could you take them?!", user_id: user8.id)
 mission10.comments.create(body: "Whales on a moon farm. That's why.", user_id: user1.id)
 mission10.enlists.create(user_id: user1.id)
@@ -581,8 +582,8 @@ mission11.images.create(
 mission11.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/OP0G00iDSRac0LpfGtgA"
 )
-mission11.updates.create(text: "Again, only accept him alive.")
-mission11.updates.create(text: "Curse whoever blundered that one.")
+updates << [mission11.updates.new(text: "Again, only accept him alive."),
+mission11.updates.new(text: "Curse whoever blundered that one.")]
 mission11.comments.create(body: "Any time bonuses?", user_id: user20.id)
 mission11.comments.create(body: "Sure, $10000.", user_id: user11.id)
 mission11.enlists.create(user_id: user11.id)
@@ -613,9 +614,9 @@ mission12.images.create(
 mission12.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/8Nu89BZESGGDA7H1BJ5Q"
 )
-mission12.updates.create(text: "Just a handful of weeks left.")
-mission12.updates.create(text: "Gonna be great!")
-mission12.updates.create(text: "1 week left")
+updates << [mission12.updates.new(text: "Just a handful of weeks left."),
+mission12.updates.new(text: "Gonna be great!"),
+mission12.updates.new(text: "1 week left")]
 mission12.comments.create(body: "YOU WILL BE ASSIMILATED", user_id: user4.id)
 mission12.comments.create(body: "What are you?", user_id: user2.id)
 mission12.enlists.create(user_id: user4.id)
@@ -643,10 +644,10 @@ mission13.images.create(
 mission13.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/CNd20lKGQiamtVRUfv1D"
 )
-mission13.updates.create(text: "Planet Pluto is most beautiful at night.")
-mission13.updates.create(text: "Best water in solar system here.")
-mission13.updates.create(text: "Best view of rest of universe.")
-mission13.updates.create(text: "Best PLANET!")
+updates << [mission13.updates.new(text: "Planet Pluto is most beautiful at night."),
+mission13.updates.new(text: "Best water in solar system here."),
+mission13.updates.new(text: "Best view of rest of universe."),
+mission13.updates.new(text: "Best PLANET!")]
 mission13.comments.create(body: "WE ARE THE BORG", user_id: user4.id)
 mission13.comments.create(body: "YOU WILL BE ASSIMILATED", user_id: user4.id)
 mission13.enlists.create(user_id: user9.id)
@@ -669,10 +670,10 @@ mission14 = Mission.create(
 mission14.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/LyO1dbVQTl2bmDSuf5Gj"
 )
-mission14.updates.create(text: "YOU WILL BE ASSIMILATED")
-mission14.updates.create(text: "RESISTANCE IS FUTILE")
-mission14.updates.create(text: "YOU WILL BE ASSIMILATED")
-mission14.updates.create(text: "RESISTANCE IS FUTILE")
+updates << [mission14.updates.new(text: "YOU WILL BE ASSIMILATED"),
+mission14.updates.new(text: "RESISTANCE IS FUTILE"),
+mission14.updates.new(text: "YOU WILL BE ASSIMILATED"),
+mission14.updates.new(text: "RESISTANCE IS FUTILE")]
 mission14.comments.create(body: "Resistance is NOT futile!", user_id: user0.id)
 mission14.comments.create(body: "INCORRECT YOU WILL BE ASSIMILATED", user_id: user4.id)
 mission14.enlists.create(user_id: user4.id)
@@ -705,8 +706,8 @@ mission15.images.create(
 mission15.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/vbvQnv2YQX2rE2gCS4i3"
 )
-mission15.updates.create(text: "Third test complete for good measure.")
-mission15.updates.create(text: "Ready to launch.")
+updates << [mission15.updates.new(text: "Third test complete for good measure."),
+mission15.updates.new(text: "Ready to launch.")]
 mission15.comments.create(body: "Happy to be abord!", user_id: user0.id)
 mission15.comments.create(body: "You people think I'm someone special.", user_id: user3.id)
 mission15.comments.create(body: "Mr. Cochrane, it's an honor to be present at this historic event.", user_id: user0.id)
@@ -740,8 +741,8 @@ mission16.images.create(
 mission16.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/hrGTldPSUatxjCPO9hhb"
 )
-mission16.updates.create(text: "Again, don't approach it!")
-mission16.updates.create(text: "The mission starts soon.")
+updates << [mission16.updates.new(text: "Again, don't approach it!"),
+mission16.updates.new(text: "The mission starts soon.")]
 mission16.comments.create(body: "He's just lonely. Probably the last of his kind.", user_id: user21.id)
 mission16.comments.create(body: "He?", user_id: user0.id)
 mission16.enlists.create(user_id: user0.id)
@@ -752,3 +753,11 @@ mission16.follows.create(user_id: user0.id)
 mission16.follows.create(user_id: user21.id)
 mission16.follows.create(user_id: user22.id)
 mission16.follows.create(user_id: user23.id)
+
+
+num_missions = Mission.all.count
+
+while updates.any? { |arr| !arr.empty? }
+  i = rand(num_missions)
+  updates[i].shift.save unless updates[i].empty?
+end
