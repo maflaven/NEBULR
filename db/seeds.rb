@@ -1,12 +1,83 @@
-user0 = User.create(username: 'jlpicard', password: 'password')
-user1 = User.create(username: 'thedr', password: 'password')
-user2 = User.create(username: 'mreynolds', password: 'password')
-user3 = User.create(username: 'notanalien', password: 'password')
-user4 = User.create(username: 'marvin', password: 'password')
-user5 = User.create(username: 'adent', password: 'password')
-user6 = User.create(username: 'zbeeblebrox', password: 'password')
-user7 = User.create(username: 'borg', password: 'password')
-user8 = User.create(username: 'zcochrane', password: 'password')
+user0 = User.create(
+  username: 'jlpicard',
+  password: 'password',
+  filepicker_url: "https://www.filepicker.io/api/file/LHZFIwZzT62Q65cUNL4b"
+)
+user1 = User.create(
+  username: "bgryllsxi",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/GVfBaqHTaK7qWl6z3RaD"
+)
+user2 = User.create(
+  username: "et",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/FIX5dj3Qm3XerDYdZTwx"
+)
+user3 = User.create(
+  username: "zcochrane",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/67YeJ43TcS7fOg2i3UZZ"
+)
+user4 = User.create(
+  username: "BORG",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/LdbLOooTkC9qrGK5K53j"
+)
+user5 = User.create(
+  username: "jguo",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/dYEcOyyiRO2tEorQaQcF"
+)
+user6 = User.create(
+  username: "gsiped",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/whsye5mWSFuuihAgcysT"
+)
+user7 = User.create(
+  username: "master",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/1TcbdMmMRtW0CE2DL25R"
+)
+user8 = User.create(
+  username: "sthompson",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/zCoq6wiMTIugZIdpDWyA"
+)
+user9 = User.create(
+  username: "plutoco",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/TyEWMKhgRS2xCI5MIxnp"
+)
+user10 = User.create(
+  username: "masterchief",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/f0OoPaggRhW6KGvB9M06"
+)
+user11 = User.create(
+  username: "qrontok",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/iw5tA8MtQqKz7wCqD3Th"
+)
+user12 = User.create(
+  username: "bhettinger",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/6iWxnsMsSyuv7YglZI2A"
+)
+user13 = User.create(
+  username: "wispascend",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/Yj5Fy8szRGOqLwafMG2m"
+)
+user14 = User.create(
+  username: "venafunk",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/oYzyAUodRbMMIAvbhgDX"
+)
+user15 = User.create(
+  username: "lulu",
+  password: "password",
+  filepicker_url: "https://www.filepicker.io/api/file/j02JeckkTWVJ7lhGfAdV"
+)
 
 current_year = DateTime.now.year
 current_month = DateTime.now.month
@@ -27,7 +98,7 @@ mission0 = Mission.create(
                "core of the sun will be as commonplace as jetpacking to the next "\
                "hover disc match.\n\n**NOTE: I'm aware of the cloaking potential of "\
                "metaphasic shielding. Bounty hunters MAY NOT ENLIST.",
-  leader_id: 1,
+  leader_id: user0.id,
   compensation: 25000,
   user_limit: 5,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -39,7 +110,13 @@ mission0.images.create(
 mission0.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/dIK3cGVMTBGSMVyDjhuX"
 )
-
+mission0.updates.create(text: "Shuttlecraft fitted with prototype")
+mission0.updates.create(text: "Simulations are all green!")
+mission0.updates.create(text: "Field test in three weeks.")
+mission0.updates.create(text: "I'm still looking for people. Please keep enlisting!")
+mission0.updates.create(text: "Prelaunch checklist is complete.")
+mission0.comments.create(body: "Let me know if you want to collaborate.", user_id: user_14.id)
+mission0.comments.create(body: "Will do.", user_id: user0.id)
 
 mission1 = Mission.create(
   latitude: 64.4348920430406,
@@ -52,7 +129,7 @@ mission1 = Mission.create(
                "environments. Please be advised that if you have not received "\
                "the Helionic Demon vaccine you will not be considered for "\
                "this position.",
-  leader_id: 2,
+  leader_id: user14.id,
   compensation: 75000,
   user_limit: 11,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -64,6 +141,13 @@ mission1.images.create(
 mission1.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/X73DpfXRSUKMzRFE1IsZ"
 )
+mission1.updates.create(text: "Breaking ground ceremony today. Exciting first step!")
+mission1.updates.create(text: "Exciting imagery to come!")
+mission1.updates.create(text: "Spraying for Helionic Demons...")
+mission1.updates.create(text: "Facility is built!")
+mission1.updates.create(text: "Crew quarters ready to be filled.")
+mission1.comments.create(body: "", user_id: user_12.id)
+mission1.comments.create(body: "")
 
 
 mission2 = Mission.create(
@@ -77,7 +161,7 @@ mission2 = Mission.create(
                "engulfed by the wisps iconic sludge.\nSo bring your phaser cannons, "\
                "your rail guns, and your quantum torpedo launchers to what should "\
                "be the greatest--and last--wisp hunt ever!!!!",
-  leader_id: 3,
+  leader_id: user10.id,
   compensation: 1000,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
@@ -86,8 +170,16 @@ mission2.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/M86qBsXGTw6cjqNNvAZz"
 )
 mission2.images.create(
-  filepicker_url: "https://www.filepicker.io/api/file/yMpKiuoiR7yzcencPDSi"
+  filepicker_url: "https://www.filepicker.io/api/file/BMlzpfCcTeWD4xLDGQh4"
 )
+mission2.updates.create(text: "First wave approaching.")
+mission2.updates.create(text: "First wave destroyed.")
+mission2.updates.create(text: "Calling for reinforcements from Mars.")
+mission2.updates.create(text: "Join the hunt!")
+mission2.updates.create(text: "Small retaliatory group.")
+mission2.updates.create(text: "Easily defeated.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission3 = Mission.create(
@@ -105,7 +197,7 @@ mission3 = Mission.create(
                " sky angel nectar provides everything a human needs and so, so"\
                " much more.\nRemember what you were before, and what you are now."\
                " We must defind our livelihood.",
-  leader_id: 4,
+  leader_id: user13.id,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
@@ -115,6 +207,13 @@ mission3.images.create(
 mission3.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/s8P4ljCtSi8wy7Chfcfv"
 )
+mission3.updates.create(text: "The brutal bastards!")
+mission3.updates.create(text: "It's a slaughter...")
+mission3.updates.create(text: "WE NEED HELP!")
+mission3.updates.create(text: "Gather at coord A9!!")
+mission3.updates.create(text: "HELP!")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission4 = Mission.create(
@@ -131,7 +230,7 @@ mission4 = Mission.create(
                " promises to be the most intense planet-bound thrill ride yet!"\
                "\nSkintype-3* is a must. Full-time. Free life extension serum "\
                "for 200 years after the project completion.",
-  leader_id: 5,
+  leader_id: user6.id,
   compensation: 20000,
   user_limit: 30,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -143,6 +242,11 @@ mission4.images.create(
 mission4.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/1keZc3TtCjY7fF5kSWxw"
 )
+mission4.updates.create(text: "Already 2000 km down")
+mission4.updates.create(text: "Planet center imminent!")
+mission4.updates.create(text: "No...Why?...")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission5 = Mission.create(
@@ -163,8 +267,8 @@ mission5 = Mission.create(
                "of nuclear devastation, a new civilization is struggling to arise."\
                "\nEarth is in chaos. Its reputation tarnished. The need for a stern "\
                " and wise leader is apparent now more than ever."\
-               "\nJoin The Master, gain unfathomable power, unite all Terrans.",
-  leader_id: 6,
+               "\nJoin The Unity, gain unfathomable power, unite all Terrans.",
+  leader_id: user7.id,
   compensation: 100000,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
@@ -175,6 +279,14 @@ mission5.images.create(
 mission5.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/yOYA1NOZSueD5AcvI1tQ"
 )
+mission5.updates.create(text: "What shall it be?")
+mission5.updates.create(text: "Join the Unity?")
+mission5.updates.create(text: "Or do you die?")
+mission5.updates.create(text: "Join!")
+mission5.updates.create(text: "Die!")
+mission5.updates.create(text: "Join!")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission6 = Mission.create(
@@ -186,7 +298,7 @@ mission6 = Mission.create(
                "to say the least. Reward: $100,000.\nPlease hurry! Once they get"\
                " a taste for moon worm they'll keep eating until half the moon is "\
                "gone!",
-  leader_id: 7,
+  leader_id: user8.id,
   compensation: 100000,
   user_limit: 2,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -198,6 +310,13 @@ mission6.images.create(
 mission6.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/6LKxJIg3TEKyz4uBsPBE"
 )
+mission6.updates.create(text: "Still no sight of them...")
+mission6.updates.create(text: "They're so sweet.")
+mission6.updates.create(text: "I think I here them!")
+mission6.updates.create(text: "2 helpers arrive today!")
+mission6.updates.create(text: "We came close but alas, no whales.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission7 = Mission.create(
@@ -209,7 +328,7 @@ mission7 = Mission.create(
                "If you or anyone you know is interesting in applying, please "\
                "enlist in this mission and our HR department will be in contact"\
                " shortly.",
-  leader_id: 1,
+  leader_id: user12.id,
   compensation: 50000,
   user_limit: 2,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -221,6 +340,12 @@ mission7.images.create(
 mission7.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/Wxu8WjNBShWqPlzoP79A"
 )
+mission7.updates.create(text: "Crew back from vacation.")
+mission7.updates.create(text: "Storm as strong as ever!")
+mission7.updates.create(text: "Still accepting candidates.")
+mission7.updates.create(text: "New equipment available.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission8 = Mission.create(
@@ -233,7 +358,7 @@ mission8 = Mission.create(
                "a vast understatement. Nearly half our members have left, and "\
                "the rest are just about to. We need new inspiration! Oh, and "\
                "please bring several barrels of Cordrazine--our supplies are low.",
-  leader_id: 2,
+  leader_id: user15.id,
   compensation: 50,
   user_limit: 2,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -245,6 +370,11 @@ mission8.images.create(
 mission8.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/ebx2EZSCQOyUWyGhpGet"
 )
+mission8.updates.create(text: "Another quarter left.")
+mission8.updates.create(text: "We need someone now!")
+mission8.updates.create(text: "My dream...")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission9 = Mission.create(
@@ -257,7 +387,7 @@ mission9 = Mission.create(
                "to start your career on the right track by joining the fastest-"\
                "growing spaceship resource industry in the solar system! All "\
                "positions are open! Enlist today!",
-  leader_id: 3,
+  leader_id: user5.id,
   compensation: 10000,
   user_limit: 101,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -267,8 +397,14 @@ mission9.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/QF2b9BtcTmCAPjzNBhJQ"
 )
 mission9.images.create(
-  filepicker_url: "https://www.filepicker.io/api/file/77CW8j71TJq1MG4xAk9R"
+  filepicker_url: "https://www.filepicker.io/api/file/11QZ491QsuvTtDJBJPy0"
 )
+mission9.updates.create(text: "3 gigatons mined today!")
+mission9.updates.create(text: "Dilithium is trading well.")
+mission9.updates.create(text: "May have hit motherlode!")
+mission9.updates.create(text: "Now's the time to enlist!")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission10 = Mission.create(
@@ -284,7 +420,7 @@ mission10 = Mission.create(
                "overseeing and managing the land-area equivalent of Earth.\n"\
                "Serious replies only. Neptune Planetary Park is a GMH-"\
                "non-discriminatory company.",
-  leader_id: 4,
+  leader_id: user1.id,
   compensation: 45000,
   user_limit: 2,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
@@ -296,6 +432,11 @@ mission10.images.create(
 mission10.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/s8ml247DSeqZcD9CJWKz"
 )
+mission10.updates.create(text: "New shipment of screeching moon whales just arrived.")
+mission10.updates.create(text: "Moon whales adjusting well!")
+mission10.updates.create(text: "It's beautiful today!")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission11 = Mission.create(
@@ -307,7 +448,7 @@ mission11 = Mission.create(
                "above in large, spherical white ship.\nShip has the ability "\
                "to transport without a trace--stealth is highly recommended. "\
                "Present a live human on Lunar Base 3C to receive compensation.",
-  leader_id: 5,
+  leader_id: user11.id,
   compensation: 60000,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
@@ -318,6 +459,10 @@ mission11.images.create(
 mission11.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/OP0G00iDSRac0LpfGtgA"
 )
+mission11.updates.create(text: "Again, only accept him alive.")
+mission11.updates.create(text: "Curse whoever blundered that one.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission12 = Mission.create(
@@ -332,7 +477,7 @@ mission12 = Mission.create(
                "Elliott and his entire family for purposes of scientific analysis "\
                "and dissection.\nThose humans who join our cause may live on in our "\
                "zoos. The remainder will be hunted and eaten at the whim of all Grebleips.",
-  leader_id: 6,
+  leader_id: user2.id,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
@@ -342,6 +487,11 @@ mission12.images.create(
 mission12.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/8Nu89BZESGGDA7H1BJ5Q"
 )
+mission12.updates.create(text: "Just a handful of weeks left.")
+mission12.updates.create(text: "Gonna be great!")
+mission12.updates.create(text: "1 week left")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 
 mission13 = Mission.create(
@@ -349,12 +499,12 @@ mission13 = Mission.create(
   longitude: -0.966796875,
   title: "Pluto Planetary Society Needs Workers",
   description: "The Pluto Planetary Society, Pluto (a full planet), have "\
-               "hundreds of vacancies for pretty much every position you can think "\
+               "thousands of vacancies for pretty much every position you can think "\
                "of. Our startup colony is essentially broke since we have no "\
                "significant economy to speak of, but that's why we need young, "\
                "inspired minds to invigorate this great planet's society.\n"\
                "Please. Anyone. It's so lonely here.",
-  leader_id: 7,
+  leader_id: user9.id,
   compensation: 20,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
@@ -365,6 +515,12 @@ mission13.images.create(
 mission13.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/CNd20lKGQiamtVRUfv1D"
 )
+mission13.updates.create(text: "Planet Pluto is most beautiful at night.")
+mission13.updates.create(text: "Best water in solar system here.")
+mission13.updates.create(text: "Best view of rest of universe.")
+mission13.updates.create(text: "Best PLANET!")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 mission14 = Mission.create(
   latitude: -77.61770905279674,
@@ -374,13 +530,19 @@ mission14 = Mission.create(
                "WE WILL ADD YOUR BIOLOGICAL AND TECHNOLOGICAL DISTINCTIVENESS "\
                "TO OUR OWN. YOUR CULTURE WILL ADAPT TO SERVE US. RESISTANCE IS "\
                "FUTILE.",
-  leader_id: 8,
+  leader_id: user4.id,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
 mission14.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/LyO1dbVQTl2bmDSuf5Gj"
 )
+mission14.updates.create(text: "YOU WILL BE ASSIMILATED")
+mission14.updates.create(text: "RESISTANCE IS FUTILE")
+mission14.updates.create(text: "YOU WILL BE ASSIMILATED")
+mission14.updates.create(text: "RESISTANCE IS FUTILE")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
 
 mission15 = Mission.create(
   latitude: 45.583289756006316,
@@ -391,7 +553,10 @@ mission15 = Mission.create(
                "further. I'm looking for a fellow physicist/mechanical engineer "\
                "to join me on the first mission, man or unmanned, to another star "\
                "system. Of course you must be familiar with my warp drive theory, "\
-               "and a healthy sense of human would be appreciated."
+               "and a healthy sense of human would be appreciated.",
+  leader_id: user3.id,
+  start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
+  end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
 mission15.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/C5n4bt4DRuCMTGidSVzp"
@@ -399,3 +564,34 @@ mission15.images.create(
 mission15.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/vbvQnv2YQX2rE2gCS4i3"
 )
+mission15.updates.create(text: "Third test complete for good measure.")
+mission15.updates.create(text: "Ready to launch.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")
+
+mission16 = Mission.create(
+  latitude: 54.57206165565852,
+  longitude: 24.609375,
+  title: "Mysterious Object - Near-Earth Orbit",
+  description: "I need a solid crew of dedicated individuals whom I can rely on"\
+               " in a tight situation for a covert mission. I can only reveal that "\
+               "the is an as-yet unidentified object (pictured above) in near-Earth "\
+               "orbit. It appears to be organic in nature. Do not approach the "\
+               "object. It can and will defend itself (pictured above).  Please "\
+               "enlist ASAP.",
+  leader_id: user0.id,
+  user_limit: 10,
+  compensation: 30000,
+  start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
+  end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
+)
+mission16.images.create(
+  filepicker_url: "https://www.filepicker.io/api/file/LgJ8gOPtSIifJxqruS8a"
+)
+mission16.images.create(
+  filepicker_url: "https://www.filepicker.io/api/file/hrGTldPSUatxjCPO9hhb"
+)
+mission16.updates.create(text: "Again, don't approach it!")
+mission16.updates.create(text: "The mission starts soon.")
+mission.comments.create(body: "")
+mission.comments.create(body: "")

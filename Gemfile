@@ -17,6 +17,7 @@ gem 'filepicker-rails'
 gem 'figaro'
 gem 'jquery-slick-rails'
 gem 'aws-sdk-v1'
+gem 'faker'
 
 group :production do
   gem 'unicorn'
