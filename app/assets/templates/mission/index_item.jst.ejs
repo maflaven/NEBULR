@@ -1,5 +1,10 @@
 <div class="mission-index-item">
 
+  <div class="dates">
+    <p align="left">START: <%= mission.get('start_date') %></p>
+    <p align="left">END: <%= mission.get('end_date') %></p>
+  </div>
+
   <div class="image">
 
     <a href="#missions/<%= mission.id %>">

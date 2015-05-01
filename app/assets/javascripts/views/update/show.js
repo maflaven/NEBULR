@@ -8,10 +8,12 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
     this.mission = options.mission;
     this.missionShow = options.missionShow;
     this.mission && this.listenTo(this.mission, "sync", this.render);
+    this.expanded = false;
   },
 
   events: {
-    'click .delete-update': 'delete'
+    'click .delete-update': 'delete',
+    'click .update-expand': 'toggleExpand'
   },
 
   render: function () {
@@ -23,7 +25,8 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
       thumbnail: this.thumbnail,
       mission: this.mission,
       update: this.model,
-      missionShow: this.missionShow
+      missionShow: this.missionShow,
+      expanded: this.expanded
     }));
 
     this.$el.fadeIn("fast");
@@ -42,5 +45,10 @@ Nebulr.Views.UpdateShow = Backbone.View.extend({
   delete: function (event) {
     $(event.currentTarget).prop('disabled', true);
     this.$el.fadeOut("fast", this.model.destroy.bind(this.model));
+  },
+
+  toggleExpand: function (event) {
+    this.expanded = !this.expanded;
+    this.render();
   }
 });

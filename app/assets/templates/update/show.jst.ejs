@@ -1,3 +1,8 @@
+<div class="delete-update-div">
+<% if (leaderId && currentUserId == leaderId) { %>
+  <input type="button" value="DELETE" class="delete-update btn btn-xs btn-danger">
+<% } %>
+</div>
 <div class="media">
   <div class="media-left media-middle">
     <a href="#missions/<%= mission.id %>">
@@ -8,15 +13,12 @@
     <% if (!missionShow) { %>
       <h6 class="media-heading"><%= mission.escape('title') %></h6>
     <% } %>
-    <% if (update.escape('text').length > 30) { %>
-      <p><%= update.escape('text').slice(0, 29) %>...</p>
+    <% if (update.escape('text').length > 30 && !expanded) { %>
+      <p><%= update.escape('text').slice(0, 25) %>...<button class="update-expand btn-link">[+]</button></p>
+    <% } else if (update.escape('text').length > 30 && expanded) { %>
+      <p><%= update.escape('text')%><button class="update-expand btn-link">[-]</button></p>
     <% } else { %>
       <p><%= update.escape('text') %></p>
     <% } %>
   </div>
-</div>
-<div class="delete-update-div">
-<% if (leaderId && currentUserId == leaderId) { %>
-  <input type="button" value="DELETE" class="delete-update btn btn-xs btn-danger">
-<% } %>
 </div>

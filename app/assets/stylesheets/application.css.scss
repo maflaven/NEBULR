@@ -202,6 +202,7 @@ ul {
   height: 100%;
   background-color: #181818;
   border: none;
+  transition: outline 0.2s;
 }
 
 .mission-index-item .image {
@@ -239,6 +240,7 @@ ul {
 }
 
 .mission-index .title p {
+  color: white;
   font-size: 20px;
   margin: 0 10px;
 }
@@ -393,7 +395,7 @@ ul {
 }
 
 .comment-index-item .media {
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 
 .comment-index-item img {
@@ -441,8 +443,7 @@ ul {
 .update-index-item:hover .delete-update {
   visibility: visible;
   position: relative;
-  bottom: 30px;
-  left: calc(100% - 75px);
+  bottom: 7px;
 }
 
 .update-new-form {
@@ -787,4 +788,34 @@ ul {
 
 .filtered-mission-index .mission-index .title {
   width: 58%
+}
+
+.update-index-item .media {
+  margin: 15px 0;
+}
+
+.mission-index-item .dates {
+  width: 175px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 75px;
+  z-index: 98;
+  padding: 5px 15px;
+  opacity: 0;
+  transition: opacity 0.3s, left 0.3s;
+}
+
+.mission-index-item .dates p {
+  color: white;
+  margin: 0;
+}
+
+.mission-index-search .mission-index-item:hover .dates {
+  opacity: 1;
+  left: 15px;
+}
+
+.mission-index-item:hover {
+  outline: 1px solid white;
 }
