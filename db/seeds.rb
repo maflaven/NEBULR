@@ -136,6 +136,7 @@ user28 = User.create(
   password: "password"
 )
 
+
 current_year = DateTime.now.year
 current_month = DateTime.now.month
 
@@ -696,7 +697,7 @@ mission15 = Mission.create(
                "to join me on the first mission, man or unmanned, to another star "\
                "system. Of course you must be familiar with my warp drive theory, "\
                "and a healthy sense of human would be appreciated.",
-  user_limit: 3
+  user_limit: 3,
   leader_id: user3.id,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
@@ -761,4 +762,9 @@ num_missions = Mission.all.count
 while updates.any? { |arr| !arr.empty? }
   i = rand(num_missions)
   updates[i].shift.save unless updates[i].empty?
+end
+
+User.all.each do |user|
+  user.comments.create(user_id: user4.id, body: 'YOU WILL BE ASSIMILATED')
+  user.comments.create(user_id: user4.id, body: 'RESISTANCE IS FUTILE')
 end
