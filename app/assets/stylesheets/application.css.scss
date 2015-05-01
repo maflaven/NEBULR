@@ -819,3 +819,11 @@ ul {
 .mission-index-item:hover {
   outline: 1px solid white;
 }
+
+.mission-index-search .mission-index-item .image img {
+  max-height: 500px;
+}
+
+.update-expand, .update-expand:hover {
+  color: red;
+}

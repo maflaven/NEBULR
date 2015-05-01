@@ -397,7 +397,7 @@ mission6 = Mission.create(
                "gone!",
   leader_id: user8.id,
   compensation: 100000,
-  user_limit: 2,
+  user_limit: 5,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
@@ -539,12 +539,12 @@ mission10 = Mission.create(
                "non-discriminatory company.",
   leader_id: user1.id,
   compensation: 45000,
-  user_limit: 2,
+  user_limit: 5,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
 )
 mission10.images.create(
-  filepicker_url: "https://www.filepicker.io/api/file/JiZsQji7SWeeccTQVBA9"
+  filepicker_url: "https://www.filepicker.io/api/file/WDHq3D4PQtGoT8p87loV"
 )
 mission10.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/s8ml247DSeqZcD9CJWKz"
@@ -696,6 +696,7 @@ mission15 = Mission.create(
                "to join me on the first mission, man or unmanned, to another star "\
                "system. Of course you must be familiar with my warp drive theory, "\
                "and a healthy sense of human would be appreciated.",
+  user_limit: 3
   leader_id: user3.id,
   start_date: DateTime.new(current_year, current_month, (1 + rand(14))).strftime("%F"),
   end_date: DateTime.new(current_year, current_month, (15 + rand(14))).strftime("%F")
