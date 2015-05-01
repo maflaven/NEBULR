@@ -828,3 +828,7 @@ ul {
 .update-expand, .update-expand:hover {
   color: red;
 }
+
+.filtered-mission-index .mission-index-item .image img {
+  max-height: 360px;
+}

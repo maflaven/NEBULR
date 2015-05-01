@@ -1,25 +1,63 @@
-# nebulr
+#NEBULR
+NEBULR is a posting board for futuristic space jobs/missions.
+It's a web application built with Ruby on Rails, PostgreSQL, Backbone.js, Google Maps API v3, Boostrap.js, and jQuery. The design is loosely inspired by airbnb.com.
 
-[Heroku link][heroku]
+[Live link: nebulr.space][live]
+[live]: http://www.nebulr.space
 
-[heroku]: http://www.nebulr.space
+###Main Functionality:
+* Search for listings within visible map extents
+* Filter search results by date, compensation, and rating
+* Enlist in job/mission postings
+* Follow jobs/missions and receive a feed of updates on the user feed
 
-## Minimum Viable Product
-nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
+###Additional Features:
+* Google Maps integration with custom imagery
+* Backbone.js communicating with a RESTful JSON API
+* Server-side searching
+* Registration/login not required until enlist or follow actions
+* Rate jobs/missions
+* Comment on users and jobs/missions
+* Polymorphic 'commentable' associations
+* Image carousel
+* Helpful alerts for every form
+* Expandable updates
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+##Filter Methods
+```ruby
+def self.filter_by(data_type, min, max, missions_set=false)
+  missions_set ||= Mission.all
 
-- [x] Create accounts
-- [x] Create session (log in)
-- [x] Create missions, and make them enlistable
-- [x] View missions, users
-- [x] Follow missions
-- [x] Search for missions by map
-- [x] Search for missions by date, compensation
-- [x] Create comments
-- [x] View comments for missions and users
+  missions_set.where(data_type => min..max)
+end
 
-## Design Docs
+def self.filter_by_title_fragment(fragment, missions_set=false)
+  missions_set ||= Mission.all
+
+  missions_set.where("title LIKE ?", "%" + fragment + "%")
+end
+```
+Simple database-level filtering allows for filter chaining:
+```ruby
+params[:search][:min_lat] && @missions = Mission.filter_by(
+  :latitude, params[:search][:min_lat], params[:search][:max_lat], @missions
+)
+
+params[:search][:min_lng] && @missions = Mission.filter_by(
+  :longitude, params[:search][:min_lng], params[:search][:max_lng], @missions
+)
+
+params[:search][:title] && @missions = Mission.filter_by_title_fragment(
+  params[:search][:title], @missions
+)
+```
+###Screenshots
+![mission/job](/app/assets/images/mission_show.jpg)
+![user](/app/assets/images/user_show.jpg)
+![search](/app/assets/images/mission_search.jpg)
+![browse](/app/assets/images/mission_browse.jpg)
+
+##Original Design Docs
 * [View Wireframes][views]
 * [DB Schema][schema]
 * [Feature Breakdown][breakdown]
@@ -28,77 +66,11 @@ nebulr is a design clone of airbnb built on Rails and Backbone. Users can:
 [schema]: ./docs/schema.md
 [breakdown]: ./docs/feature_breakdown.md
 
-## Implementation Timeline
-
-### Phase 1: User Authentication, Mission Creation (~1 day)
-I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to sign up and sign in,
-and create missions using a simple text form in a Rails view. The most important
-part of this phase will be pushing the app to Heroku and ensuring that everything
-works before moving on to phase 2. It is also important that I make a guest login
-button so that users can demo the entire site without registering.
-
-[Details][phase-one]
-
-### Phase 2: Viewing & Creating Missions, Viewing Users (~2 days)
-I will implement mission creation via backbone, integrating Filepicker for image
-file upload so that users can add images to missions. I'll also create a user show
-view where users can see their followed and enlisted missions, as well as those
-on other users' show pages. I'll need to override the parse method for User and
-Mission in order to correctly associate Missions with their leader, and associate
-Users with their followed and enlisted Missions. To make Missions enlistable and
-followable, I'll create a join table for each, and make the appropriate associations.
-
-[Details][phase-two]
-
-### Phase 3: Searching Missions via Map (~2 day)
-I will need to add search for the Mission controller. On the Backbone side,
-there will be a SearchShow composite view containing a SearchMap view (using the
-Google Maps API), a SearchForm view that filters out missions by date and compensation,
-and a MissionsIndex composite view of the search results.
-I will implement updateable search results via the filters view and via
-reorienting the SearchMap view. SearchShow will have to combine the filter form
-data with the extent of the map to constrain the results appropriately.
-
-[Details][phase-three]
-
-### Phase 4: Creating, Viewing, & Deleting Comments for Missions & Users (~1 day)
-I will add indexes and and form creation for comments at the bottom of each
-Mission and User Show view. This requires a commentable model in the rails
-backend. Showing comments will require filtering by User or Mission. Users will
-have the ability to delete any comments from their UserShow's as well as any Missions
-they lead. They will only be able to delete their own comments from any other page.
-
-[Details][phase-four]
-
-### Phase 5: Editing Missions (~0.5 days)
-I will add the ability to edit missions by changing each field in the mission
-show page to an editable field by the click of an 'edit mission' button. Every
-element of the mission form view will be reused, and another field to remove
-enlisted users will be added.
-
-[Details][phase-five]
-
-### Phase 6: Basic CSS, Imagery, Seed Data (~1.5-2 days)
-I will use bootstrap.css and potentially a bootstrap theme to dress everything
-in a coherent, unobtrusive design. I will also scour the internet for freely usable
-images to attach to seed missions. I will need to create a ~five seed users, twenty
-missions, and a few comments, follows, and enlistments for each user/mission.
-
-[Details][phase-six]
-
-### Bonus Features
-- [x] User avatars
-- [x] View a feed of mission updates in "followed missions"
-- [x] Google Map centered and zoomed-in on mission location (mission/show)
+### Planned Upgrades
 - [ ] Pagination/infinite scroll
 - [ ] OmniAuth
 - [ ] Multiple sessions/session management
-- [ ] Comments with markdown
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
-[phase-six]: ./docs/phases/phase6.md
+- [ ] Markdown comments
+- [ ] Custom loading spinners
+- [ ] Mission/job editing and relisting
+- [ ] Custom infoBox for map view
