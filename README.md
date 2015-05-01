@@ -2,7 +2,7 @@
 NEBULR is a posting board for futuristic space jobs/missions.
 It's a web application built with Ruby on Rails, PostgreSQL, Backbone.js, Google Maps API v3, Boostrap.js, and jQuery. The design is loosely inspired by airbnb.com.
 
-[Live link: nebulr.space][live]
+Live link: [nebulr.space][live]
 [live]: http://www.nebulr.space
 
 ###Main Functionality:
@@ -51,11 +51,6 @@ params[:search][:title] && @missions = Mission.filter_by_title_fragment(
   params[:search][:title], @missions
 )
 ```
-###Screenshots
-![mission/job](/app/assets/images/mission_show.jpg)
-![user](/app/assets/images/user_show.jpg)
-![search](/app/assets/images/mission_search.jpg)
-![browse](/app/assets/images/mission_browse.jpg)
 
 ##Original Design Docs
 * [View Wireframes][views]
@@ -67,6 +62,8 @@ params[:search][:title] && @missions = Mission.filter_by_title_fragment(
 [breakdown]: ./docs/feature_breakdown.md
 
 ### Planned Upgrades
+- [x] Expandable comments/updates
+- [x] Delayed registration/login
 - [ ] Pagination/infinite scroll
 - [ ] OmniAuth
 - [ ] Multiple sessions/session management
@@ -74,3 +71,8 @@ params[:search][:title] && @missions = Mission.filter_by_title_fragment(
 - [ ] Custom loading spinners
 - [ ] Mission/job editing and relisting
 - [ ] Custom infoBox for map view
+
+###Screenshots
+![mission/job](/app/assets/images/mission_show.jpg)
+![user](/app/assets/images/user_show.jpg)
+![search](/app/assets/images/mission_search.jpg)
