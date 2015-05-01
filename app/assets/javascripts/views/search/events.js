@@ -148,7 +148,7 @@ Nebulr.Views.EventMapShow = Backbone.View.extend({
     if (mission.images().length > 0) {
       thumbnail = mission.images().first().get('filepicker_url');
     }
-    var leaderThumbnail = "https://www.filepicker.io/api/file/UzhxqFdQymmheDJt0dOg";
+    var leaderThumbnail = "https://www.filepicker.io/api/file/SRJoNkGaS06HpHc1mZpg";
     if (mission.leader().get('filepicker_url')) {
       leaderThumbnail = mission.leader().get('filepicker_url');
     }

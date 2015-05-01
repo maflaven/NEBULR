@@ -3428,7 +3428,7 @@ tbody.collapse.in {
 }
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 1px);
   left: 0;
   z-index: 1000;
   display: none;
