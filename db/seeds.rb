@@ -756,7 +756,6 @@ mission16.follows.create(user_id: user21.id)
 mission16.follows.create(user_id: user22.id)
 mission16.follows.create(user_id: user23.id)
 
-
 num_missions = Mission.all.count
 
 while updates.any? { |arr| !arr.empty? }
@@ -767,4 +766,12 @@ end
 User.all.each do |user|
   user.comments.create(user_id: user4.id, body: 'YOU WILL BE ASSIMILATED')
   user.comments.create(user_id: user4.id, body: 'RESISTANCE IS FUTILE')
+end
+
+user_count = User.all.count
+
+3.times do
+  Mission.all.each_with_index do |mission, idx|
+    mission.ratings.create(value: rand(6), user_id: idx % (user_count - 1))
+  end
 end
