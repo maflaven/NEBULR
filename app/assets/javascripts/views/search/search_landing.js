@@ -1,4 +1,4 @@
-Nebulr.Views.SearchLanding = Backbone.View.extend({
+Nebulr.Views.SearchLanding = Backbone.CompositeView.extend({
   template: JST['search/landing'],
   className: 'search-landing',
 
@@ -10,11 +10,14 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
       'jupiter': [15.1, 0, 2], 'saturn': [-43.7, 0, 2], 'uranus': [-67.2, 0, 3],
       'neptune': [-75.6, 0, 3]
     };
+    this.helpModalView = new Nebulr.Views.ModalHelp();
+    this.addSubview('.help-modal', this.helpModalView);
   },
 
   events: {
     'click #search-btn': 'search',
-    'click .planet-label': 'search'
+    'click .planet-label': 'search',
+    'click #help-btn': 'attachHelpModal'
   },
 
   render: function () {
@@ -27,6 +30,7 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
       showAnim: 'fadeIn',
       dateFormat: 'yy-mm-dd'
     });
+    this.attachSubviews();
     return this;
   },
 
@@ -55,5 +59,10 @@ Nebulr.Views.SearchLanding = Backbone.View.extend({
     }
 
     Backbone.history.navigate('#missions/search', { trigger: true });
+  },
+
+  attachHelpModal: function (event) {
+    this.helpModalView.$('.modal-screen').fadeIn("fast");
+    this.helpModalView.$el.fadeIn("fast");
   }
 });

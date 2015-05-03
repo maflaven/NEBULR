@@ -377,10 +377,12 @@ mission5.updates.new(text: "Die!"),
 mission5.updates.new(text: "Join!")]
 mission5.comments.create(body: "The Unity will bring about the master race.", user_id: user7.id)
 mission5.comments.create(body: "Help me bring peace to the wasteland.", user_id: user7.id)
+mission5.enlists.create(user_id: user7.id)
 mission5.enlists.create(user_id: user0.id)
 mission5.enlists.create(user_id: user1.id)
 mission5.enlists.create(user_id: user2.id)
 mission5.enlists.create(user_id: user3.id)
+mission5.enlists.create(user_id: user7.id)
 mission5.follows.create(user_id: user0.id)
 mission5.follows.create(user_id: user1.id)
 mission5.follows.create(user_id: user2.id)
@@ -409,7 +411,7 @@ mission6.images.create(
   filepicker_url: "https://www.filepicker.io/api/file/6LKxJIg3TEKyz4uBsPBE"
 )
 updates << [mission6.updates.new(text: "Still no sight of them..."),
-mission6.updates.new(text: "They're were so sweet and gentle."),
+mission6.updates.new(text: "They were so sweet and gentle."),
 mission6.updates.new(text: "Oh! I think I hear them!"),
 mission6.updates.new(text: "2 helpers arrive today!"),
 mission6.updates.new(text: "We came close but alas, no whales.")]
@@ -758,7 +760,7 @@ mission16.follows.create(user_id: user23.id)
 
 num_missions = Mission.all.count
 
-while updates.any? { |arr| !arr.empty? }
+until updates.all?(&:empty?)
   i = rand(num_missions)
   updates[i].shift.save unless updates[i].empty?
 end
@@ -772,6 +774,6 @@ user_count = User.all.count
 
 3.times do
   Mission.all.each_with_index do |mission, idx|
-    mission.ratings.create(value: rand(6), user_id: idx % (user_count - 1))
+    mission.ratings.create(value: 2 + rand(3), user_id: idx % (user_count - 1))
   end
 end

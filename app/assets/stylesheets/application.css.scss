@@ -274,8 +274,8 @@ ul {
 }
 
 .enlisted-missions .mission-index-item .image img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: calc(100% - 1px);
+  max-height: calc(100% - 1px);
 }
 
 .map .mission-index-item, .map .mission-index-item * {
@@ -610,6 +610,26 @@ ul {
   width: 153px;
 }
 
+// HELP MODAL
+
+.help-modal .modal-content {
+  width: 600px;
+}
+
+.help-modal .row {
+  margin: 30px 0;
+}
+
+.help-modal .help-text {
+  font-size: 20px;
+}
+
+.help-modal .help-num {
+  font-size: 30px;
+  border-radius: 10px;
+  background: rgb(24, 24, 24);
+}
+
 .alert {
   padding: 5px;
   margin: 10px 0 0 0;
@@ -632,7 +652,7 @@ ul {
 }
 
 .slick-slide img {
-  max-width: 100%;
+  width: 99%;
 }
 
 .carousel-image-container {
@@ -822,7 +842,7 @@ ul {
 }
 
 .mission-index-search .mission-index-item .image img {
-  max-height: 500px;
+  max-height: 499px;
 }
 
 .update-expand, .update-expand:hover {
@@ -830,5 +850,16 @@ ul {
 }
 
 .filtered-mission-index .mission-index-item .image img {
-  max-height: 360px;
+  max-width: calc(100% - 1px);
+  max-height: calc(100% - 1px);
+}
+
+.mission-index-item .image img {
+  max-width: calc(100% - 1px);
+  max-height: calc(100% - 1px);
+}
+
+#help-btn {
+  background: rgba(255, 255, 255, 0);
+  border: 1px dashed;
 }

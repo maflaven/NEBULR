@@ -1,6 +1,6 @@
 #NEBULR
 NEBULR is a posting board for futuristic space jobs/missions.
-It's a web application built with Ruby on Rails, PostgreSQL, Backbone.js, Google Maps API v3, Boostrap.js, and jQuery. The design is loosely inspired by airbnb.com.
+It's a web application built with Ruby on Rails, PostgreSQL, Backbone.js, Google Maps API v3, Boostrap.js, and jQuery. The basic design is inspired by airbnb.com.
 
 Live link: [nebulr.space][live]
 [live]: http://www.nebulr.space
