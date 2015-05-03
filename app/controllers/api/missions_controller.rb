@@ -14,6 +14,9 @@ class Api::MissionsController < ApplicationController
       params[:search][:min_date] && @missions = Mission.filter_by(
         :start_date, params[:search][:min_date], params[:search][:max_date], @missions
       )
+      params[:search][:min_date] && @missions = Mission.filter_by(
+        :end_date, params[:search][:min_date], params[:search][:max_date], @missions
+      )
       params[:search][:min_cmp] && @missions = Mission.filter_by(
         :compensation, params[:search][:min_cmp], params[:search][:max_cmp], @missions
       )
