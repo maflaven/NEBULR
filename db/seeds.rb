@@ -774,6 +774,6 @@ user_count = User.all.count
 
 3.times do
   Mission.all.each_with_index do |mission, idx|
-    mission.ratings.create(value: 2 + rand(3), user_id: idx % (user_count - 1))
+    mission.ratings.create(value: 2 + rand(4), user_id: idx % (user_count - 1))
   end
 end

@@ -7,6 +7,7 @@
 }
 .jq-ry-container[readonly="readonly"] {
   cursor: default;
+  width: 170px !important;
 }
 .jq-ry-container > .jq-ry-group-wrapper {
   position: relative;
