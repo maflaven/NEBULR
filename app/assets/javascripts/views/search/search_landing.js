@@ -30,6 +30,7 @@ Nebulr.Views.SearchLanding = Backbone.CompositeView.extend({
       showAnim: 'fadeIn',
       dateFormat: 'yy-mm-dd'
     });
+    this.addDateEventHandlers();
     this.attachSubviews();
     return this;
   },
@@ -64,5 +65,33 @@ Nebulr.Views.SearchLanding = Backbone.CompositeView.extend({
   attachHelpModal: function (event) {
     this.helpModalView.$('.modal-screen').fadeIn("fast");
     this.helpModalView.$el.fadeIn("fast");
+  },
+
+  addDateEventHandlers: function () {
+    this.$('#start-date').on('change', function () {
+      this.setStartDate();
+      this.restrictDateRange();
+    }.bind(this));
+    this.$('#end-date').on('change', function () {
+      this.setEndDate();
+      this.restrictDateRange();
+    }.bind(this));
+  },
+
+  setStartDate: function () {
+    this.startDate = this.$('#start-date').datepicker('getDate');
+  },
+
+  setEndDate: function () {
+    this.endDate = this.$('#end-date').datepicker('getDate');
+  },
+
+  restrictDateRange: function () {
+    if (this.startDate) {
+      this.$('#end-date').datepicker('option', 'minDate', this.startDate);
+    }
+    if (this.endDate) {
+      this.$('#start-date').datepicker('option', 'maxDate', this.endDate);
+    }
   }
 });

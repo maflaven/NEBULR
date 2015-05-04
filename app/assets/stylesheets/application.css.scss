@@ -863,3 +863,16 @@ ul {
   background: rgba(255, 255, 255, 0);
   border: 1px dashed;
 }
+
+.help-header * {
+  text-align: center;
+  font-size: 40px;
+}
+
+#first-line.help-header {
+  margin-bottom: 15px;
+}
+
+#second-line.help-header {
+  margin-top: 15px;
+}

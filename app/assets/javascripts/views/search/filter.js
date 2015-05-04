@@ -6,6 +6,7 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
   initialize: function (options) {
     this.filterData = options.filterData;
     this.collection = options.collection;
+    this.currentDate = new Date();
 
     if (this.filterData.planet) {
       this.updateMissionIndex();
@@ -24,13 +25,14 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
     this.attachRatingSlider();
     this.$('#min-date').datepicker({
       showAnim: 'fadeIn',
-      dateFormat: 'yy-mm-dd'
+      dateFormat: 'yy-mm-dd',
     });
     this.$('#max-date').datepicker({
       showAnim: 'fadeIn',
-      dateFormat: 'yy-mm-dd'
+      dateFormat: 'yy-mm-dd',
     });
 
+    this.addDateEventHandlers();
     return this;
   },
 
@@ -115,5 +117,33 @@ Nebulr.Views.SearchFilter = Backbone.View.extend({
         this.$('#filter-submit').prop('disabled', false);
       }.bind(this)
     });
+  },
+
+  addDateEventHandlers: function () {
+    this.$('#min-date').on('change', function () {
+      this.setStartDate();
+      this.restrictDateRange();
+    }.bind(this));
+    this.$('#max-date').on('change', function () {
+      this.setEndDate();
+      this.restrictDateRange();
+    }.bind(this));
+  },
+
+  setStartDate: function () {
+    this.startDate = this.$('#min-date').datepicker('getDate');
+  },
+
+  setEndDate: function () {
+    this.endDate = this.$('#max-date').datepicker('getDate');
+  },
+
+  restrictDateRange: function () {
+    if (this.startDate) {
+      this.$('#max-date').datepicker('option', 'minDate', this.startDate);
+    }
+    if (this.endDate) {
+      this.$('#min-date').datepicker('option', 'maxDate', this.endDate);
+    }
   }
 });
