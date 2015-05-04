@@ -48,11 +48,12 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
     if (that.enlist.isNew()) {
       that.enlist.save({}, {
         success: function () {
+          ga('send', 'event', 'enlist', 'enlists#create');
           var $followBtn = $('#follow-btn');
           if ($followBtn.val() === "FOLLOW") {
             $followBtn.trigger('click');
           }
-          
+
           var userModel = new Nebulr.Models.User({ id: that.currentUser.id });
           userModel.fetch().then( function () {
             that.model.enlistedUsers().add(userModel);
@@ -67,6 +68,7 @@ Nebulr.Views.ButtonEnlist = Backbone.CompositeView.extend({
     } else {
       that.enlist.destroy({
         success: function () {
+          ga('send', 'event', 'enlist', 'enlists#destroy');
           var userModel = that.model.enlistedUsers().findWhere({
             id: that.currentUser.id
           });

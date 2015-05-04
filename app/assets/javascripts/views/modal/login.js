@@ -60,6 +60,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
       method: 'POST',
       data: data,
       success: function (response) {
+        ga('send', 'event', 'session', 'sessions#create');
         that.close();
         that.credentials.id = response;
         that.model.set(that.credentials);
@@ -92,6 +93,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
       method: 'POST',
       data: data,
       success: function (response) {
+        ga('send', 'event', 'session', 'sessions#create');
         that.close();
         that.credentials.id = response;
         that.model.set(that.credentials);

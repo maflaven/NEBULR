@@ -26,5 +26,6 @@ Nebulr.Views.ModalCompletion = Backbone.View.extend({
     $('.navbar').animate({ backgroundColor: "#77b300" }, 500);
     $('.navbar').animate({ backgroundColor: "#222222" }, 700);
     this.model.save({ completed: true }, { wait: true });
+    ga('send', 'event', 'mission', 'mission#complete');
   }
 });

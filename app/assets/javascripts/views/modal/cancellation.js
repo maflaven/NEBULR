@@ -24,6 +24,7 @@ Nebulr.Views.ModalCancellation = Backbone.View.extend({
     this.close();
     this.model.destroy({
       success: function () {
+        ga('send', 'event', 'mission', 'mission#destroy');
         this.$('.modal-content').animate({ backgroundColor: "#cc0000" }, 500);
         $('.navbar').animate({ backgroundColor: "#cc0000" }, 500);
         $('.navbar').animate({ backgroundColor: "#222222" }, 1000);

@@ -35,6 +35,7 @@ Nebulr.Views.ButtonFollow = Backbone.View.extend({
     if (that.follow.isNew()) {
       that.follow.save({}, {
         success: function () {
+          ga('send', 'event', 'follow', 'follows#create');
           var userModel = new Nebulr.Models.User({ id: that.currentUser.id });
           userModel.fetch().then( function () {
             that.model.followingUsers().add(userModel);
@@ -47,6 +48,7 @@ Nebulr.Views.ButtonFollow = Backbone.View.extend({
     } else {
       that.follow.destroy({
         success: function () {
+          ga('send', 'event', 'follow', 'follows#destroy');
           var userModel = that.model.followingUsers().findWhere({
             id: that.currentUser.id
           });

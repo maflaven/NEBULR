@@ -4,6 +4,10 @@ Nebulr.Views.ModalHelp = Backbone.View.extend({
   tagname: 'section',
   id: 'modal',
 
+  initialize: function (options) {
+    ga('send', 'pageview', '/landing#help');
+  },
+
   events: {
     'click .modal-close': 'close'
   },

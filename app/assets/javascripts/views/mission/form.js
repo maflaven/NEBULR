@@ -70,6 +70,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
 
     this.model.save(attrs, {
       success: function (response) {
+        ga('send', 'event', 'mission', 'missions#create');
         that.images.each( function (image) {
           image.save({ mission_id: that.model.id });
         });
