@@ -31,7 +31,7 @@ Nebulr.Views.RatingNew = Backbone.View.extend({
       });
       this.ratingModel.save({}, {
         success: function () {
-          ga('send', 'event', 'rating', 'ratings#put');
+          ga('send', 'event', 'rating', 'post');
           that.updateRatings(oldValue, rating);
           that.isNewRating = false;
         }

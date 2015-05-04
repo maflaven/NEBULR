@@ -53,7 +53,7 @@ Nebulr.Views.UserNav = Backbone.CompositeView.extend({
   },
 
   logoutUser: function () {
-    ga('send', 'event', 'session', 'sessions#destroy');
+    ga('send', 'event', 'session', 'destroy');
 
     this.$nav.find('#logoutBtn').prop('disabled', true);
 

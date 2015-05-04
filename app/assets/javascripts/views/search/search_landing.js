@@ -63,6 +63,7 @@ Nebulr.Views.SearchLanding = Backbone.CompositeView.extend({
   },
 
   attachHelpModal: function (event) {
+    ga('send', 'pageview', '/landing#help');
     this.helpModalView.$('.modal-screen').fadeIn("fast");
     this.helpModalView.$el.fadeIn("fast");
   },
