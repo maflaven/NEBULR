@@ -29,6 +29,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   searchLanding: function () {
+    ga('send', 'pageview', '/landing');
     this.currentUserView.render();
 
     var view = new Nebulr.Views.SearchLanding({
@@ -38,6 +39,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionNew: function () {
+    ga('send', 'pageview', '/missions#new');
     this.currentUserView.render();
 
     if (!this.currentUser.id) {
@@ -57,6 +59,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionShow: function (id) {
+    ga('send', 'pageview', '/missions#show');
     this.currentUserView.render();
 
     var model = this.missions.getOrFetch(id);
@@ -69,6 +72,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionIndexSearch: function () {
+    ga('send', 'pageview', '/missions#index');
     this.currentUserView.render();
 
     this.missions.fetch();
@@ -79,6 +83,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
+    ga('send', 'pageview', '/users#show');
     this.currentUserView.render();
 
     var model = this.users.getOrFetch(id);
@@ -90,6 +95,7 @@ Nebulr.Routers.Router = Backbone.Router.extend({
   },
 
   missionSearch: function () {
+    ga('send', 'pageview', '/missions#search');
     this.currentUserView.render();
 
     var view = new Nebulr.Views.MissionSearchShow({
