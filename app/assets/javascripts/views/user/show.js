@@ -4,7 +4,7 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.currentUser = options.currentUser;
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change:filepicker_url", this.render);
 
     this.itemSize;
     this.currentUser.id == this.model.id ? this.itemSize = 12 : this.itemSize = 6;
@@ -38,6 +38,10 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
     this.addSubview('.comments-index', this.commentsIndexView);
   },
 
+  events: {
+    'click #avatar-upload': 'updateAvatar'
+  },
+
   render: function () {
     var thumbnail = "https://www.filepicker.io/api/file/SRJoNkGaS06HpHc1mZpg";
     if (this.model.get('filepicker_url')) {
@@ -53,5 +57,12 @@ Nebulr.Views.UserShow = Backbone.CompositeView.extend({
 
     this.attachSubviews();
     return this;
+  },
+
+  updateAvatar: function () {
+    var that = this;
+    filepicker.pick({maxSize: 3*1024*1024}, function (blob) {
+      that.model.save('filepicker_url', blob.url);
+    });
   }
 });

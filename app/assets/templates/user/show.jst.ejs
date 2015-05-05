@@ -11,6 +11,12 @@
       <img src="<%= thumbnail %>">
     </div>
 
+    <% if (isSameUser) { %>
+      <div class="avatar-upload">
+        <button class="btn btn-default center-block" id="avatar-upload">CHANGE AVATAR</button>
+      </div>
+    <% } %>
+
   </div>
 
   <% if (itemSize === 12) { %>
