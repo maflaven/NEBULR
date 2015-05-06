@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418181827) do
+ActiveRecord::Schema.define(version: 20150506211945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,9 +74,12 @@ ActiveRecord::Schema.define(version: 20150418181827) do
     t.string   "end_date",                     null: false
   end
 
+  add_index "missions", ["compensation"], name: "index_missions_on_compensation", using: :btree
+  add_index "missions", ["end_date"], name: "index_missions_on_end_date", using: :btree
   add_index "missions", ["latitude"], name: "index_missions_on_latitude", using: :btree
   add_index "missions", ["leader_id"], name: "index_missions_on_leader_id", using: :btree
   add_index "missions", ["longitude"], name: "index_missions_on_longitude", using: :btree
+  add_index "missions", ["start_date"], name: "index_missions_on_start_date", using: :btree
   add_index "missions", ["title"], name: "index_missions_on_title", unique: true, using: :btree
 
   create_table "ratings", force: :cascade do |t|
@@ -90,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150418181827) do
   add_index "ratings", ["mission_id", "user_id"], name: "index_ratings_on_mission_id_and_user_id", unique: true, using: :btree
   add_index "ratings", ["mission_id"], name: "index_ratings_on_mission_id", using: :btree
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+  add_index "ratings", ["value"], name: "index_ratings_on_value", using: :btree
 
   create_table "updates", force: :cascade do |t|
     t.integer  "mission_id", null: false
