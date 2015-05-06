@@ -12,7 +12,6 @@ gem 'rails', '4.2.0'
 gem 'sass-rails'
 gem 'pg'
 gem 'uglifier'
-gem 'newrelic_rpm'
 gem 'filepicker-rails'
 gem 'figaro'
 gem 'jquery-slick-rails'
@@ -20,8 +19,10 @@ gem 'aws-sdk-v1'
 gem 'faker'
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'clockwork'
 end
 
 group :doc do
