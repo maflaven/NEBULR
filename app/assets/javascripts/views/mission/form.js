@@ -53,7 +53,7 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
       showAnim: 'fadeIn',
       dateFormat: 'yy-mm-dd'
     });
-
+    this.addDateEventHandlers();
     this.$('#title').focus();
   },
 
@@ -119,5 +119,33 @@ Nebulr.Views.MissionForm = Backbone.View.extend({
     Backbone.View.prototype.remove.call(this);
     this.missionLocationView.remove();
     this.missionImagesView.remove();
+  },
+
+  addDateEventHandlers: function () {
+    $('#start_date').on('change', function () {
+      this.setStartDate();
+      this.restrictDateRange();
+    }.bind(this));
+    $('#end_date').on('change', function () {
+      this.setEndDate();
+      this.restrictDateRange();
+    }.bind(this));
+  },
+
+  setStartDate: function () {
+    this.startDate = $('#start_date').datepicker('getDate');
+  },
+
+  setEndDate: function () {
+    this.endDate = $('#end_date').datepicker('getDate');
+  },
+
+  restrictDateRange: function () {
+    if (this.startDate) {
+      $('#end_date').datepicker('option', 'minDate', this.startDate);
+    }
+    if (this.endDate) {
+      $('#start_date').datepicker('option', 'maxDate', this.endDate);
+    }
   }
 });
