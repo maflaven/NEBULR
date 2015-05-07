@@ -5,7 +5,8 @@ Nebulr.Views.ModalHelp = Backbone.View.extend({
   id: 'modal',
 
   events: {
-    'click .modal-close': 'close'
+    'click .modal-close': 'close',
+    'click .modal-screen': 'close'
   },
 
   render: function () {

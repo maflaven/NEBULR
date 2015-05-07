@@ -10,6 +10,7 @@ Nebulr.Views.ModalLogin = Backbone.View.extend({
 
   events: {
     'click .modal-close': 'close',
+    'click .modal-screen': 'close',
     'click .guest-login': 'loginGuest',
     'submit form': 'loginUser',
     'click .signup': 'signupUser'
