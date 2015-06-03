@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
+  # test "should get root" do
+  #   get :root
+  #   assert_response :success
   # end
 end

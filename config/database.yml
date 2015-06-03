@@ -3,3 +3,9 @@ development:
   database: nebulr_dev
   pool: 5
   timeout: 5000
+
+test:
+  adapter: postgresql
+  database: nebulr_dev
+  pool: 5
+  timeout: 5000
